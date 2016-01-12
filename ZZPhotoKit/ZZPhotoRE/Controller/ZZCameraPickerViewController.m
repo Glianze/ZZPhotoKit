@@ -345,10 +345,13 @@ typedef void(^codeBlock)();
              UIImage *imageResult = [handle thumbImage:t_image];
              [self.cameraArray addObject:imageResult];
          }
+
          
          [_picsCollection reloadData];
      }];
 }
+
+
 
 
 - (UIImage *)fixOrientation:(UIImage *)srcImg

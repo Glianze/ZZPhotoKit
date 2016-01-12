@@ -134,7 +134,7 @@
 
 //预览按钮，弹出图片浏览器
 -(void)preview{
-    _browserDataArray = self.selectArray;
+    _browserDataArray = [self.datas GetImageObject:self.selectArray];
     
     if (_browserDataArray.count == 0) {
         [self showPhotoPickerAlertView:@"提醒" message:@"您还没有选中图片，不需要预览"];
@@ -186,8 +186,9 @@
 
 -(void)stepTabbar
 {
-    UIView *view = [[UIView alloc]initWithFrame:CGRectMake(0, ZZ_VH - 44, ZZ_VW, 44)];
+    UIView *view = [[UIView alloc]initWithFrame:CGRectZero];
     view.backgroundColor = ZZ_RGB(245, 245, 245);
+    view.translatesAutoresizingMaskIntoConstraints = NO;
     [view addSubview:self.doneBtn];
     [view addSubview:self.previewBtn];
     [self.view addSubview:view];
@@ -195,6 +196,16 @@
     UIView *viewLine = [[UIView alloc]initWithFrame:CGRectMake(0, 0, ZZ_VW, 1)];
     viewLine.backgroundColor = ZZ_RGB(230, 230, 230);
     [view addSubview:viewLine];
+    
+    NSLayoutConstraint *tab_bottom = [NSLayoutConstraint constraintWithItem:_picsCollection attribute:NSLayoutAttributeBottom relatedBy:NSLayoutRelationEqual toItem:view attribute:NSLayoutAttributeTop multiplier:1 constant:0.0f];
+    
+    NSLayoutConstraint *tab_width = [NSLayoutConstraint constraintWithItem:view attribute:NSLayoutAttributeWidth relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeNotAnAttribute multiplier:1 constant:ZZ_VW];
+    
+    NSLayoutConstraint *tab_height = [NSLayoutConstraint constraintWithItem:view attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeNotAnAttribute multiplier:1 constant:44];
+    
+    [self.view addConstraints:@[tab_bottom,tab_width,tab_height]];
+    
+    
 }
 
 -(void)setupCollectionViewUI
@@ -208,7 +219,7 @@
     //        self.sectionInset = UIEdgeInsetsMake(0, 2, 0, 0);
     flowLayout.scrollDirection = UICollectionViewScrollDirectionVertical;
     
-    _picsCollection = [[UICollectionView alloc]initWithFrame:CGRectMake(0, 64, ZZ_VW, ZZ_VH - 45 -64) collectionViewLayout:flowLayout];
+    _picsCollection = [[UICollectionView alloc]initWithFrame:CGRectZero collectionViewLayout:flowLayout];
     [_picsCollection registerClass:[ZZPhotoPickerCell class] forCellWithReuseIdentifier:@"PhotoPickerCell"];
     [_picsCollection registerClass:[UICollectionReusableView class] forSupplementaryViewOfKind:UICollectionElementKindSectionFooter withReuseIdentifier:@"FooterView"];
     flowLayout.footerReferenceSize = CGSizeMake(ZZ_VW, 70);
@@ -216,13 +227,29 @@
     _picsCollection.dataSource = self;
     _picsCollection.backgroundColor = [UIColor whiteColor];
     [_picsCollection setUserInteractionEnabled:YES];
+    _picsCollection.translatesAutoresizingMaskIntoConstraints = NO;
     [self.view addSubview:_picsCollection];
+    
+    NSLayoutConstraint *pic_top = [NSLayoutConstraint constraintWithItem:self.view attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationEqual toItem:_picsCollection attribute:NSLayoutAttributeTop multiplier:1 constant:0.0f];
+    
+    NSLayoutConstraint *pic_bottom = [NSLayoutConstraint constraintWithItem:self.view attribute:NSLayoutAttributeBottom relatedBy:NSLayoutRelationEqual toItem:_picsCollection attribute:NSLayoutAttributeBottom multiplier:1 constant:44.0f];
+    
+    NSLayoutConstraint *pic_left = [NSLayoutConstraint constraintWithItem:self.view attribute:NSLayoutAttributeLeft relatedBy:NSLayoutRelationEqual toItem:_picsCollection attribute:NSLayoutAttributeLeft multiplier:1 constant:0.0f];
+    
+    NSLayoutConstraint *pic_right = [NSLayoutConstraint constraintWithItem:self.view attribute:NSLayoutAttributeRight relatedBy:NSLayoutRelationEqual toItem:_picsCollection attribute:NSLayoutAttributeRight multiplier:1 constant:0.0f];
+    
+    [self.view addConstraints:@[pic_top,pic_bottom,pic_left,pic_right]];
     
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    self.view.backgroundColor = [UIColor whiteColor];
+    
+    [self setupCollectionViewUI];
+    //创建底部工具栏
+    [self stepTabbar];
 
 }
 -(void)viewWillAppear:(BOOL)animated
@@ -230,11 +257,6 @@
     [super viewWillAppear:animated];
     //提前加载图片
     [self loadPhotoData];
-    
-    //创建底部工具栏
-    [self stepTabbar];
-    
-    [self setupCollectionViewUI];
     
     self.navigationItem.leftBarButtonItem = self.backBtn;
     self.navigationItem.rightBarButtonItem = self.cancelBtn;

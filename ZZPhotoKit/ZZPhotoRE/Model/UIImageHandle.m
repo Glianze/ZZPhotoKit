@@ -15,7 +15,7 @@
     // Create a thumbnail version of the image for the event object.
     CGSize size = artWork.size;
     CGSize croppedSize;
-    CGFloat ratio = 200;
+    CGFloat ratio = 500;
     CGFloat offsetX = 0.0;
     CGFloat offsetY = 0.0;
     

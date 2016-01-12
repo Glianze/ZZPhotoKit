@@ -68,7 +68,7 @@
         
         ZZPhotoController *photoController = [[ZZPhotoController alloc]init];
         photoController.selectPhotoOfMax = 5;
-        photoController.imageType = ZZImageTypeOfThumb;
+        photoController.imageType = ZZImageTypeOfDefault;
         
         [photoController showIn:self result:^(id responseObject){
             NSLog(@"%@",responseObject);
@@ -81,7 +81,7 @@
     }else if(indexPath.row == 1){
         ZZCameraController *cameraController = [[ZZCameraController alloc]init];
         cameraController.takePhotoOfMax = 8;
-        cameraController.imageType = ZZImageTypeOfThumb;
+        cameraController.imageType = ZZImageTypeOfDefault;
         [cameraController showIn:self result:^(id responseObject){
             
             NSLog(@"%@",responseObject);
