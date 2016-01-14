@@ -269,11 +269,16 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.view.backgroundColor = [UIColor whiteColor];
+    self.automaticallyAdjustsScrollViewInsets = NO;
     
-    [self setupCollectionViewUI];
-    //创建底部工具栏
-    [self stepTabbar];
+    self.view.backgroundColor = [UIColor whiteColor];
+    dispatch_async(dispatch_get_main_queue(), ^{
+        // 更新UI
+        [self setupCollectionViewUI];
+        //创建底部工具栏
+        [self stepTabbar];
+    });
+    
 
 }
 -(void)viewWillAppear:(BOOL)animated
