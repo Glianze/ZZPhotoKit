@@ -12,8 +12,7 @@
 #import "ZZPhotoDatas.h"
 #import "ZZPhotoPickerCell.h"
 #import "ZZBrowserPickerViewController.h"
-
-
+#import "ZZPhotoHud.h"
 @interface ZZPhotoPickerViewController ()<UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout,ZZBrowserPickerDelegate>
 
 @property (strong, nonatomic) NSMutableArray *photoArray;
@@ -34,7 +33,7 @@
 @property (strong, nonatomic) ZZPhotoDatas *datas;
 @property (strong, nonatomic) ZZBrowserPickerViewController *browserController;
 @property (strong, nonatomic) NSArray *browserDataArray;
-
+@property (strong, nonatomic) UILabel *numSelectLabel;
 @end
 
 @implementation ZZPhotoPickerViewController
@@ -81,7 +80,7 @@
     return _cancelBtn;
 }
 
-#pragma SETUP doneButtonUI Method
+#pragma mark SETUP doneButtonUI Method
 
 -(UIButton *)doneBtn{
     if (!_doneBtn) {
@@ -96,7 +95,7 @@
     return _doneBtn;
 }
 
-#pragma SETUP previewButtonUI Method
+#pragma merk SETUP previewButtonUI Method
 
 -(UIButton *)previewBtn{
     if (!_previewBtn) {
@@ -122,14 +121,36 @@
 
 #pragma mark --- 完成然后回调
 -(void)done{
-    id responseObject = [self.datas GetImageObject:self.selectArray];
-    if ([(NSArray *)responseObject count] == 0) {
+    
+    [ZZPhotoHud showActiveHud];
+    NSMutableArray *photos = [NSMutableArray array];
+    
+    if ([self.selectArray count] == 0) {
         [self dismissViewControllerAnimated:YES completion:nil];
     }else{
-        self.PhotoResult(responseObject);
-        [self dismissViewControllerAnimated:YES completion:nil];
+        
+        for (int i = 0; i < self.selectArray.count; i++) {
+            id asset = [self.selectArray objectAtIndex:i];
+            [self.datas GetImageObject:asset complection:^(UIImage *photo ,BOOL isDegradedResult) {
+                if (isDegradedResult) {
+                    return;
+                }
+                if (photo){
+                    [photos addObject:photo];
+                }
+                if (photos.count < self.selectArray.count){
+                    return;
+                }
+                if (self.PhotoResult) {
+                    self.PhotoResult(photos);
+                }
+                
+                [ZZPhotoHud hideActiveHud];
+                [self dismissViewControllerAnimated:YES completion:nil];
+            }];
+        }
+ 
     }
-    
 }
 
 //预览按钮，弹出图片浏览器
@@ -146,6 +167,7 @@
     }
 
 }
+
 
 #pragma Declaration Array
 -(NSMutableArray *)photoArray
@@ -230,6 +252,8 @@
     _picsCollection.translatesAutoresizingMaskIntoConstraints = NO;
     [self.view addSubview:_picsCollection];
     
+    
+    
     NSLayoutConstraint *pic_top = [NSLayoutConstraint constraintWithItem:self.view attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationEqual toItem:_picsCollection attribute:NSLayoutAttributeTop multiplier:1 constant:0.0f];
     
     NSLayoutConstraint *pic_bottom = [NSLayoutConstraint constraintWithItem:self.view attribute:NSLayoutAttributeBottom relatedBy:NSLayoutRelationEqual toItem:_picsCollection attribute:NSLayoutAttributeBottom multiplier:1 constant:44.0f];
@@ -258,6 +282,8 @@
     //提前加载图片
     [self loadPhotoData];
     
+    
+    
     self.navigationItem.leftBarButtonItem = self.backBtn;
     self.navigationItem.rightBarButtonItem = self.cancelBtn;
 }
@@ -276,6 +302,7 @@
         [_picsCollection reloadData];
         
     }
+    
 }
 
 -(void)refreshTotalNumLabelData:(NSInteger)totalNum
@@ -284,11 +311,12 @@
 }
 
 
-#pragma 关键位置，选中的在数组中添加，取消的从数组中减少
+#pragma mark 关键位置，选中的在数组中添加，取消的从数组中减少
 -(void)selectPicBtn:(UIButton *)button
 {
     NSInteger index = button.tag;
     if (button.selected == NO) {
+        [self shakeToShow:button];
         if (self.selectArray.count + 1 > _selectNum) {
             [self showSelectPhotoAlertView:_selectNum];
         }else{
@@ -296,13 +324,27 @@
             [button setImage:Pic_Btn_Selected forState:UIControlStateNormal];
             button.selected = YES;
         }
-        
     }else{
+        [self shakeToShow:button];
         [self.selectArray removeObject:[self.photoArray objectAtIndex:index]];
         [button setImage:Pic_btn_UnSelected forState:UIControlStateNormal];
         button.selected = NO;
     }
+}
+
+#pragma mark 列表中按钮点击动画效果
+
+- (void) shakeToShow:(UIButton*)button{
+    CAKeyframeAnimation* animation = [CAKeyframeAnimation animationWithKeyPath:@"transform"];
+    animation.duration = 0.5;
     
+    NSMutableArray *values = [NSMutableArray array];
+    [values addObject:[NSValue valueWithCATransform3D:CATransform3DMakeScale(0.1, 0.1, 1.0)]];
+    [values addObject:[NSValue valueWithCATransform3D:CATransform3DMakeScale(1.2, 1.2, 1.0)]];
+    [values addObject:[NSValue valueWithCATransform3D:CATransform3DMakeScale(0.9, 0.9, 1.0)]];
+    [values addObject:[NSValue valueWithCATransform3D:CATransform3DMakeScale(1.0, 1.0, 1.0)]];
+    animation.values = values;
+    [button.layer addAnimation:animation forKey:nil];
 }
 
 
@@ -397,6 +439,8 @@
     [alert addAction:action1];
     [self presentViewController:alert animated:YES completion:nil];
 }
+
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

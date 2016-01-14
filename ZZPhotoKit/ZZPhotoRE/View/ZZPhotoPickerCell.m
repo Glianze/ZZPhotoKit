@@ -50,16 +50,15 @@
 {
     if ([assetItem isKindOfClass:[PHAsset class]]) {
         
-
-        [[PHImageManager defaultManager] requestImageForAsset:assetItem
-                                                   targetSize:CGSizeMake(200, 200)
-                                                  contentMode:PHImageContentModeDefault
-                                                      options:nil
-                                                resultHandler:^(UIImage *result, NSDictionary *info) {
-                                                    
-                                                    self.photo.image = result;
-                                                    
-                                                }];
+        
+        PHAsset *phAsset = assetItem;
+        
+        [[PHImageManager defaultManager] requestImageForAsset:phAsset targetSize:CGSizeMake(200, 200) contentMode:PHImageContentModeAspectFit options:nil resultHandler:^(UIImage *result, NSDictionary *info){
+            
+            self.photo.image = result;
+            
+        }];
+        
     }
 }
 @end

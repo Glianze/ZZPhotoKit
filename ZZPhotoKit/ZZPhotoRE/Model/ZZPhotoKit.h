@@ -1,4 +1,19 @@
-# ZZPhotoKit
+//
+//  ZZPhotoKit.h
+//  ZZPhotoKit
+//
+//  Created by Yuan on 16/1/14.
+//  Copyright © 2016年 Ace. All rights reserved.
+//
+
+#ifndef ZZPhotoKit_h
+#define ZZPhotoKit_h
+
+#import "ZZPhotoController.h"
+#import "ZZCameraController.h"
+#import "ZZBrowserPickerViewController.h"
+
+
 /* 说明 */
 
 /*
@@ -92,3 +107,6 @@
  
  ** 详细使用方法还是看demo 吧。
  */
+
+
+#endif /* ZZPhotoKit_h */

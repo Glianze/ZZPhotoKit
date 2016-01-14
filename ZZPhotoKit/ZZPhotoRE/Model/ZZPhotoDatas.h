@@ -8,12 +8,10 @@
 
 #import <Foundation/Foundation.h>
 #import "Common.h"
-#import "UIImageHandle.h"
 @interface ZZPhotoDatas : NSObject
 
 @property(assign,nonatomic) NSInteger type;
 
-@property(strong,nonatomic) UIImageHandle *imageHandle;
 /*
  *    获取全部相册
  */
@@ -30,8 +28,11 @@
  *    只获取相机胶卷结果集
  */
 -(PHFetchResult *) GetCameraRollFetchResul;
+
+-(NSMutableArray *) GetImageObject:(NSMutableArray *)picArray;
+
 /*
  *    回调方法使用数组
  */
--(NSMutableArray *) GetImageObject:(NSMutableArray *)picArray;
+-(void) GetImageObject:(id)asset complection:(void (^)(UIImage *, BOOL isDegraded))complection;
 @end

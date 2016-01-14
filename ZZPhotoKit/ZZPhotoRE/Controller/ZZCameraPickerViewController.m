@@ -9,7 +9,6 @@
 #import "ZZCameraPickerViewController.h"
 #import "ZZCameraPickerCell.h"
 #import "ZZCameraFocusView.h"
-#import "UIImageHandle.h"
 #import "ZZBrowserPickerViewController.h"
 typedef void(^codeBlock)();
 
@@ -327,26 +326,8 @@ typedef void(^codeBlock)();
          NSString *path = [[NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject] stringByAppendingPathComponent:currentTimeStr];
          [UIImagePNGRepresentation(t_image) writeToFile:path atomically:YES];
          
-         /*
-          *   可自修改返回类型
-              例如下面title 以时间为标题
-          */
          
-//         NSDictionary *dic = @{
-//                               @"image":t_image,
-//                               @"title":currentTimeStr,
-//                               };
-         
-         UIImageHandle *handle = [[UIImageHandle alloc]init];
-         
-         if (_imageType == ZZImageTypeOfDefault) {
-             [self.cameraArray addObject:t_image];
-         }else{
-             UIImage *imageResult = [handle thumbImage:t_image];
-             [self.cameraArray addObject:imageResult];
-         }
-
-         
+         [self.cameraArray addObject:t_image];
          [_picsCollection reloadData];
      }];
 }

@@ -7,17 +7,7 @@
 //
 
 #import "ZZPhotoDatas.h"
-
 @implementation ZZPhotoDatas
-
-#pragma 懒加载
--(UIImageHandle *)imageHandle
-{
-    if (!_imageHandle) {
-        _imageHandle = [[UIImageHandle alloc]init];
-    }
-    return _imageHandle;
-}
 
 -(NSMutableArray *)GetPhotoListDatas
 {
@@ -73,27 +63,49 @@
     PHFetchResult *fetch = [PHAsset fetchAssetsInAssetCollection:[smartAlbumsFetchResult objectAtIndex:0] options:nil];
     return fetch;
 }
+
 -(NSMutableArray *)GetImageObject:(NSMutableArray *)picArray
 {
     
     NSMutableArray *imageObject = [NSMutableArray array];
     
     for (int i = 0; i < picArray.count; i++) {
+        //异步获取原图。注意脚下有坑。
         PHImageRequestOptions *options = [[PHImageRequestOptions alloc]init];
         options.synchronous = YES;
         
         [[PHImageManager defaultManager] requestImageForAsset:[picArray objectAtIndex:i] targetSize:PHImageManagerMaximumSize contentMode:(PHImageContentModeDefault) options:options resultHandler:^(UIImage *result, NSDictionary *info){
             
-            if (self.type == ZZImageTypeOfDefault) {
-                [imageObject addObject:result];
-            }else{
-                UIImage *imageResult = [self.imageHandle thumbImage:result];
-                [imageObject addObject:imageResult];
-            }
-        
+            [imageObject addObject:result];
+            
         }];
     }
     
     return imageObject;
+}
+
+
+-(void)GetImageObject:(id)asset complection:(void (^)(UIImage *, BOOL isDegraded))complection
+{
+    if ([asset isKindOfClass:[PHAsset class]]) {
+        PHAsset *phAsset = (PHAsset *)asset;
+        
+        CGFloat photoWidth = [UIScreen mainScreen].bounds.size.width;
+        
+        CGFloat aspectRatio = phAsset.pixelWidth / (CGFloat)phAsset.pixelHeight;
+        CGFloat multiple = [UIScreen mainScreen].scale;
+        CGFloat pixelWidth = photoWidth * multiple;
+        CGFloat pixelHeight = pixelWidth / aspectRatio;
+        
+        [[PHImageManager defaultManager] requestImageForAsset:phAsset targetSize:CGSizeMake(pixelWidth, pixelHeight) contentMode:PHImageContentModeAspectFit options:nil resultHandler:^(UIImage * _Nullable result, NSDictionary * _Nullable info) {
+            
+            BOOL downloadFinined = (![[info objectForKey:PHImageCancelledKey] boolValue] && ![info objectForKey:PHImageErrorKey]);
+            if (downloadFinined) {
+                if (complection) complection(result,[[info objectForKey:PHImageResultIsDegradedKey] boolValue]);
+            }
+        }];
+
+    }
+    
 }
 @end
