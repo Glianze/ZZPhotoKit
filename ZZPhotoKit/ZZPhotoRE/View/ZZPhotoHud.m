@@ -31,13 +31,18 @@
 {
     self = [super init];
     if (self) {
-        [[UIApplication sharedApplication].keyWindow addSubview:self];
         
-        [self makeInitUI];
-        
-        [self makeHudUI];
     }
     return self;
+}
+
+-(void)show
+{
+    [[UIApplication sharedApplication].keyWindow addSubview:self];
+    
+    [self makeInitUI];
+    
+    [self makeHudUI];
 }
 
 -(void) makeInitUI
@@ -79,7 +84,7 @@
 
 +(void)showActiveHud
 {
-    [self sharedHud];
+    [[self sharedHud] show];
 }
 
 +(void)hideActiveHud
