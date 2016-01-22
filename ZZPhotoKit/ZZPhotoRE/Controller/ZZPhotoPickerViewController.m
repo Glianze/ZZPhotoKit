@@ -32,7 +32,6 @@
 @property (strong, nonatomic) UILabel *totalNumLabel;
 @property (strong, nonatomic) ZZPhotoDatas *datas;
 @property (strong, nonatomic) ZZBrowserPickerViewController *browserController;
-@property (strong, nonatomic) NSArray *browserDataArray;
 @property (strong, nonatomic) UILabel *numSelectLabel;
 @end
 
@@ -121,14 +120,12 @@
 
 #pragma mark --- 完成然后回调
 -(void)done{
-    
-    [ZZPhotoHud showActiveHud];
-    NSMutableArray *photos = [NSMutableArray array];
-    
+
     if ([self.selectArray count] == 0) {
         [self dismissViewControllerAnimated:YES completion:nil];
     }else{
-        
+        [ZZPhotoHud showActiveHud];
+        NSMutableArray *photos = [NSMutableArray array];
         for (int i = 0; i < self.selectArray.count; i++) {
             id asset = [self.selectArray objectAtIndex:i];
             [self.datas GetImageObject:asset complection:^(UIImage *photo ,BOOL isDegradedResult) {
@@ -155,9 +152,8 @@
 
 //预览按钮，弹出图片浏览器
 -(void)preview{
-    _browserDataArray = [self.datas GetImageObject:self.selectArray];
     
-    if (_browserDataArray.count == 0) {
+    if (self.selectArray.count == 0) {
         [self showPhotoPickerAlertView:@"提醒" message:@"您还没有选中图片，不需要预览"];
     }else{
         self.browserController = [[ZZBrowserPickerViewController alloc]init];
@@ -206,7 +202,7 @@
     return _totalNumLabel;
 }
 
--(void)stepTabbar
+-(void)setUpTabbar
 {
     UIView *view = [[UIView alloc]initWithFrame:CGRectZero];
     view.backgroundColor = ZZ_RGB(245, 245, 245);
@@ -251,7 +247,7 @@
     [_picsCollection setUserInteractionEnabled:YES];
     _picsCollection.translatesAutoresizingMaskIntoConstraints = NO;
     [self.view addSubview:_picsCollection];
-    
+    [_picsCollection reloadData];
     
     
     NSLayoutConstraint *pic_top = [NSLayoutConstraint constraintWithItem:self.view attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationEqual toItem:_picsCollection attribute:NSLayoutAttributeTop multiplier:1 constant:0.0f];
@@ -266,31 +262,26 @@
     
 }
 
+- (void)initInterUI
+{
+    self.automaticallyAdjustsScrollViewInsets = NO;
+    self.view.backgroundColor = [UIColor whiteColor];
+    self.navigationItem.leftBarButtonItem = self.backBtn;
+    self.navigationItem.rightBarButtonItem = self.cancelBtn;
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.automaticallyAdjustsScrollViewInsets = NO;
+    [self initInterUI];
     
-    self.view.backgroundColor = [UIColor whiteColor];
-    dispatch_async(dispatch_get_main_queue(), ^{
-        // 更新UI
-        [self setupCollectionViewUI];
-        //创建底部工具栏
-        [self stepTabbar];
-    });
+    [self loadPhotoData];
+    // 更新UI
+    [self setupCollectionViewUI];
+    //创建底部工具栏
+    [self setUpTabbar];
     
 
-}
--(void)viewWillAppear:(BOOL)animated
-{
-    [super viewWillAppear:animated];
-    //提前加载图片
-    [self loadPhotoData];
-    
-    
-    
-    self.navigationItem.leftBarButtonItem = self.backBtn;
-    self.navigationItem.rightBarButtonItem = self.cancelBtn;
 }
 
 -(void)loadPhotoData
@@ -299,15 +290,11 @@
         
         self.photoArray = [self.datas GetPhotoAssets:_fetch];
         [self refreshTotalNumLabelData:_photoArray.count];
-        [_picsCollection reloadData];
-        
+
     }else{
         self.photoArray = [self.datas GetPhotoAssets:[self.datas GetCameraRollFetchResul]];
         [self refreshTotalNumLabelData:_photoArray.count];
-        [_picsCollection reloadData];
-        
     }
-    
 }
 
 -(void)refreshTotalNumLabelData:(NSInteger)totalNum
@@ -413,12 +400,12 @@
 #pragma mark --- ZZBrowserPickerDelegate
 -(NSInteger)zzbrowserPickerPhotoNum:(ZZBrowserPickerViewController *)controller
 {
-    return _browserDataArray.count;
+    return self.selectArray.count;
 }
 
 -(NSArray *)zzbrowserPickerPhotoContent:(ZZBrowserPickerViewController *)controller
 {
-    return _browserDataArray;
+    return self.selectArray;
 }
 
 -(void)showSelectPhotoAlertView:(NSInteger)photoNumOfMax

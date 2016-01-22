@@ -29,7 +29,7 @@
  */
 -(PHFetchResult *) GetCameraRollFetchResul;
 
--(NSMutableArray *) GetImageObject:(NSMutableArray *)picArray;
+
 
 /*
  *    回调方法使用数组

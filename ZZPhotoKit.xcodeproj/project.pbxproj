@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1C2019FF1C520BF600FCD559 /* ZZCameraFlashState.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C2019FE1C520BF600FCD559 /* ZZCameraFlashState.m */; };
 		1C94AC071C3A7B1E00B26FAE /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C94AC061C3A7B1E00B26FAE /* main.m */; };
 		1C94AC0A1C3A7B1F00B26FAE /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C94AC091C3A7B1F00B26FAE /* AppDelegate.m */; };
 		1C94AC0D1C3A7B1F00B26FAE /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C94AC0C1C3A7B1F00B26FAE /* ViewController.m */; };
@@ -85,6 +86,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1C2019FD1C520BF600FCD559 /* ZZCameraFlashState.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZZCameraFlashState.h; sourceTree = "<group>"; };
+		1C2019FE1C520BF600FCD559 /* ZZCameraFlashState.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZZCameraFlashState.m; sourceTree = "<group>"; };
 		1C94AC021C3A7B1E00B26FAE /* ZZPhotoKit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ZZPhotoKit.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1C94AC061C3A7B1E00B26FAE /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		1C94AC081C3A7B1F00B26FAE /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -321,6 +324,8 @@
 				1C94AC4C1C3A7BA000B26FAE /* ZZBrowerAnimate.m */,
 				1C94AC4D1C3A7BA000B26FAE /* ZZPhotoDatas.h */,
 				1C94AC4E1C3A7BA000B26FAE /* ZZPhotoDatas.m */,
+				1C2019FD1C520BF600FCD559 /* ZZCameraFlashState.h */,
+				1C2019FE1C520BF600FCD559 /* ZZCameraFlashState.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -591,6 +596,7 @@
 				1C94AD331C3A7D9500B26FAE /* SDImageCache.m in Sources */,
 				1C94AD361C3A7D9500B26FAE /* SDWebImageDownloader.m in Sources */,
 				1C94AC811C3A7BA000B26FAE /* ZZPageControl.m in Sources */,
+				1C2019FF1C520BF600FCD559 /* ZZCameraFlashState.m in Sources */,
 				1C94AC6D1C3A7BA000B26FAE /* ZZPhotoListViewController.m in Sources */,
 				1C94AD3C1C3A7D9500B26FAE /* UIImage+MultiFormat.m in Sources */,
 				1C94AD3A1C3A7D9500B26FAE /* UIButton+WebCache.m in Sources */,
@@ -734,8 +740,9 @@
 				INFOPLIST_FILE = ZZPhotoKit/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.ace.photokitlll;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ace.ieosddfghj;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
@@ -746,8 +753,9 @@
 				INFOPLIST_FILE = ZZPhotoKit/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.ace.photokitlll;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ace.ieosddfghj;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};

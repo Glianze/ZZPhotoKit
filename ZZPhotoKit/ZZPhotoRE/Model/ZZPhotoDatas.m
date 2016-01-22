@@ -33,8 +33,6 @@
 -(PHFetchResult *)GetFetchResult:(PHAssetCollection *)assetCollection
 {
     PHFetchResult *fetchResult = [PHAsset fetchAssetsInAssetCollection:assetCollection options:nil];
-    
-    
     return fetchResult;
     
 }
@@ -63,27 +61,6 @@
     PHFetchResult *fetch = [PHAsset fetchAssetsInAssetCollection:[smartAlbumsFetchResult objectAtIndex:0] options:nil];
     return fetch;
 }
-
--(NSMutableArray *)GetImageObject:(NSMutableArray *)picArray
-{
-    
-    NSMutableArray *imageObject = [NSMutableArray array];
-    
-    for (int i = 0; i < picArray.count; i++) {
-        //异步获取原图。注意脚下有坑。
-        PHImageRequestOptions *options = [[PHImageRequestOptions alloc]init];
-        options.synchronous = YES;
-        
-        [[PHImageManager defaultManager] requestImageForAsset:[picArray objectAtIndex:i] targetSize:PHImageManagerMaximumSize contentMode:(PHImageContentModeDefault) options:options resultHandler:^(UIImage *result, NSDictionary *info){
-            
-            [imageObject addObject:result];
-            
-        }];
-    }
-    
-    return imageObject;
-}
-
 
 -(void)GetImageObject:(id)asset complection:(void (^)(UIImage *, BOOL isDegraded))complection
 {

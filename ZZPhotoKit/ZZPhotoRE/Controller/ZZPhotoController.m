@@ -59,7 +59,10 @@
         [PHPhotoLibrary requestAuthorization:^(PHAuthorizationStatus status){
             //授权后直接打开照片库
             if (status == PHAuthorizationStatusAuthorized){
-                [self showController:controller result:result];
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    [self showController:controller result:result];
+                });
+ 
             }
         }];
     }else if (status == PHAuthorizationStatusAuthorized){
