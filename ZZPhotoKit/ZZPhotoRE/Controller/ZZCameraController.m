@@ -19,6 +19,7 @@
     cameraPickerController.takePhotoOfMax = self.takePhotoOfMax;
     //设置返回图片类型
     cameraPickerController.imageType = self.imageType;
+    cameraPickerController.isSavelocal = self.isSaveLocal;
     [controller presentViewController:cameraPickerController animated:YES completion:nil];
 }
 

@@ -326,12 +326,20 @@ typedef void(^codeBlock)();
          NSString *path = [[NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject] stringByAppendingPathComponent:currentTimeStr];
          [UIImagePNGRepresentation(t_image) writeToFile:path atomically:YES];
          
+         if (self.isSavelocal == YES) {
+             UIImageWriteToSavedPhotosAlbum(t_image, self, @selector(imageSavedToPhotosAlbum:didFinishSavingWithError:contextInfo:), nil);
+         }
          
          [self.cameraArray addObject:t_image];
          [_picsCollection reloadData];
      }];
 }
 
+
+-(void)imageSavedToPhotosAlbum:(UIImage *)image didFinishSavingWithError:(NSError *)error contextInfo:(void *)contextInfo
+{
+    NSLog(@"调用");
+}
 
 
 

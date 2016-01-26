@@ -11,9 +11,11 @@
 
 @interface ZZCameraPickerViewController : UIViewController
 
-@property(assign,nonatomic) NSInteger takePhotoOfMax;
-@property(assign,nonatomic) ZZImageType imageType;
+@property (assign, nonatomic) BOOL isSavelocal;
 
-@property(strong,nonatomic) void (^CameraResult)(id responseObject);
+@property (assign, nonatomic) NSInteger takePhotoOfMax;
+@property (assign, nonatomic) ZZImageType imageType;
+
+@property (strong, nonatomic) void (^CameraResult)(id responseObject);
 
 @end

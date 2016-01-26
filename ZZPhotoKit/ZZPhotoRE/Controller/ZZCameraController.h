@@ -13,15 +13,17 @@ typedef void(^ZZCameraResult)(id responseObject);
 
 @interface ZZCameraController : NSObject
 
+@property (assign, nonatomic) BOOL isSaveLocal;
+
 /*
  *   设置最多连拍张数
  */
-@property(assign,nonatomic) NSInteger takePhotoOfMax;
+@property (assign, nonatomic) NSInteger takePhotoOfMax;
 
 /*
  *    设置图片返回类型
  */
-@property(assign,nonatomic) ZZImageType imageType;
+@property (assign, nonatomic) ZZImageType imageType;
 
 -(void)showIn:(UIViewController *)controller result:(ZZCameraResult)result;
 
