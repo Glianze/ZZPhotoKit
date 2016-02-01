@@ -72,9 +72,9 @@
 
     //判断是否需要滚动到指定图片
     if (self.indexPath != nil) {
-        _pageControl.pageControl.text = [NSString stringWithFormat:@"%ld / %ld",(long)self.indexPath.row + 1,_numberOfItems];
+        _pageControl.pageControl.text = [NSString stringWithFormat:@"%ld / %ld",(long)self.indexPath.row + 1,(long)_numberOfItems];
     }else{
-        _pageControl.pageControl.text = [NSString stringWithFormat:@"%d / %ld",1,_numberOfItems];
+        _pageControl.pageControl.text = [NSString stringWithFormat:@"%d / %ld",1,(long)_numberOfItems];
     }
     
 }
@@ -124,9 +124,9 @@
 
     //判断是否需要滚动到指定图片
     if (self.indexPath != nil) {
-        _pageControl.pageControl.text = [NSString stringWithFormat:@"%ld / %ld",(long)self.indexPath.row + 1,_numberOfItems];
+        _pageControl.pageControl.text = [NSString stringWithFormat:@"%ld / %ld",(long)self.indexPath.row + 1,(long)_numberOfItems];
     }else{
-        _pageControl.pageControl.text = [NSString stringWithFormat:@"%d / %ld",1,_numberOfItems];
+        _pageControl.pageControl.text = [NSString stringWithFormat:@"%d / %ld",1,(long)_numberOfItems];
     }
 }
 
@@ -182,7 +182,7 @@
     if (!self.numberOfItems) return;
     int indexOnPageControl = itemIndex % self.numberOfItems;
     
-    _pageControl.pageControl.text = [NSString stringWithFormat:@"%d / %ld",indexOnPageControl+1,_numberOfItems];
+    _pageControl.pageControl.text = [NSString stringWithFormat:@"%d / %ld",indexOnPageControl+1,(long)_numberOfItems];
     self.pageControl.currentPage = indexOnPageControl;
     
 }

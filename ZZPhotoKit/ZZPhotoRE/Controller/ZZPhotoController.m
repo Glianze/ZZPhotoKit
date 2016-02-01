@@ -16,7 +16,6 @@
 @property(strong,nonatomic) UINavigationController *photoListNavigationController;
 @property(strong,nonatomic) ZZPhotoPickerViewController *photoPickerController;
 
-
 @end
 
 @implementation ZZPhotoController

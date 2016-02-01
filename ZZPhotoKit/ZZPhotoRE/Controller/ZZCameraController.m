@@ -8,19 +8,31 @@
 
 #import "ZZCameraController.h"
 #import "ZZCameraPickerViewController.h"
+@interface ZZCameraController()
+
+@property (strong,nonatomic) ZZCameraPickerViewController *cameraPickerController;
+
+@end
+
 @implementation ZZCameraController
+
+-(ZZCameraPickerViewController *)cameraPickerController
+{
+    if (!_cameraPickerController) {
+        _cameraPickerController = [[ZZCameraPickerViewController alloc]init];
+    }
+    return _cameraPickerController;
+}
 
 -(void)showIn:(UIViewController *)controller result:(ZZCameraResult)result
 {
-    ZZCameraPickerViewController *cameraPickerController = [[ZZCameraPickerViewController alloc]init];
-    
-    cameraPickerController.CameraResult = result;
+    self.cameraPickerController.CameraResult = result;
     //设置连拍最大张数
-    cameraPickerController.takePhotoOfMax = self.takePhotoOfMax;
+    self.cameraPickerController.takePhotoOfMax = self.takePhotoOfMax;
     //设置返回图片类型
-    cameraPickerController.imageType = self.imageType;
-    cameraPickerController.isSavelocal = self.isSaveLocal;
-    [controller presentViewController:cameraPickerController animated:YES completion:nil];
+    self.cameraPickerController.imageType = self.imageType;
+    self.cameraPickerController.isSavelocal = self.isSaveLocal;
+    [controller presentViewController:self.cameraPickerController animated:YES completion:nil];
 }
 
 @end

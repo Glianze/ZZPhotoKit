@@ -128,7 +128,7 @@
     }else if(indexPath.row == 1){
         ZZCameraController *cameraController = [[ZZCameraController alloc]init];
         cameraController.takePhotoOfMax = 8;
-        cameraController.isSaveLocal = YES;
+        cameraController.isSaveLocal = NO;
         [cameraController showIn:self result:^(id responseObject){
             
             NSLog(@"%@",responseObject);

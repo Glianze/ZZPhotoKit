@@ -74,7 +74,7 @@
         
         PHAssetCollection *titleAsset = collectionItem;
 
-        if ([titleAsset.localizedTitle isEqualToString:@"Camera Roll"]) {
+        if ([titleAsset.localizedTitle isEqualToString:@"All Photos"]) {
             self.title.text = @"相机胶卷";
         }else{
             self.title.text = [NSString stringWithFormat:@"%@",titleAsset.localizedTitle];
