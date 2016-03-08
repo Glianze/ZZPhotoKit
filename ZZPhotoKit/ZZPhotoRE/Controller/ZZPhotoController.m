@@ -87,6 +87,7 @@
     //Block传值
     self.photoPickerController.PhotoResult = result;
     self.photoPickerController.isAlubSeclect = NO;
+    self.photoPickerController.roundColor = self.roundColor;
     /* * *   同时设定最多选择照片的张数  * * */
     self.photoPickerController.selectNum = _selectPhotoOfMax;
     /* * *   同时设定返回图片的类型  * * */

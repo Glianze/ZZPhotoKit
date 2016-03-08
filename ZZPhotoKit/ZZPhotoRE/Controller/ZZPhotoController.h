@@ -17,6 +17,10 @@ typedef void (^ZZPhotoResult)(id responseObject);
 @interface ZZPhotoController : NSObject
 
 /*
+ *    设置圆点颜色
+ */
+@property(strong,nonatomic) UIColor *roundColor;
+/*
  *    选择照片的最多张数
  */
 @property(assign,nonatomic) NSInteger selectPhotoOfMax;

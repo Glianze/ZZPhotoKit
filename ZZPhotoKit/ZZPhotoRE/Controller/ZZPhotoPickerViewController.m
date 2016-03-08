@@ -13,6 +13,8 @@
 #import "ZZPhotoPickerCell.h"
 #import "ZZBrowserPickerViewController.h"
 #import "ZZPhotoHud.h"
+#import "ZZPhotoAnimation.h"
+
 @interface ZZPhotoPickerViewController ()<UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout,ZZBrowserPickerDelegate>
 
 @property (strong, nonatomic) NSMutableArray *photoArray;
@@ -30,6 +32,7 @@
 @property (strong, nonatomic) UIButton *previewBtn;                    //预览按钮
 
 @property (strong, nonatomic) UILabel *totalNumLabel;
+@property (strong, nonatomic) UILabel *totalRound;                     //小红点
 @property (strong, nonatomic) ZZPhotoDatas *datas;
 @property (strong, nonatomic) ZZBrowserPickerViewController *browserController;
 @property (strong, nonatomic) UILabel *numSelectLabel;
@@ -182,7 +185,7 @@
     return _selectArray;
 }
 
-#pragma 懒加载图片数据
+#pragma mark ---  懒加载图片数据
 -(ZZPhotoDatas *)datas{
     if (!_datas) {
         _datas = [[ZZPhotoDatas alloc]init];
@@ -191,7 +194,7 @@
     return _datas;
 }
 
-#pragma 总共多少张照片Label
+#pragma mark ---  总共多少张照片Label
 
 -(UILabel *)totalNumLabel{
     if (!_totalNumLabel) {
@@ -202,6 +205,24 @@
     return _totalNumLabel;
 }
 
+#pragma mark ---  红色小圆点
+-(UILabel *)totalRound{
+    if (!_totalRound) {
+        _totalRound = [[UILabel alloc]initWithFrame:CGRectMake(ZZ_VW - 90, 10, 22, 22)];
+        if (self.roundColor == nil) {
+            _totalRound.backgroundColor = [UIColor redColor];
+        }else{
+            _totalRound.backgroundColor = self.roundColor;
+        }
+        _totalRound.layer.masksToBounds = YES;
+        _totalRound.textAlignment = NSTextAlignmentCenter;
+        _totalRound.textColor = [UIColor whiteColor];
+        _totalRound.text = @"0";
+        [_totalRound.layer setCornerRadius:CGRectGetHeight([_totalRound bounds]) / 2];
+    }
+    return _totalRound;
+}
+
 -(void)setUpTabbar
 {
     UIView *view = [[UIView alloc]initWithFrame:CGRectZero];
@@ -209,6 +230,7 @@
     view.translatesAutoresizingMaskIntoConstraints = NO;
     [view addSubview:self.doneBtn];
     [view addSubview:self.previewBtn];
+    [view addSubview:self.totalRound];
     [self.view addSubview:view];
     
     UIView *viewLine = [[UIView alloc]initWithFrame:CGRectMake(0, 0, ZZ_VW, 1)];
@@ -308,36 +330,27 @@
 {
     NSInteger index = button.tag;
     if (button.selected == NO) {
-        [self shakeToShow:button];
+        [[ZZPhotoAnimation sharedAnimation] selectAnimation:button];
         if (self.selectArray.count + 1 > _selectNum) {
             [self showSelectPhotoAlertView:_selectNum];
         }else{
             [self.selectArray addObject:[self.photoArray objectAtIndex:index]];
+            [[ZZPhotoAnimation sharedAnimation] roundAnimation:self.totalRound];
+            self.totalRound.text = [NSString stringWithFormat:@"%lu",self.selectArray.count];
             [button setImage:Pic_Btn_Selected forState:UIControlStateNormal];
             button.selected = YES;
         }
     }else{
-        [self shakeToShow:button];
+        [[ZZPhotoAnimation sharedAnimation] selectAnimation:button];
         [self.selectArray removeObject:[self.photoArray objectAtIndex:index]];
+        [[ZZPhotoAnimation sharedAnimation] roundAnimation:self.totalRound];
+        self.totalRound.text = [NSString stringWithFormat:@"%lu",self.selectArray.count];
         [button setImage:Pic_btn_UnSelected forState:UIControlStateNormal];
         button.selected = NO;
     }
 }
 
-#pragma mark 列表中按钮点击动画效果
 
-- (void) shakeToShow:(UIButton*)button{
-    CAKeyframeAnimation* animation = [CAKeyframeAnimation animationWithKeyPath:@"transform"];
-    animation.duration = 0.5;
-    
-    NSMutableArray *values = [NSMutableArray array];
-    [values addObject:[NSValue valueWithCATransform3D:CATransform3DMakeScale(0.1, 0.1, 1.0)]];
-    [values addObject:[NSValue valueWithCATransform3D:CATransform3DMakeScale(1.2, 1.2, 1.0)]];
-    [values addObject:[NSValue valueWithCATransform3D:CATransform3DMakeScale(0.9, 0.9, 1.0)]];
-    [values addObject:[NSValue valueWithCATransform3D:CATransform3DMakeScale(1.0, 1.0, 1.0)]];
-    animation.values = values;
-    [button.layer addAnimation:animation forKey:nil];
-}
 
 
 #pragma UICollectionView --- Datasource

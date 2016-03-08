@@ -8,7 +8,6 @@
 
 #import "ZZBrowserPickerViewController.h"
 #import "ZZBrowserPickerCell.h"
-#import "ZZBrowerAnimate.h"
 #import "ZZPageControl.h"
 @interface ZZBrowserPickerViewController ()<UICollectionViewDelegate,UICollectionViewDataSource,UINavigationControllerDelegate,UIViewControllerTransitioningDelegate>
 
@@ -16,7 +15,7 @@
 @property (nonatomic, strong) UICollectionViewFlowLayout *flowLayout;
 
 @property (nonatomic, strong) NSMutableArray *photoDataArray;
-@property (nonatomic, strong) ZZBrowerAnimate *animate;
+
 @property (nonatomic, strong) ZZPageControl *pageControl;
 
 //照片的总数
@@ -196,8 +195,6 @@
         }else{
             controller.navigationController.delegate = self;
             
-            _animate = [ZZBrowerAnimate new];
-            _animate.style = PushAnimate;
             [controller.navigationController pushViewController:self animated:YES];
         }
         
@@ -209,27 +206,11 @@
             self.showAnimation = ShowAnimationOfPresent;
             //设置动画效果
             self.transitioningDelegate = self;
-            _animate = [ZZBrowerAnimate new];
-            _animate.style = PushAnimate;
+
             
             [controller presentViewController:self animated:YES completion:nil];
         }
     }
-}
-
-- (id<UIViewControllerAnimatedTransitioning>)navigationController:(UINavigationController *)navigationController animationControllerForOperation:(UINavigationControllerOperation)operation fromViewController:(UIViewController *)fromVC toViewController:(UIViewController *)toVC
-{
-    return self.animate;
-}
-
-- (id<UIViewControllerAnimatedTransitioning>)animationControllerForPresentedController:(UIViewController *)presented presentingController:(UIViewController *)presenting sourceController:(UIViewController *)source
-{
-    return self.animate;
-}
-
--(id<UIViewControllerAnimatedTransitioning>)animationControllerForDismissedController:(UIViewController *)dismissed
-{
-    return self.animate;
 }
 
 

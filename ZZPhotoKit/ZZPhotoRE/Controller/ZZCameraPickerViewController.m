@@ -317,14 +317,14 @@ typedef void(^codeBlock)();
          NSData *imageData = [AVCaptureStillImageOutput jpegStillImageNSDataRepresentation:imageSampleBuffer];
          UIImage *t_image = [UIImage imageWithData:imageData];
          
-         NSDateFormatter *formater = [[NSDateFormatter alloc] init];
-         formater.dateFormat = @"yyyy-MM-ddHHmmss";
-         NSString *currentTimeStr = [[formater stringFromDate:[NSDate date]] stringByAppendingFormat:@"_%d" ,arc4random_uniform(10000)];
+//         NSDateFormatter *formater = [[NSDateFormatter alloc] init];
+//         formater.dateFormat = @"yyyy-MM-ddHHmmss";
+//         NSString *currentTimeStr = [[formater stringFromDate:[NSDate date]] stringByAppendingFormat:@"_%d" ,arc4random_uniform(10000)];
          
          t_image = [self fixOrientation:t_image];
          
-         NSString *path = [[NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject] stringByAppendingPathComponent:currentTimeStr];
-         [UIImagePNGRepresentation(t_image) writeToFile:path atomically:YES];
+//         NSString *path = [[NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject] stringByAppendingPathComponent:currentTimeStr];
+//         [UIImagePNGRepresentation(t_image) writeToFile:path atomically:YES];
          
          if (self.isSavelocal == YES) {
              UIImageWriteToSavedPhotosAlbum(t_image, self, @selector(imageSavedToPhotosAlbum:didFinishSavingWithError:contextInfo:), nil);

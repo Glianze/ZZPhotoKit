@@ -22,6 +22,11 @@
 #import <AVFoundation/AVFoundation.h>
 #import "UIImageView+WebCache.h"
 
+#import <AssetsLibrary/ALAsset.h>
+#import <AssetsLibrary/ALAssetsLibrary.h>
+#import <AssetsLibrary/ALAssetsGroup.h>
+#import <AssetsLibrary/ALAssetRepresentation.h>
+
 /*
  *    定义图盘返回类型枚举
  */

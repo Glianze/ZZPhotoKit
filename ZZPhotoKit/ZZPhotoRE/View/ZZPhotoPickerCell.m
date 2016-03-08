@@ -37,11 +37,14 @@
     return self;
 }
 
+//记录按钮选中和非选中的状态
 -(void)selectBtnStage:(NSMutableArray *)selectArray existence:(PHAsset *)assetItem
 {
     if ([selectArray containsObject:assetItem]) {
+        _selectBtn.selected = YES;
         [_selectBtn setImage:Pic_Btn_Selected forState:UIControlStateNormal];
     }else{
+        _selectBtn.selected = NO;
         [_selectBtn setImage:Pic_btn_UnSelected forState:UIControlStateNormal];
     }
 }

@@ -15,11 +15,11 @@
 
 @property(strong,nonatomic) void (^PhotoResult)(id responseObject);
 
-@property(assign,nonatomic) NSInteger selectNum;
-@property(assign,nonatomic) BOOL isAlubSeclect;
-@property(strong,nonatomic) PHFetchResult *fetch;
-
-@property(assign,nonatomic) ZZImageType imageType;
+@property (assign,nonatomic) NSInteger selectNum;
+@property (assign,nonatomic) BOOL isAlubSeclect;
+@property (strong,nonatomic) PHFetchResult *fetch;
+@property (strong,nonatomic) UIColor *roundColor;
+@property (assign,nonatomic) ZZImageType imageType;
 
 
 @end

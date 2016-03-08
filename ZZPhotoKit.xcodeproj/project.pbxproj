@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		1C2019FF1C520BF600FCD559 /* ZZCameraFlashState.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C2019FE1C520BF600FCD559 /* ZZCameraFlashState.m */; };
+		1C34B2FC1C8E7EC8008DFA1E /* ZZPhotoAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C34B2FB1C8E7EC8008DFA1E /* ZZPhotoAnimation.m */; };
 		1C94AC071C3A7B1E00B26FAE /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C94AC061C3A7B1E00B26FAE /* main.m */; };
 		1C94AC0A1C3A7B1F00B26FAE /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C94AC091C3A7B1F00B26FAE /* AppDelegate.m */; };
 		1C94AC0D1C3A7B1F00B26FAE /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C94AC0C1C3A7B1F00B26FAE /* ViewController.m */; };
@@ -22,7 +23,6 @@
 		1C94AC6D1C3A7BA000B26FAE /* ZZPhotoListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C94AC431C3A7BA000B26FAE /* ZZPhotoListViewController.m */; };
 		1C94AC6E1C3A7BA000B26FAE /* ZZPhotoPickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C94AC451C3A7BA000B26FAE /* ZZPhotoPickerViewController.m */; };
 		1C94AC6F1C3A7BA000B26FAE /* UIImageHandle.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C94AC4A1C3A7BA000B26FAE /* UIImageHandle.m */; };
-		1C94AC701C3A7BA000B26FAE /* ZZBrowerAnimate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C94AC4C1C3A7BA000B26FAE /* ZZBrowerAnimate.m */; };
 		1C94AC711C3A7BA000B26FAE /* ZZPhotoDatas.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C94AC4E1C3A7BA000B26FAE /* ZZPhotoDatas.m */; };
 		1C94AC721C3A7BA000B26FAE /* camera_focus_pic.png in Resources */ = {isa = PBXBuildFile; fileRef = 1C94AC501C3A7BA000B26FAE /* camera_focus_pic.png */; };
 		1C94AC731C3A7BA000B26FAE /* change_camera_pic.png in Resources */ = {isa = PBXBuildFile; fileRef = 1C94AC511C3A7BA000B26FAE /* change_camera_pic.png */; };
@@ -88,6 +88,8 @@
 /* Begin PBXFileReference section */
 		1C2019FD1C520BF600FCD559 /* ZZCameraFlashState.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZZCameraFlashState.h; sourceTree = "<group>"; };
 		1C2019FE1C520BF600FCD559 /* ZZCameraFlashState.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZZCameraFlashState.m; sourceTree = "<group>"; };
+		1C34B2FA1C8E7EC8008DFA1E /* ZZPhotoAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZZPhotoAnimation.h; sourceTree = "<group>"; };
+		1C34B2FB1C8E7EC8008DFA1E /* ZZPhotoAnimation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZZPhotoAnimation.m; sourceTree = "<group>"; };
 		1C94AC021C3A7B1E00B26FAE /* ZZPhotoKit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ZZPhotoKit.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1C94AC061C3A7B1E00B26FAE /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		1C94AC081C3A7B1F00B26FAE /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -118,8 +120,6 @@
 		1C94AC471C3A7BA000B26FAE /* Common.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Common.h; sourceTree = "<group>"; };
 		1C94AC491C3A7BA000B26FAE /* UIImageHandle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIImageHandle.h; sourceTree = "<group>"; };
 		1C94AC4A1C3A7BA000B26FAE /* UIImageHandle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIImageHandle.m; sourceTree = "<group>"; };
-		1C94AC4B1C3A7BA000B26FAE /* ZZBrowerAnimate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZZBrowerAnimate.h; sourceTree = "<group>"; };
-		1C94AC4C1C3A7BA000B26FAE /* ZZBrowerAnimate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZZBrowerAnimate.m; sourceTree = "<group>"; };
 		1C94AC4D1C3A7BA000B26FAE /* ZZPhotoDatas.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZZPhotoDatas.h; sourceTree = "<group>"; };
 		1C94AC4E1C3A7BA000B26FAE /* ZZPhotoDatas.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZZPhotoDatas.m; sourceTree = "<group>"; };
 		1C94AC501C3A7BA000B26FAE /* camera_focus_pic.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = camera_focus_pic.png; sourceTree = "<group>"; };
@@ -320,12 +320,12 @@
 				1CFF40471C4753F7007D43AF /* ZZPhotoKit.h */,
 				1C94AC491C3A7BA000B26FAE /* UIImageHandle.h */,
 				1C94AC4A1C3A7BA000B26FAE /* UIImageHandle.m */,
-				1C94AC4B1C3A7BA000B26FAE /* ZZBrowerAnimate.h */,
-				1C94AC4C1C3A7BA000B26FAE /* ZZBrowerAnimate.m */,
 				1C94AC4D1C3A7BA000B26FAE /* ZZPhotoDatas.h */,
 				1C94AC4E1C3A7BA000B26FAE /* ZZPhotoDatas.m */,
 				1C2019FD1C520BF600FCD559 /* ZZCameraFlashState.h */,
 				1C2019FE1C520BF600FCD559 /* ZZCameraFlashState.m */,
+				1C34B2FA1C8E7EC8008DFA1E /* ZZPhotoAnimation.h */,
+				1C34B2FB1C8E7EC8008DFA1E /* ZZPhotoAnimation.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -583,6 +583,7 @@
 				1C94AC711C3A7BA000B26FAE /* ZZPhotoDatas.m in Sources */,
 				1C94AD391C3A7D9500B26FAE /* SDWebImagePrefetcher.m in Sources */,
 				1C94AD3F1C3A7D9500B26FAE /* UIImageView+WebCache.m in Sources */,
+				1C34B2FC1C8E7EC8008DFA1E /* ZZPhotoAnimation.m in Sources */,
 				1CFF40301C45FF77007D43AF /* PicsCell.m in Sources */,
 				1C94AC0A1C3A7B1F00B26FAE /* AppDelegate.m in Sources */,
 				1C94AC071C3A7B1E00B26FAE /* main.m in Sources */,
@@ -606,7 +607,6 @@
 				1CFF404A1C476777007D43AF /* ZZPhotoHud.m in Sources */,
 				1C94AC6F1C3A7BA000B26FAE /* UIImageHandle.m in Sources */,
 				1C94AC831C3A7BA000B26FAE /* ZZPhotoPickerCell.m in Sources */,
-				1C94AC701C3A7BA000B26FAE /* ZZBrowerAnimate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -738,7 +738,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = ZZPhotoKit/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.ace.ZZPhotoKit;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -751,7 +751,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = ZZPhotoKit/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.ace.ZZPhotoKit;
 				PRODUCT_NAME = "$(TARGET_NAME)";
