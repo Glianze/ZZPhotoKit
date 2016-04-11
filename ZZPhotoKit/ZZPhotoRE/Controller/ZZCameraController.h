@@ -25,6 +25,11 @@ typedef void(^ZZCameraResult)(id responseObject);
  */
 @property (assign, nonatomic) ZZImageType imageType;
 
+/*
+ *    设置相机页面主题颜色，默认为黑色
+ */
+@property (strong, nonatomic) UIColor *themeColor;
+
 -(void)showIn:(UIViewController *)controller result:(ZZCameraResult)result;
 
 @end

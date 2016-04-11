@@ -198,7 +198,7 @@
 
 -(UILabel *)totalNumLabel{
     if (!_totalNumLabel) {
-        _totalNumLabel = [[UILabel alloc]initWithFrame:CGRectMake(0, 30, ZZ_VW, 20)];
+        _totalNumLabel = [[UILabel alloc]initWithFrame:CGRectMake(0, 20, ZZ_VW, 20)];
         _totalNumLabel.textColor = [UIColor blackColor];
         _totalNumLabel.textAlignment = NSTextAlignmentCenter;
     }
@@ -283,6 +283,18 @@
     [self.view addConstraints:@[pic_top,pic_bottom,pic_left,pic_right]];
     
 }
+
+-(void)viewDidLayoutSubviews
+{
+    [super viewDidLayoutSubviews];
+
+    //滚动到底部
+    if (self.photoArray.count != 0) {
+        [_picsCollection scrollToItemAtIndexPath:[NSIndexPath indexPathForItem:self.photoArray.count - 1 inSection:0] atScrollPosition:UICollectionViewScrollPositionBottom animated:NO];
+    }
+}
+
+
 
 - (void)initInterUI
 {
@@ -409,7 +421,10 @@
 //    [self.browserController reloadData];
 }
 
-
+- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout referenceSizeForFooterInSection:(NSInteger)section
+{
+    return CGSizeMake(self.view.frame.size.width, 60);
+}
 #pragma mark --- ZZBrowserPickerDelegate
 -(NSInteger)zzbrowserPickerPhotoNum:(ZZBrowserPickerViewController *)controller
 {

@@ -16,6 +16,8 @@
 @property (assign, nonatomic) NSInteger takePhotoOfMax;
 @property (assign, nonatomic) ZZImageType imageType;
 
+@property (strong, nonatomic) UIColor *themeColor;
+
 @property (strong, nonatomic) void (^CameraResult)(id responseObject);
 
 @end

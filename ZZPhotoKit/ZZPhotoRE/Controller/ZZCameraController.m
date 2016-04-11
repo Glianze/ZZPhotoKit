@@ -32,6 +32,7 @@
     //设置返回图片类型
     self.cameraPickerController.imageType = self.imageType;
     self.cameraPickerController.isSavelocal = self.isSaveLocal;
+    self.cameraPickerController.themeColor = self.themeColor;
     [controller presentViewController:self.cameraPickerController animated:YES completion:nil];
 }
 

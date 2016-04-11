@@ -54,7 +54,12 @@ typedef void(^codeBlock)();
 -(void) setTopViewUI
 {
     UIView *topView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, ZZ_VW, 44)];
-    topView.backgroundColor = [UIColor blackColor];
+    if (_themeColor) {
+        topView.backgroundColor = _themeColor;
+    }else{
+        topView.backgroundColor = [UIColor blackColor];
+    }
+    
     topView.alpha = 0.7f;
     [self.view addSubview:topView];
     
@@ -81,8 +86,12 @@ typedef void(^codeBlock)();
     CGFloat photoSize = (ZZ_SCREEN_WIDTH - 60) / 5;
     
     _downView = [[UIView alloc]initWithFrame:CGRectMake(0, ZZ_VH - 64 - photoSize - 20, ZZ_VW, 64 + photoSize + 20)];
-    _downView.backgroundColor = [UIColor blackColor];
-//    _downView.alpha = 0.7;
+    if (_themeColor) {
+        _downView.backgroundColor = _themeColor;
+    }else{
+        _downView.backgroundColor = [UIColor blackColor];
+    }
+
     [self.view addSubview:_downView];
     
     UIButton *cancelBtn = [[UIButton alloc]initWithFrame:CGRectMake(30, photoSize + 37, 50, 30)];

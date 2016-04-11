@@ -29,8 +29,6 @@
  */
 -(PHFetchResult *) GetCameraRollFetchResul;
 
-
-
 /*
  *    回调方法使用数组
  */
