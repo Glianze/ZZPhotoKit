@@ -44,12 +44,12 @@ photoController.selectPhotoOfMax = 5;
 photoController.imageType = ZZImageTypeOfThumb;
  
 [photoController showIn:self result:^(id responseObject){
-//返回结果集
-NSLog(@"%@",responseObject);
-NSArray *array = (NSArray *)responseObject;
+	//返回结果集
+	NSLog(@"%@",responseObject);
+	NSArray *array = (NSArray *)responseObject;
  
-UIImage *image = [array objectAtIndex:0];
-_imageView.image = image;
+	UIImage *image = [array objectAtIndex:0];
+	_imageView.image = image;
 }];
 ```
  
@@ -61,12 +61,12 @@ cameraController.takePhotoOfMax = 8;
 //设置图片返回类型 （下面例子为缩略图）
 cameraController.imageType = ZZImageTypeOfThumb;
 [cameraController showIn:self result:^(id responseObject){
-//返回结果集
-NSLog(@"%@",responseObject);
-NSArray *array = (NSArray *)responseObject;
- 
-UIImage *image = [array objectAtIndex:0];
-_imageView.image = image;
+	//返回结果集
+	NSLog(@"%@",responseObject);
+	NSArray *array = (NSArray *)responseObject;
+	 
+	UIImage *image = [array objectAtIndex:0];
+	_imageView.image = image;
 }];
 ```
  
