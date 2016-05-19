@@ -34,6 +34,7 @@
 ###import "ZZPhotoKit.h"
 
 * 相册多选的调用
+```
 ZZPhotoController *photoController = [[ZZPhotoController alloc]init];
  
 //设置最大选择张数
@@ -50,8 +51,10 @@ NSArray *array = (NSArray *)responseObject;
 UIImage *image = [array objectAtIndex:0];
 _imageView.image = image;
 }];
+```
  
 * 相机连拍的调用
+```
 ZZCameraController *cameraController = [[ZZCameraController alloc]init];
 //设置最大连拍张数
 cameraController.takePhotoOfMax = 8;
@@ -65,8 +68,10 @@ NSArray *array = (NSArray *)responseObject;
 UIImage *image = [array objectAtIndex:0];
 _imageView.image = image;
 }];
+```
  
 * 简单的图片浏览器
+```
 ZZBrowserPickerViewController *browserController = [[ZZBrowserPickerViewController alloc]init];
 browserController.delegate = self;
 [browserController showIn:self animation:ShowAnimationOfPush];
@@ -76,7 +81,7 @@ browserController.delegate = self;
 -(NSInteger)zzbrowserPickerPhotoNum:(ZZBrowserPickerViewController *)controller
 //图片的数组。
 -(NSArray *)zzbrowserPickerPhotoContent:(ZZBrowserPickerViewController *)controller
- 
+```
  
 ###详细使用方法还是看demo 吧。
 
