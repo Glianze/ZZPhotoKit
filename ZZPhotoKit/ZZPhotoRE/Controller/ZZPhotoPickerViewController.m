@@ -167,7 +167,6 @@
 
 }
 
-
 #pragma Declaration Array
 -(NSMutableArray *)photoArray
 {
@@ -189,7 +188,7 @@
 -(ZZPhotoDatas *)datas{
     if (!_datas) {
         _datas = [[ZZPhotoDatas alloc]init];
-        _datas.type = self.imageType;
+
     }
     return _datas;
 }

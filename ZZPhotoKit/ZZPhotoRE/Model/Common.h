@@ -27,15 +27,6 @@
 #import <AssetsLibrary/ALAssetsGroup.h>
 #import <AssetsLibrary/ALAssetRepresentation.h>
 
-/*
- *    定义图盘返回类型枚举
- */
-typedef NS_ENUM(NSInteger, ZZImageType){
-    ZZImageTypeOfDefault,        //原图
-    ZZImageTypeOfThumb           //缩略图
-};
-
-
 
 /*
  控制器

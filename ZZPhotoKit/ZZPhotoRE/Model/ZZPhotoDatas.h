@@ -10,7 +10,6 @@
 #import "Common.h"
 @interface ZZPhotoDatas : NSObject
 
-@property(assign,nonatomic) NSInteger type;
 
 /*
  *    获取全部相册
@@ -19,7 +18,7 @@
 /*
  *    获取某一个相册的结果集
  */
--(PHFetchResult *) GetFetchResult:(PHAssetCollection *)asset;
+-(PHFetchResult *) GetFetchResult:(PHAssetCollection *)collection;
 /*
  *    获取图片实体，并把图片结果存放到数组中，返回值数组
  */

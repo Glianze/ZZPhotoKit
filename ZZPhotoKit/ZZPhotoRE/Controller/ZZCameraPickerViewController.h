@@ -14,7 +14,6 @@
 @property (assign, nonatomic) BOOL isSavelocal;
 
 @property (assign, nonatomic) NSInteger takePhotoOfMax;
-@property (assign, nonatomic) ZZImageType imageType;
 
 @property (strong, nonatomic) UIColor *themeColor;
 

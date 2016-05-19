@@ -20,9 +20,6 @@
 }
 
 
-
-//设置闪光灯的默认状态
-
 -(BOOL)flashLightState
 {
     NSUserDefaults * setting = [NSUserDefaults standardUserDefaults];

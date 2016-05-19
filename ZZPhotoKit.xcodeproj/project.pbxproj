@@ -66,6 +66,7 @@
 		1CFF402D1C45FE6F007D43AF /* photo_add.png in Resources */ = {isa = PBXBuildFile; fileRef = 1CFF402C1C45FE6F007D43AF /* photo_add.png */; };
 		1CFF40301C45FF77007D43AF /* PicsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CFF402F1C45FF77007D43AF /* PicsCell.m */; };
 		1CFF404A1C476777007D43AF /* ZZPhotoHud.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CFF40491C476777007D43AF /* ZZPhotoHud.m */; };
+		49ED351D1CED73EC004308A8 /* ZZPhotoListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 49ED351C1CED73EC004308A8 /* ZZPhotoListModel.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -190,6 +191,8 @@
 		1CFF40471C4753F7007D43AF /* ZZPhotoKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZZPhotoKit.h; sourceTree = "<group>"; };
 		1CFF40481C476777007D43AF /* ZZPhotoHud.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZZPhotoHud.h; sourceTree = "<group>"; };
 		1CFF40491C476777007D43AF /* ZZPhotoHud.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZZPhotoHud.m; sourceTree = "<group>"; };
+		49ED351B1CED73EC004308A8 /* ZZPhotoListModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZZPhotoListModel.h; sourceTree = "<group>"; };
+		49ED351C1CED73EC004308A8 /* ZZPhotoListModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZZPhotoListModel.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -326,6 +329,8 @@
 				1C2019FE1C520BF600FCD559 /* ZZCameraFlashState.m */,
 				1C34B2FA1C8E7EC8008DFA1E /* ZZPhotoAnimation.h */,
 				1C34B2FB1C8E7EC8008DFA1E /* ZZPhotoAnimation.m */,
+				49ED351B1CED73EC004308A8 /* ZZPhotoListModel.h */,
+				49ED351C1CED73EC004308A8 /* ZZPhotoListModel.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -593,6 +598,7 @@
 				1C94AD3D1C3A7D9500B26FAE /* UIImage+WebP.m in Sources */,
 				1C94AD321C3A7D9500B26FAE /* NSData+ImageContentType.m in Sources */,
 				1C94AD341C3A7D9500B26FAE /* SDWebImageCompat.m in Sources */,
+				49ED351D1CED73EC004308A8 /* ZZPhotoListModel.m in Sources */,
 				1C94AC6C1C3A7BA000B26FAE /* ZZPhotoController.m in Sources */,
 				1C94AC801C3A7BA000B26FAE /* ZZCameraPickerCell.m in Sources */,
 				1C94AD331C3A7D9500B26FAE /* SDImageCache.m in Sources */,

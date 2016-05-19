@@ -11,14 +11,15 @@
 #import "ZZPhotoListCell.h"
 #import "ZZPhotoPickerViewController.h"
 #import <Photos/Photos.h>
+#import "ZZPhotoListModel.h"
 
 @interface ZZPhotoListViewController ()<UITableViewDelegate,UITableViewDataSource>
 
-@property(strong,nonatomic) UITableView *alumbTable;
-@property(strong,nonatomic) PHPhotoLibrary *assetsLibrary;
-@property(strong,nonatomic) NSMutableArray *alubms;
-@property(strong,nonatomic) UIBarButtonItem *closeBtn;
-@property(strong,nonatomic) ZZPhotoDatas *datas;
+@property(strong,nonatomic) UITableView      *alumbTable;
+@property(strong,nonatomic) PHPhotoLibrary   *assetsLibrary;
+@property(strong,nonatomic) NSMutableArray   *alubms;
+@property(strong,nonatomic) UIBarButtonItem  *closeBtn;
+@property(strong,nonatomic) ZZPhotoDatas     *datas;
 @end
 
 @implementation ZZPhotoListViewController
@@ -43,12 +44,20 @@
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
-#pragma 懒加载获取图片数据类
+#pragma mark --- 懒加载
 -(ZZPhotoDatas *)datas{
     if (!_datas) {
         _datas = [[ZZPhotoDatas alloc]init];
     }
     return _datas;
+}
+
+-(NSMutableArray *)alubms
+{
+    if (!_alubms) {
+        _alubms = [NSMutableArray array];
+    }
+    return _alubms;
 }
 
 -(instancetype)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -67,22 +76,37 @@
     
     self.navigationItem.rightBarButtonItem = self.closeBtn;
     
+    
+    [self makeAlumListUI];
+
+    
+    self.alubms = [self.datas GetPhotoListDatas];
+
+        
+}
+
+-(void) makeAlumListUI
+{
     _alumbTable = [[UITableView alloc]initWithFrame:CGRectMake(0, 0, ZZ_VW, ZZ_VH) style:UITableViewStylePlain];
     _alumbTable.delegate = self;
     _alumbTable.dataSource = self;
     _alumbTable.separatorStyle = NO;
+    _alumbTable.translatesAutoresizingMaskIntoConstraints = NO;
     [self.view addSubview:_alumbTable];
     
+    NSLayoutConstraint *list_top = [NSLayoutConstraint constraintWithItem:self.view attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationEqual toItem:_alumbTable attribute:NSLayoutAttributeTop multiplier:1 constant:0.0f];
     
+    NSLayoutConstraint *list_bottom = [NSLayoutConstraint constraintWithItem:self.view attribute:NSLayoutAttributeBottom relatedBy:NSLayoutRelationEqual toItem:_alumbTable attribute:NSLayoutAttributeBottom multiplier:1 constant:0.0f];
     
-    _alubms = [NSMutableArray array];
+    NSLayoutConstraint *list_left = [NSLayoutConstraint constraintWithItem:self.view attribute:NSLayoutAttributeLeft relatedBy:NSLayoutRelationEqual toItem:_alumbTable attribute:NSLayoutAttributeLeft multiplier:1 constant:0.0f];
     
-    _alubms = [self.datas GetPhotoListDatas];
-        
+    NSLayoutConstraint *list_right = [NSLayoutConstraint constraintWithItem:self.view attribute:NSLayoutAttributeRight relatedBy:NSLayoutRelationEqual toItem:_alumbTable attribute:NSLayoutAttributeRight multiplier:1 constant:0.0f];
+    
+    [self.view addConstraints:@[list_top,list_bottom,list_left,list_right]];
 }
 
 
-#pragma UITableView 
+#pragma mark --- UITableView协议方法
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
     return 1;
@@ -90,7 +114,7 @@
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return _alubms.count;
+    return self.alubms.count;
 }
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -100,12 +124,9 @@
     if (!cell) {
         cell = [[ZZPhotoListCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:@"ZZPhotoListCell"];
     }
-    
-    
-    
-    [cell loadPhotoListData:[_alubms objectAtIndex:indexPath.row]];
-    
-    
+
+    [cell loadPhotoListData:[self.alubms objectAtIndex:indexPath.row]];
+
     return cell;
 }
 
@@ -116,14 +137,15 @@
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
     ZZPhotoPickerViewController *photopickerController = [[ZZPhotoPickerViewController alloc]initWithNibName:nil bundle:nil];
-    
-    
-    
+
     photopickerController.PhotoResult = self.photoResult;
     photopickerController.selectNum = self.selectNum;
     
-    photopickerController.fetch = [self.datas GetFetchResult:[_alubms objectAtIndex:indexPath.row]];
+    ZZPhotoListModel *listmodel = [self.alubms objectAtIndex:indexPath.row];
+    
+    photopickerController.fetch = [self.datas GetFetchResult:listmodel.assetCollection];
     photopickerController.isAlubSeclect = YES;
     
     [self.navigationController pushViewController:photopickerController animated:YES];

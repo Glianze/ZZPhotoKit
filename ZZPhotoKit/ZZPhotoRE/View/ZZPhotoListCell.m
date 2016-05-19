@@ -7,7 +7,7 @@
 //
 
 #import "ZZPhotoListCell.h"
-
+#import "ZZPhotoListModel.h"
 @implementation ZZPhotoListCell
 -(instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
@@ -51,13 +51,12 @@
     // Initialization code
 }
 
--(void)loadPhotoListData:(PHAssetCollection *)collectionItem
+-(void)loadPhotoListData:(ZZPhotoListModel *)listmodel
 {
-    if ([collectionItem isKindOfClass:[PHAssetCollection class]]) {
-        PHFetchResult *group = [PHAsset fetchAssetsInAssetCollection:collectionItem options:nil];
+    if ([listmodel isKindOfClass:[ZZPhotoListModel class]]) {
         
         
-        [[PHImageManager defaultManager] requestImageForAsset:group.lastObject
+        [[PHImageManager defaultManager] requestImageForAsset:listmodel.lastObject
                                                    targetSize:CGSizeMake(200,200)
                                                   contentMode:PHImageContentModeDefault
                                                       options:nil
@@ -67,21 +66,13 @@
                                                     }else{
                                                         self.coverImage.image = result;
                                                     }
-                                                    
-                                                    
                                                 }];
-        
-        
-        PHAssetCollection *titleAsset = collectionItem;
 
-        if ([titleAsset.localizedTitle isEqualToString:@"All Photos"]) {
-            self.title.text = @"相机胶卷";
-        }else{
-            self.title.text = [NSString stringWithFormat:@"%@",titleAsset.localizedTitle];
-        }
+        self.title.text = listmodel.title;
+
         
         
-        self.subTitle.text = [NSString stringWithFormat:@"%lu",(unsigned long)group.count];
+        self.subTitle.text = [NSString stringWithFormat:@"%lu",(unsigned long)listmodel.count];
     }
 }
 @end

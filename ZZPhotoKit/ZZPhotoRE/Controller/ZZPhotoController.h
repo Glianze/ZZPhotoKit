@@ -26,11 +26,6 @@ typedef void (^ZZPhotoResult)(id responseObject);
 @property(assign,nonatomic) NSInteger selectPhotoOfMax;
 
 /*
- *    设置图片返回类型
- */
-@property(assign,nonatomic) ZZImageType imageType;
-
-/*
  *    设置回调方法
  */
 -(void)showIn:(UIViewController *)controller result:(ZZPhotoResult)result;

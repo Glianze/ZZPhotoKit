@@ -7,6 +7,7 @@
 //
 
 #import "ZZPhotoDatas.h"
+#import "ZZPhotoListModel.h"
 @implementation ZZPhotoDatas
 
 -(NSMutableArray *)GetPhotoListDatas
@@ -17,17 +18,53 @@
     PHFetchOptions *fetchOptions = [[PHFetchOptions alloc]init];
     
     PHFetchResult *smartAlbumsFetchResult = [PHAssetCollection fetchAssetCollectionsWithType:PHAssetCollectionTypeSmartAlbum subtype:PHAssetCollectionSubtypeSmartAlbumUserLibrary options:fetchOptions];
-    
-    [dataArray addObject:[smartAlbumsFetchResult objectAtIndex:0]];
-    
+    //遍历相机胶卷
+    [smartAlbumsFetchResult enumerateObjectsUsingBlock:^(PHAssetCollection * _Nonnull collection, NSUInteger idx, BOOL *stop) {
+
+        if (![collection.localizedTitle isEqualToString:@"Videos"]) {
+            NSArray<PHAsset *> *assets = [self GetAssetsInAssetCollection:collection];
+            ZZPhotoListModel *listModel = [[ZZPhotoListModel alloc]init];
+            listModel.count = assets.count;
+            listModel.title = [self FormatPhotoAlumTitle:collection.localizedTitle];
+            listModel.lastObject = assets.lastObject;
+            listModel.assetCollection = collection;
+            [dataArray addObject:listModel];
+        }
+    }];
+    //遍历自定义相册
     PHFetchResult *smartAlbumsFetchResult1 = [PHAssetCollection fetchTopLevelUserCollectionsWithOptions:fetchOptions];
-    
-    for (PHAssetCollection *sub in smartAlbumsFetchResult1)
-    {
-        [dataArray addObject:sub];
-    }
+    [smartAlbumsFetchResult1 enumerateObjectsUsingBlock:^(PHAssetCollection * _Nonnull collection, NSUInteger idx, BOOL *stop) {
+
+        NSArray<PHAsset *> *assets = [self GetAssetsInAssetCollection:collection];
+        ZZPhotoListModel *listModel = [[ZZPhotoListModel alloc]init];
+        listModel.count = assets.count;
+        listModel.title = collection.localizedTitle;
+        listModel.lastObject = assets.lastObject;
+        listModel.assetCollection = collection;
+        [dataArray addObject:listModel];
+    }];
     
     return dataArray;
+}
+-(NSString *) FormatPhotoAlumTitle:(NSString *)title
+{
+    if ([title isEqualToString:@"All Photos"]) {
+        return @"相机胶卷";
+    }
+    return nil;
+}
+
+- (NSArray *)GetAssetsInAssetCollection:(PHAssetCollection *)assetCollection
+{
+    NSMutableArray<PHAsset *> *arr = [NSMutableArray array];
+    
+    PHFetchResult *result = [self GetFetchResult:assetCollection];
+    [result enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        if (((PHAsset *)obj).mediaType == PHAssetMediaTypeImage) {
+            [arr addObject:obj];
+        }
+    }];
+    return arr;
 }
 
 -(PHFetchResult *)GetFetchResult:(PHAssetCollection *)assetCollection
