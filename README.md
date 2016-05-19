@@ -40,9 +40,6 @@ ZZPhotoController *photoController = [[ZZPhotoController alloc]init];
 //设置最大选择张数
 photoController.selectPhotoOfMax = 5;
  
-//设置图片返回类型 （下面例子为缩略图）
-photoController.imageType = ZZImageTypeOfThumb;
- 
 [photoController showIn:self result:^(id responseObject){
 	//返回结果集
 	NSLog(@"%@",responseObject);
