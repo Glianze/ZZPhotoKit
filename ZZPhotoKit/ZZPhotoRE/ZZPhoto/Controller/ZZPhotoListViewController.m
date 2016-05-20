@@ -87,7 +87,7 @@
 
 -(void) makeAlumListUI
 {
-    _alumbTable = [[UITableView alloc]initWithFrame:CGRectMake(0, 0, ZZ_VW, ZZ_VH) style:UITableViewStylePlain];
+    _alumbTable = [[UITableView alloc]initWithFrame:CGRectZero style:UITableViewStylePlain];
     _alumbTable.delegate = self;
     _alumbTable.dataSource = self;
     _alumbTable.separatorStyle = NO;

@@ -7,10 +7,9 @@
 //
 
 
-
-
 #import <UIKit/UIKit.h>
-#import "Common.h"
+#import "ZZResourceConfig.h"
+
 typedef NS_ENUM(NSInteger, ShowAnimation){
     ShowAnimationOfPush,
     ShowAnimationOfPresent

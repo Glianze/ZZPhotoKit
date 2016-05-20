@@ -48,7 +48,7 @@
 }
 -(NSString *) FormatPhotoAlumTitle:(NSString *)title
 {
-    if ([title isEqualToString:@"All Photos"]) {
+    if ([title isEqualToString:@"All Photos"] || [title isEqualToString:@"Camera Roll"]) {
         return @"相机胶卷";
     }
     return nil;

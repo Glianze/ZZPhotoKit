@@ -7,7 +7,7 @@
 //
 
 #import "ZZBrowserPickerCell.h"
-
+#import "UIImageHandle.h"
 @implementation ZZBrowserPickerCell
 
 -(instancetype)initWithFrame:(CGRect)frame
@@ -31,8 +31,9 @@
                                               contentMode:PHImageContentModeDefault
                                                   options:options
                                             resultHandler:^(UIImage *result, NSDictionary *info) {
+                                                NSLog(@"%@",[UIImageHandle scaleImage:result multiple:0.1]);
                                                 
-                                                self.pics.image = result;
+                                                self.pics.image = [UIImageHandle scaleImage:result multiple:0.5];
                                                 
                                             }];
 }

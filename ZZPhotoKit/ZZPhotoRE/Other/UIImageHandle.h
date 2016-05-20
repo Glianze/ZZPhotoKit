@@ -7,7 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "Common.h"
+#import "ZZResourceConfig.h"
 @interface UIImageHandle : NSObject
 
 //缩略图

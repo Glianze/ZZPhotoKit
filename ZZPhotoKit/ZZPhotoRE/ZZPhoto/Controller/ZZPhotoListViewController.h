@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "Common.h"
+#import "ZZResourceConfig.h"
 @interface ZZPhotoListViewController : UIViewController
 
 @property(assign,nonatomic) NSInteger selectNum;

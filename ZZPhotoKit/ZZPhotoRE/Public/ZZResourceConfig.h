@@ -1,15 +1,13 @@
 //
-//  Common.h
-//  ZZFramework
+//  ZZResourceConfig.h
+//  ZZPhotoKit
 //
-//  Created by Yuan on 15/12/17.
-//  Copyright © 2015年 zzl. All rights reserved.
+//  Created by 袁亮 on 16/5/19.
+//  Copyright © 2016年 Ace. All rights reserved.
 //
 
-#ifndef Common_h
-#define Common_h
-
-
+#ifndef ZZResourceConfig_h
+#define ZZResourceConfig_h
 /////配置文件/////
 
 
@@ -72,4 +70,6 @@
 #define Total_Pic_Num @"%ld 张照片"
 #define Alert_Max_Selected @"最多只能选择%ld张图片"
 #define Alert_Max_TakePhoto @"最多连拍张数为%ld张图片"
-#endif /* Common_h */
+
+
+#endif /* ZZResourceConfig_h */

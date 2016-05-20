@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "Common.h"
+#import "ZZResourceConfig.h"
 @interface ZZCameraPickerCell : UICollectionViewCell
 
 @property(strong,nonatomic) UIImageView *pics;

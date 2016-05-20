@@ -1,20 +1,20 @@
 //
-//  ZZPhotoAnimation.m
+//  ZZAlumAnimation.m
 //  ZZPhotoKit
 //
-//  Created by Yuan on 16/3/8.
+//  Created by 袁亮 on 16/5/19.
 //  Copyright © 2016年 Ace. All rights reserved.
 //
 
-#import "ZZPhotoAnimation.h"
+#import "ZZAlumAnimation.h"
 
-@implementation ZZPhotoAnimation
+@implementation ZZAlumAnimation
 
-+(ZZPhotoAnimation *)sharedAnimation
++(ZZAlumAnimation *)sharedAnimation
 {
-    static ZZPhotoAnimation *animation = nil;
+    static ZZAlumAnimation *animation = nil;
     if (animation == nil) {
-        animation = [[ZZPhotoAnimation alloc]init];
+        animation = [[ZZAlumAnimation alloc]init];
     }
     return animation;
 }

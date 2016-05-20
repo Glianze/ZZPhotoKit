@@ -13,7 +13,7 @@
 #import "ZZPhotoPickerCell.h"
 #import "ZZBrowserPickerViewController.h"
 #import "ZZPhotoHud.h"
-#import "ZZPhotoAnimation.h"
+#import "ZZAlumAnimation.h"
 
 @interface ZZPhotoPickerViewController ()<UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout,ZZBrowserPickerDelegate>
 
@@ -341,20 +341,20 @@
 {
     NSInteger index = button.tag;
     if (button.selected == NO) {
-        [[ZZPhotoAnimation sharedAnimation] selectAnimation:button];
+        [[ZZAlumAnimation sharedAnimation] selectAnimation:button];
         if (self.selectArray.count + 1 > _selectNum) {
             [self showSelectPhotoAlertView:_selectNum];
         }else{
             [self.selectArray addObject:[self.photoArray objectAtIndex:index]];
-            [[ZZPhotoAnimation sharedAnimation] roundAnimation:self.totalRound];
+            [[ZZAlumAnimation sharedAnimation] roundAnimation:self.totalRound];
             self.totalRound.text = [NSString stringWithFormat:@"%lu",self.selectArray.count];
             [button setImage:Pic_Btn_Selected forState:UIControlStateNormal];
             button.selected = YES;
         }
     }else{
-        [[ZZPhotoAnimation sharedAnimation] selectAnimation:button];
+        [[ZZAlumAnimation sharedAnimation] selectAnimation:button];
         [self.selectArray removeObject:[self.photoArray objectAtIndex:index]];
-        [[ZZPhotoAnimation sharedAnimation] roundAnimation:self.totalRound];
+        [[ZZAlumAnimation sharedAnimation] roundAnimation:self.totalRound];
         self.totalRound.text = [NSString stringWithFormat:@"%lu",self.selectArray.count];
         [button setImage:Pic_btn_UnSelected forState:UIControlStateNormal];
         button.selected = NO;

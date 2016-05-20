@@ -38,7 +38,7 @@
     _flowLayout.minimumLineSpacing = 0;
     _flowLayout.scrollDirection = UICollectionViewScrollDirectionHorizontal;
     
-    _picBrowse = [[UICollectionView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height) collectionViewLayout:_flowLayout];
+    _picBrowse = [[UICollectionView alloc] initWithFrame:CGRectZero collectionViewLayout:_flowLayout];
     _picBrowse.backgroundColor = [UIColor clearColor];
     _picBrowse.pagingEnabled = YES;
     _picBrowse.scrollEnabled = YES;
@@ -47,12 +47,22 @@
     [_picBrowse registerClass:[ZZBrowserPickerCell class] forCellWithReuseIdentifier:@"Cell"];
     _picBrowse.dataSource = self;
     _picBrowse.delegate = self;
-    
+    _picBrowse.translatesAutoresizingMaskIntoConstraints = NO;
     if (self.indexPath != nil) {
         [_picBrowse scrollToItemAtIndexPath:self.indexPath atScrollPosition:UICollectionViewScrollPositionNone animated:NO];
     }
     
     [self.view addSubview:_picBrowse];
+    
+    NSLayoutConstraint *list_top = [NSLayoutConstraint constraintWithItem:self.view attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationEqual toItem:_picBrowse attribute:NSLayoutAttributeTop multiplier:1 constant:0.0f];
+    
+    NSLayoutConstraint *list_bottom = [NSLayoutConstraint constraintWithItem:self.view attribute:NSLayoutAttributeBottom relatedBy:NSLayoutRelationEqual toItem:_picBrowse attribute:NSLayoutAttributeBottom multiplier:1 constant:0.0f];
+    
+    NSLayoutConstraint *list_left = [NSLayoutConstraint constraintWithItem:self.view attribute:NSLayoutAttributeLeft relatedBy:NSLayoutRelationEqual toItem:_picBrowse attribute:NSLayoutAttributeLeft multiplier:1 constant:0.0f];
+    
+    NSLayoutConstraint *list_right = [NSLayoutConstraint constraintWithItem:self.view attribute:NSLayoutAttributeRight relatedBy:NSLayoutRelationEqual toItem:_picBrowse attribute:NSLayoutAttributeRight multiplier:1 constant:0.0f];
+    
+    [self.view addConstraints:@[list_top,list_bottom,list_left,list_right]];
 }
 
 -(void)setPageControlUI

@@ -1,16 +1,16 @@
 //
-//  ZZPhotoAnimation.h
+//  ZZAlumAnimation.h
 //  ZZPhotoKit
 //
-//  Created by Yuan on 16/3/8.
+//  Created by 袁亮 on 16/5/19.
 //  Copyright © 2016年 Ace. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
-#import "Common.h"
-@interface ZZPhotoAnimation : NSObject
+#import "ZZResourceConfig.h"
+@interface ZZAlumAnimation : NSObject
 
-+(ZZPhotoAnimation *)sharedAnimation;
++(ZZAlumAnimation *)sharedAnimation;
 
 -(void) roundAnimation:(UILabel *)label;
 

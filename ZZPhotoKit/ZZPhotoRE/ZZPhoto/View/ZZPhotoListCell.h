@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "Common.h"
+#import "ZZResourceConfig.h"
 @interface ZZPhotoListCell : UITableViewCell
 /*
  *    相册图片，显示相册的最后一张图片

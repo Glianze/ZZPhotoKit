@@ -7,7 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "Common.h"
+#import "ZZResourceConfig.h"
 
 typedef void(^ZZCameraResult)(id responseObject);
 
