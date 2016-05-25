@@ -9,6 +9,8 @@
 #import "ZZBrowserPickerViewController.h"
 #import "ZZBrowserPickerCell.h"
 #import "ZZPageControl.h"
+#import "ZZCamera.h"
+
 @interface ZZBrowserPickerViewController ()<UICollectionViewDelegate,UICollectionViewDataSource,UINavigationControllerDelegate,UIViewControllerTransitioningDelegate>
 
 @property (nonatomic, strong) UICollectionView *picBrowse;
@@ -41,16 +43,14 @@
     _picBrowse = [[UICollectionView alloc] initWithFrame:CGRectZero collectionViewLayout:_flowLayout];
     _picBrowse.backgroundColor = [UIColor clearColor];
     _picBrowse.pagingEnabled = YES;
-    _picBrowse.scrollEnabled = YES;
+
     _picBrowse.showsHorizontalScrollIndicator = NO;
     _picBrowse.showsVerticalScrollIndicator = NO;
     [_picBrowse registerClass:[ZZBrowserPickerCell class] forCellWithReuseIdentifier:@"Cell"];
     _picBrowse.dataSource = self;
     _picBrowse.delegate = self;
     _picBrowse.translatesAutoresizingMaskIntoConstraints = NO;
-    if (self.indexPath != nil) {
-        [_picBrowse scrollToItemAtIndexPath:self.indexPath atScrollPosition:UICollectionViewScrollPositionNone animated:NO];
-    }
+    
     
     [self.view addSubview:_picBrowse];
     
@@ -63,6 +63,15 @@
     NSLayoutConstraint *list_right = [NSLayoutConstraint constraintWithItem:self.view attribute:NSLayoutAttributeRight relatedBy:NSLayoutRelationEqual toItem:_picBrowse attribute:NSLayoutAttributeRight multiplier:1 constant:0.0f];
     
     [self.view addConstraints:@[list_top,list_bottom,list_left,list_right]];
+    
+}
+
+-(void)viewDidLayoutSubviews
+{
+    [super viewDidLayoutSubviews];
+    if (self.indexPath != nil) {
+        [_picBrowse scrollToItemAtIndexPath:self.indexPath atScrollPosition:UICollectionViewScrollPositionNone animated:NO];
+    }
 }
 
 -(void)setPageControlUI
@@ -169,6 +178,10 @@
     }else if ([[_photoDataArray objectAtIndex:indexPath.row] isKindOfClass:[UIImage class]]){
         //加载 UIImage 类型的数据
         cell.pics.image = [_photoDataArray objectAtIndex:indexPath.row];
+    }else if ([[_photoDataArray objectAtIndex:indexPath.row] isKindOfClass:[ZZCamera class]]){
+        
+        ZZCamera *photo = [_photoDataArray objectAtIndex:indexPath.row];
+        cell.pics.image = photo.image;
     }
     
     

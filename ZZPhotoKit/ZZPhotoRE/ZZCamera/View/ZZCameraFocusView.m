@@ -10,7 +10,8 @@
 
 @interface ZZCameraFocusView()
 
-@property (strong,nonatomic) UIImageView *focus;
+@property (strong, nonatomic) UIImageView *focus;
+@property (strong, nonatomic) NSTimer *timer;
 
 @end
 
@@ -38,6 +39,7 @@
     
     [self shakeToShow:_focus];
     
+    _timer = [NSTimer scheduledTimerWithTimeInterval:3.0f target:self selector:@selector(hideFocusView) userInfo:nil repeats:YES];
     if ([self.delegate respondsToSelector:@selector(cameraFocusOptions:)]) {
         [self.delegate cameraFocusOptions:self];
     }
@@ -54,6 +56,12 @@
     [values addObject:[NSValue valueWithCATransform3D:CATransform3DMakeScale(1.0, 1.0, 1.0)]];
     animation.values = values;
     [aView.layer addAnimation:animation forKey:nil];
+}
+
+-(void) hideFocusView
+{
+    [_focus removeFromSuperview];
+    [_timer invalidate];
 }
 
 @end

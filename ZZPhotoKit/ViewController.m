@@ -9,6 +9,8 @@
 #import "ViewController.h"
 #import "ZZPhotoKit.h"
 #import "PicsCell.h"
+
+
 @interface ViewController ()<UITableViewDelegate,UITableViewDataSource,ZZBrowserPickerDelegate,UICollectionViewDataSource,UICollectionViewDelegate>
 
 @property(strong,nonatomic) UILabel *firstlab;
@@ -184,7 +186,14 @@
     if (!photoCell) {
         photoCell = [[PicsCell alloc]init];
     }
-    photoCell.photo.image = [self.picArray objectAtIndex:indexPath.row];
+    if ([[self.picArray objectAtIndex:indexPath.row] isKindOfClass:[ZZPhoto class]]) {
+        ZZPhoto *photo = [self.picArray objectAtIndex:indexPath.row];
+        photoCell.photo.image = photo.image;
+    }else if([[self.picArray objectAtIndex:indexPath.row] isKindOfClass:[ZZCamera class]]){
+        ZZCamera *photo = [self.picArray objectAtIndex:indexPath.row];
+        photoCell.photo.image = photo.image;
+    }
+    
     
     return photoCell;
 }

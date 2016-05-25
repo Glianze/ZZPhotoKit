@@ -10,13 +10,13 @@
 #import "ZZCameraPickerCell.h"
 #import "ZZCameraFocusView.h"
 #import "ZZBrowserPickerViewController.h"
+#import "ZZCamera.h"
 typedef void(^codeBlock)();
 
 @interface ZZCameraPickerViewController()<UICollectionViewDelegate,UICollectionViewDataSource,ZZCameraFocusDelegate,ZZBrowserPickerDelegate>
 
-@property (assign, nonatomic) BOOL isOpen;
 
-@property (strong, nonatomic) NSMutableArray *cameraArray;
+@property (strong, nonatomic) NSMutableArray<ZZCamera *> *cameraArray;
 @property (strong, nonatomic) UICollectionView *picsCollection;
 // AVFoundation
 @property (strong, nonatomic) AVCaptureSession *session;
@@ -64,10 +64,14 @@ typedef void(^codeBlock)();
     [self.view addSubview:topView];
     
     //设置闪光灯默认状体为关闭
-    _isOpen = NO;
     UIButton *flashBtn = [[UIButton alloc]initWithFrame:CGRectMake(10, 7, 30, 30)];
     flashBtn.tag = 2015;
-    [flashBtn setImage:Flash_close_Btn_Pic forState:UIControlStateNormal];
+    if (self.device.flashMode == 0) {
+        [flashBtn setImage:Flash_close_Btn_Pic forState:UIControlStateNormal];
+    }else if(self.device.flashMode == 1){
+        [flashBtn setImage:Flash_Open_Btn_Pic forState:UIControlStateNormal];
+    }
+    
     [flashBtn addTarget:self action:@selector(flashOfCamera:) forControlEvents:UIControlEventTouchUpInside];
     [topView addSubview:flashBtn];
     
@@ -213,7 +217,8 @@ typedef void(^codeBlock)();
     ZZCameraPickerCell *photoCell = [collectionView dequeueReusableCellWithReuseIdentifier:@"PhotoPickerCell" forIndexPath:indexPath];
     photoCell.removeBtn.tag = indexPath.row;
     [photoCell.removeBtn addTarget:self action:@selector(removePicItem:) forControlEvents:UIControlEventTouchUpInside];
-    [photoCell loadPhotoDatas:[self.cameraArray objectAtIndex:indexPath.row]];
+    ZZCamera *camera = [self.cameraArray objectAtIndex:indexPath.row];
+    [photoCell loadPhotoDatas:camera.image];
     
     return photoCell;
 }
@@ -293,7 +298,9 @@ typedef void(^codeBlock)();
 }
 //对焦回调
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context {
-    if( [keyPath isEqualToString:@"adjustingFocus"] ){}
+    if([keyPath isEqualToString:@"adjustingFocus"]){
+        
+    }
 }
 
 /*
@@ -325,21 +332,21 @@ typedef void(^codeBlock)();
          // Continue as appropriate.
          NSData *imageData = [AVCaptureStillImageOutput jpegStillImageNSDataRepresentation:imageSampleBuffer];
          UIImage *t_image = [UIImage imageWithData:imageData];
-         
-//         NSDateFormatter *formater = [[NSDateFormatter alloc] init];
-//         formater.dateFormat = @"yyyy-MM-ddHHmmss";
-//         NSString *currentTimeStr = [[formater stringFromDate:[NSDate date]] stringByAppendingFormat:@"_%d" ,arc4random_uniform(10000)];
-         
+         //拍摄时间
+         NSDate *createDate = [NSDate date];
+         //拍摄后的照片
          t_image = [self fixOrientation:t_image];
-         
-//         NSString *path = [[NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject] stringByAppendingPathComponent:currentTimeStr];
-//         [UIImagePNGRepresentation(t_image) writeToFile:path atomically:YES];
          
          if (self.isSavelocal == YES) {
              UIImageWriteToSavedPhotosAlbum(t_image, self, @selector(imageSavedToPhotosAlbum:didFinishSavingWithError:contextInfo:), nil);
          }
          
-         [self.cameraArray addObject:t_image];
+         //转model
+         ZZCamera *camera = [[ZZCamera alloc]init];
+         camera.image = t_image;
+         camera.createDate = createDate;
+         
+         [self.cameraArray addObject:camera];
          [_picsCollection reloadData];
      }];
 }
@@ -473,20 +480,19 @@ typedef void(^codeBlock)();
 
 -(void)flashOfCamera:(UIButton *)btn
 {
+    
     if (btn.tag == 2015) {
-        if (_isOpen == NO) {
+        if (self.device.flashMode == 0) {
             [self flashLightModel:^{
                 [self.device setFlashMode:AVCaptureFlashModeOn];
             }];
             [btn setImage:Flash_Open_Btn_Pic forState:UIControlStateNormal];
-            _isOpen = YES;
             
-        }else{
+        }else if (self.device.flashMode == 1){
             [self flashLightModel:^{
                 [self.device setFlashMode:AVCaptureFlashModeOff];
             }];
             [btn setImage:Flash_close_Btn_Pic forState:UIControlStateNormal];
-            _isOpen = NO;
         }
     }
 }

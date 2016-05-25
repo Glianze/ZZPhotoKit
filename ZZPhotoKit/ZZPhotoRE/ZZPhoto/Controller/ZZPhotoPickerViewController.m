@@ -14,6 +14,7 @@
 #import "ZZBrowserPickerViewController.h"
 #import "ZZPhotoHud.h"
 #import "ZZAlumAnimation.h"
+#import "ZZPhoto.h"
 
 @interface ZZPhotoPickerViewController ()<UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout,ZZBrowserPickerDelegate>
 
@@ -128,15 +129,17 @@
         [self dismissViewControllerAnimated:YES completion:nil];
     }else{
         [ZZPhotoHud showActiveHud];
-        NSMutableArray *photos = [NSMutableArray array];
+        NSMutableArray<ZZPhoto *> *photos = [NSMutableArray array];
         for (int i = 0; i < self.selectArray.count; i++) {
-            id asset = [self.selectArray objectAtIndex:i];
-            [self.datas GetImageObject:asset complection:^(UIImage *photo ,BOOL isDegradedResult) {
-                if (isDegradedResult) {
-                    return;
-                }
-                if (photo){
-                    [photos addObject:photo];
+            PHAsset *asset = [self.selectArray objectAtIndex:i];
+            [self.datas GetImageObject:asset complection:^(UIImage *image,NSString *imageUrl) {
+                
+                if (image){
+                    ZZPhoto *model = [[ZZPhoto alloc]init];
+                    model.image = image;
+                    model.imageUrl = imageUrl;
+                    model.createDate = asset.creationDate;
+                    [photos addObject:model];
                 }
                 if (photos.count < self.selectArray.count){
                     return;

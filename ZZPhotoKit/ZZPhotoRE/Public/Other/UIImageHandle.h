@@ -20,7 +20,13 @@
  */
 +(UIImage*)scaleImage:(UIImage *)image multiple:(CGFloat) multiple;
 
-//压缩原图
+/**
+ *  图片压缩
+ *
+ *  @param image 原始图片
+ *
+ *  @return 压缩后的如偏
+ */
 +(UIImage *)compressImage:(UIImage *)artWork;
 
 /**

@@ -36,13 +36,14 @@
 		1C94AD4A1C3A7DC800B26FAE /* scv4.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 1C94AD451C3A7DC800B26FAE /* scv4.jpg */; };
 		1C94AD4B1C3A7DC800B26FAE /* scv5.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 1C94AD461C3A7DC800B26FAE /* scv5.jpg */; };
 		1CFF40301C45FF77007D43AF /* PicsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CFF402F1C45FF77007D43AF /* PicsCell.m */; };
+		49D4953C1CF540EE00E42318 /* ZZPhoto.m in Sources */ = {isa = PBXBuildFile; fileRef = 49D4953B1CF540EE00E42318 /* ZZPhoto.m */; };
+		49D495481CF54CAB00E42318 /* ZZCameraController.m in Sources */ = {isa = PBXBuildFile; fileRef = 49D4953F1CF54CAB00E42318 /* ZZCameraController.m */; };
+		49D495491CF54CAB00E42318 /* ZZCameraPickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 49D495411CF54CAB00E42318 /* ZZCameraPickerViewController.m */; };
+		49D4954A1CF54CAB00E42318 /* ZZCameraFocusView.m in Sources */ = {isa = PBXBuildFile; fileRef = 49D495451CF54CAB00E42318 /* ZZCameraFocusView.m */; };
+		49D4954B1CF54CAB00E42318 /* ZZCameraPickerCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 49D495471CF54CAB00E42318 /* ZZCameraPickerCell.m */; };
+		49D4954E1CF54CC000E42318 /* ZZCamera.m in Sources */ = {isa = PBXBuildFile; fileRef = 49D4954D1CF54CC000E42318 /* ZZCamera.m */; };
 		49D736891CEE148B00AE804F /* ZZBrowserPickerCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 49D736561CEE148B00AE804F /* ZZBrowserPickerCell.m */; };
 		49D7368A1CEE148B00AE804F /* ZZBrowserPickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 49D736581CEE148B00AE804F /* ZZBrowserPickerViewController.m */; };
-		49D7368B1CEE148B00AE804F /* ZZCameraController.m in Sources */ = {isa = PBXBuildFile; fileRef = 49D7365B1CEE148B00AE804F /* ZZCameraController.m */; };
-		49D7368C1CEE148B00AE804F /* ZZCameraFlashState.m in Sources */ = {isa = PBXBuildFile; fileRef = 49D7365D1CEE148B00AE804F /* ZZCameraFlashState.m */; };
-		49D7368D1CEE148B00AE804F /* ZZCameraFocusView.m in Sources */ = {isa = PBXBuildFile; fileRef = 49D7365F1CEE148B00AE804F /* ZZCameraFocusView.m */; };
-		49D7368E1CEE148B00AE804F /* ZZCameraPickerCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 49D736611CEE148B00AE804F /* ZZCameraPickerCell.m */; };
-		49D7368F1CEE148B00AE804F /* ZZCameraPickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 49D736631CEE148B00AE804F /* ZZCameraPickerViewController.m */; };
 		49D736901CEE148B00AE804F /* ZZPhotoController.m in Sources */ = {isa = PBXBuildFile; fileRef = 49D736671CEE148B00AE804F /* ZZPhotoController.m */; };
 		49D736911CEE148B00AE804F /* ZZPhotoListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 49D736691CEE148B00AE804F /* ZZPhotoListViewController.m */; };
 		49D736921CEE148B00AE804F /* ZZPhotoPickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 49D7366B1CEE148B00AE804F /* ZZPhotoPickerViewController.m */; };
@@ -142,20 +143,22 @@
 		1C94AD461C3A7DC800B26FAE /* scv5.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = scv5.jpg; sourceTree = "<group>"; };
 		1CFF402E1C45FF77007D43AF /* PicsCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PicsCell.h; sourceTree = "<group>"; };
 		1CFF402F1C45FF77007D43AF /* PicsCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PicsCell.m; sourceTree = "<group>"; };
+		49D4953A1CF540EE00E42318 /* ZZPhoto.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZZPhoto.h; sourceTree = "<group>"; };
+		49D4953B1CF540EE00E42318 /* ZZPhoto.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZZPhoto.m; sourceTree = "<group>"; };
+		49D4953E1CF54CAB00E42318 /* ZZCameraController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZZCameraController.h; sourceTree = "<group>"; };
+		49D4953F1CF54CAB00E42318 /* ZZCameraController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZZCameraController.m; sourceTree = "<group>"; };
+		49D495401CF54CAB00E42318 /* ZZCameraPickerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZZCameraPickerViewController.h; sourceTree = "<group>"; };
+		49D495411CF54CAB00E42318 /* ZZCameraPickerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZZCameraPickerViewController.m; sourceTree = "<group>"; };
+		49D495441CF54CAB00E42318 /* ZZCameraFocusView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZZCameraFocusView.h; sourceTree = "<group>"; };
+		49D495451CF54CAB00E42318 /* ZZCameraFocusView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZZCameraFocusView.m; sourceTree = "<group>"; };
+		49D495461CF54CAB00E42318 /* ZZCameraPickerCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZZCameraPickerCell.h; sourceTree = "<group>"; };
+		49D495471CF54CAB00E42318 /* ZZCameraPickerCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZZCameraPickerCell.m; sourceTree = "<group>"; };
+		49D4954C1CF54CC000E42318 /* ZZCamera.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZZCamera.h; sourceTree = "<group>"; };
+		49D4954D1CF54CC000E42318 /* ZZCamera.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZZCamera.m; sourceTree = "<group>"; };
 		49D736551CEE148B00AE804F /* ZZBrowserPickerCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZZBrowserPickerCell.h; sourceTree = "<group>"; };
 		49D736561CEE148B00AE804F /* ZZBrowserPickerCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZZBrowserPickerCell.m; sourceTree = "<group>"; };
 		49D736571CEE148B00AE804F /* ZZBrowserPickerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZZBrowserPickerViewController.h; sourceTree = "<group>"; };
 		49D736581CEE148B00AE804F /* ZZBrowserPickerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZZBrowserPickerViewController.m; sourceTree = "<group>"; };
-		49D7365A1CEE148B00AE804F /* ZZCameraController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZZCameraController.h; sourceTree = "<group>"; };
-		49D7365B1CEE148B00AE804F /* ZZCameraController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZZCameraController.m; sourceTree = "<group>"; };
-		49D7365C1CEE148B00AE804F /* ZZCameraFlashState.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZZCameraFlashState.h; sourceTree = "<group>"; };
-		49D7365D1CEE148B00AE804F /* ZZCameraFlashState.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZZCameraFlashState.m; sourceTree = "<group>"; };
-		49D7365E1CEE148B00AE804F /* ZZCameraFocusView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZZCameraFocusView.h; sourceTree = "<group>"; };
-		49D7365F1CEE148B00AE804F /* ZZCameraFocusView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZZCameraFocusView.m; sourceTree = "<group>"; };
-		49D736601CEE148B00AE804F /* ZZCameraPickerCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZZCameraPickerCell.h; sourceTree = "<group>"; };
-		49D736611CEE148B00AE804F /* ZZCameraPickerCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZZCameraPickerCell.m; sourceTree = "<group>"; };
-		49D736621CEE148B00AE804F /* ZZCameraPickerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZZCameraPickerViewController.h; sourceTree = "<group>"; };
-		49D736631CEE148B00AE804F /* ZZCameraPickerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZZCameraPickerViewController.m; sourceTree = "<group>"; };
 		49D736661CEE148B00AE804F /* ZZPhotoController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZZPhotoController.h; sourceTree = "<group>"; };
 		49D736671CEE148B00AE804F /* ZZPhotoController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZZPhotoController.m; sourceTree = "<group>"; };
 		49D736681CEE148B00AE804F /* ZZPhotoListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZZPhotoListViewController.h; sourceTree = "<group>"; };
@@ -350,6 +353,37 @@
 			path = Resources;
 			sourceTree = "<group>";
 		};
+		49D4953D1CF54CAB00E42318 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				49D4953E1CF54CAB00E42318 /* ZZCameraController.h */,
+				49D4953F1CF54CAB00E42318 /* ZZCameraController.m */,
+				49D495401CF54CAB00E42318 /* ZZCameraPickerViewController.h */,
+				49D495411CF54CAB00E42318 /* ZZCameraPickerViewController.m */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		49D495421CF54CAB00E42318 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				49D4954C1CF54CC000E42318 /* ZZCamera.h */,
+				49D4954D1CF54CC000E42318 /* ZZCamera.m */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		49D495431CF54CAB00E42318 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				49D495441CF54CAB00E42318 /* ZZCameraFocusView.h */,
+				49D495451CF54CAB00E42318 /* ZZCameraFocusView.m */,
+				49D495461CF54CAB00E42318 /* ZZCameraPickerCell.h */,
+				49D495471CF54CAB00E42318 /* ZZCameraPickerCell.m */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		49D736541CEE148B00AE804F /* ZZBrowser */ = {
 			isa = PBXGroup;
 			children = (
@@ -366,16 +400,9 @@
 		49D736591CEE148B00AE804F /* ZZCamera */ = {
 			isa = PBXGroup;
 			children = (
-				49D7365A1CEE148B00AE804F /* ZZCameraController.h */,
-				49D7365B1CEE148B00AE804F /* ZZCameraController.m */,
-				49D7365C1CEE148B00AE804F /* ZZCameraFlashState.h */,
-				49D7365D1CEE148B00AE804F /* ZZCameraFlashState.m */,
-				49D7365E1CEE148B00AE804F /* ZZCameraFocusView.h */,
-				49D7365F1CEE148B00AE804F /* ZZCameraFocusView.m */,
-				49D736601CEE148B00AE804F /* ZZCameraPickerCell.h */,
-				49D736611CEE148B00AE804F /* ZZCameraPickerCell.m */,
-				49D736621CEE148B00AE804F /* ZZCameraPickerViewController.h */,
-				49D736631CEE148B00AE804F /* ZZCameraPickerViewController.m */,
+				49D4953D1CF54CAB00E42318 /* Controller */,
+				49D495421CF54CAB00E42318 /* Model */,
+				49D495431CF54CAB00E42318 /* View */,
 			);
 			path = ZZCamera;
 			sourceTree = "<group>";
@@ -410,6 +437,8 @@
 				49D736701CEE148B00AE804F /* ZZPhotoDatas.m */,
 				49D736711CEE148B00AE804F /* ZZPhotoListModel.h */,
 				49D736721CEE148B00AE804F /* ZZPhotoListModel.m */,
+				49D4953A1CF540EE00E42318 /* ZZPhoto.h */,
+				49D4953B1CF540EE00E42318 /* ZZPhoto.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -620,29 +649,29 @@
 				49D736901CEE148B00AE804F /* ZZPhotoController.m in Sources */,
 				1C94AD3E1C3A7D9500B26FAE /* UIImageView+HighlightedWebCache.m in Sources */,
 				1C94AC0D1C3A7B1F00B26FAE /* ViewController.m in Sources */,
+				49D4954E1CF54CC000E42318 /* ZZCamera.m in Sources */,
 				1C94AD381C3A7D9500B26FAE /* SDWebImageManager.m in Sources */,
+				49D495481CF54CAB00E42318 /* ZZCameraController.m in Sources */,
 				49D736891CEE148B00AE804F /* ZZBrowserPickerCell.m in Sources */,
 				49D7368A1CEE148B00AE804F /* ZZBrowserPickerViewController.m in Sources */,
 				1C94AD351C3A7D9500B26FAE /* SDWebImageDecoder.m in Sources */,
-				49D7368C1CEE148B00AE804F /* ZZCameraFlashState.m in Sources */,
 				49D736B21CEE16FC00AE804F /* UIImageHandle.m in Sources */,
 				1C94AD391C3A7D9500B26FAE /* SDWebImagePrefetcher.m in Sources */,
 				49D736961CEE148B00AE804F /* ZZPhotoHud.m in Sources */,
+				49D4954B1CF54CAB00E42318 /* ZZCameraPickerCell.m in Sources */,
 				49D736951CEE148B00AE804F /* ZZPhotoListModel.m in Sources */,
 				49D736921CEE148B00AE804F /* ZZPhotoPickerViewController.m in Sources */,
 				49D736971CEE148B00AE804F /* ZZPhotoListCell.m in Sources */,
-				49D7368B1CEE148B00AE804F /* ZZCameraController.m in Sources */,
 				1C94AD3F1C3A7D9500B26FAE /* UIImageView+WebCache.m in Sources */,
-				49D7368E1CEE148B00AE804F /* ZZCameraPickerCell.m in Sources */,
 				1CFF40301C45FF77007D43AF /* PicsCell.m in Sources */,
 				1C94AC0A1C3A7B1F00B26FAE /* AppDelegate.m in Sources */,
+				49D4953C1CF540EE00E42318 /* ZZPhoto.m in Sources */,
 				1C94AC071C3A7B1E00B26FAE /* main.m in Sources */,
-				49D7368D1CEE148B00AE804F /* ZZCameraFocusView.m in Sources */,
 				1C94AD3B1C3A7D9500B26FAE /* UIImage+GIF.m in Sources */,
 				49D736C31CEE178A00AE804F /* ZZAlumAnimation.m in Sources */,
+				49D4954A1CF54CAB00E42318 /* ZZCameraFocusView.m in Sources */,
 				1C94AD3D1C3A7D9500B26FAE /* UIImage+WebP.m in Sources */,
 				1C94AD321C3A7D9500B26FAE /* NSData+ImageContentType.m in Sources */,
-				49D7368F1CEE148B00AE804F /* ZZCameraPickerViewController.m in Sources */,
 				1C94AD341C3A7D9500B26FAE /* SDWebImageCompat.m in Sources */,
 				1C94AD331C3A7D9500B26FAE /* SDImageCache.m in Sources */,
 				1C94AD361C3A7D9500B26FAE /* SDWebImageDownloader.m in Sources */,
@@ -650,6 +679,7 @@
 				1C94AD3C1C3A7D9500B26FAE /* UIImage+MultiFormat.m in Sources */,
 				1C94AD3A1C3A7D9500B26FAE /* UIButton+WebCache.m in Sources */,
 				49D736981CEE148B00AE804F /* ZZPhotoPickerCell.m in Sources */,
+				49D495491CF54CAB00E42318 /* ZZCameraPickerViewController.m in Sources */,
 				49D7369B1CEE14AE00AE804F /* ZZPageControl.m in Sources */,
 				1C94AD311C3A7D9500B26FAE /* MKAnnotationView+WebCache.m in Sources */,
 				49D736941CEE148B00AE804F /* ZZPhotoDatas.m in Sources */,

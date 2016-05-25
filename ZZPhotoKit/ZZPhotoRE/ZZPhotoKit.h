@@ -13,6 +13,8 @@
 #import "ZZCameraController.h"
 #import "ZZBrowserPickerViewController.h"
 
+#import "ZZPhoto.h"
+#import "ZZCamera.h"
 
 /* 说明 */
 

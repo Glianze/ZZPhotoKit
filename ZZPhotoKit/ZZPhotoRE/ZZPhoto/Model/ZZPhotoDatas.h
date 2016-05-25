@@ -31,5 +31,6 @@
 /*
  *    回调方法使用数组
  */
--(void) GetImageObject:(id)asset complection:(void (^)(UIImage *, BOOL isDegraded))complection;
+-(void) GetImageObject:(id)asset complection:(void (^)(UIImage *,NSString *imageUrl))complection;
+
 @end

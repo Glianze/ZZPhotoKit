@@ -78,9 +78,8 @@
 {
     NSMutableArray *dataArray = [NSMutableArray array];
     for (PHAsset *asset in fetchResult) {
-        //只添加图片类型资源，去除视频类型资源
-        //当mediaType == 2时，这个资源则为视频资源
-        if (asset.mediaType == 1) {
+        //只添加图片类型资源，过滤除视频类型资源
+        if (asset.mediaType == PHAssetMediaTypeImage) {
             [dataArray addObject:asset];
         }
         
@@ -99,7 +98,7 @@
     return fetch;
 }
 
--(void)GetImageObject:(id)asset complection:(void (^)(UIImage *, BOOL isDegraded))complection
+-(void) GetImageObject:(id)asset complection:(void (^)(UIImage *,NSString *imageUrl))complection
 {
     if ([asset isKindOfClass:[PHAsset class]]) {
         PHAsset *phAsset = (PHAsset *)asset;
@@ -112,11 +111,15 @@
         CGFloat pixelHeight = pixelWidth / aspectRatio;
         
         [[PHImageManager defaultManager] requestImageForAsset:phAsset targetSize:CGSizeMake(pixelWidth, pixelHeight) contentMode:PHImageContentModeAspectFit options:nil resultHandler:^(UIImage * _Nullable result, NSDictionary * _Nullable info) {
+
+            BOOL downloadFinined = ![[info objectForKey:PHImageCancelledKey] boolValue] && ![info objectForKey:PHImageErrorKey] && ![[info objectForKey:PHImageResultIsDegradedKey] boolValue];
             
-            BOOL downloadFinined = (![[info objectForKey:PHImageCancelledKey] boolValue] && ![info objectForKey:PHImageErrorKey]);
+            //设置BOOL判断，确定返回高清照片
             if (downloadFinined) {
-                if (complection) complection(result,[[info objectForKey:PHImageResultIsDegradedKey] boolValue]);
+                complection(result,[info objectForKey:@"PHImageFileURLKey"]);
+                
             }
+ 
         }];
 
     }
