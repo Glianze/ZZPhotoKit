@@ -1,7 +1,6 @@
 # ZZPhotoKit
 ##说明
 
-* 纪念今天的520必须commit一弹，纪念一下今天这个被虐的日子。
 * 此开源目前接近于成熟状态，不喜欢的大神们还望轻虐。
 * 目前只支持 IOS 8.0 及以上系统使用。
 * 框架代码以及功能正在养成中。
@@ -14,12 +13,16 @@
 ###联系方式
 ###关注微博：袁亮_  *** QQ:412016060
 
+##项目Gif介绍
+![image](https://github.com/ACEYL/ZZPhotoKit/raw/master/image/demonstrate.gif)
 
 ##更新内容
 
-* 更新文件夹目录结构，更具有看懂分类的优势
-* 重新建立配置文件ZZResourceConfig.h 资源配置文件，包含一些图片。
-* 重新建立按钮点击动画文件ZZAlumAnimation.h。
+* 框架中加入两个model，ZZPhoto、ZZCamera。里面包含图片，图片地址和照片创建时间。详见demo
+* 更新ZZCamera文件夹下目录结构
+* 修复图片浏览器不定位滚动问题。
+* 新增ZZCameraController自动对焦视图自动消失功能。
+* 修复闪光灯是否开启按钮与闪光灯不统一bug，闪光灯默认为不开启状态。
 
 ##使用方法
 
@@ -65,6 +68,10 @@ cameraController.imageType = ZZImageTypeOfThumb;
 	UIImage *image = [array objectAtIndex:0];
 	_imageView.image = image;
 }];
+### 新增model查看
+* ![image](https://github.com/ACEYL/ZZPhotoKit/raw/master/image/object.png)
+* ![image](https://github.com/ACEYL/ZZPhotoKit/raw/master/image/examplepic.png)
+
 ```
 
 * 简单的图片浏览器
