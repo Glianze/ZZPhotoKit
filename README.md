@@ -68,11 +68,11 @@ cameraController.imageType = ZZImageTypeOfThumb;
 	UIImage *image = [array objectAtIndex:0];
 	_imageView.image = image;
 }];
+
+```
 ### 新增model查看
 * ![image](https://github.com/ACEYL/ZZPhotoKit/raw/master/image/object.png)
 * ![image](https://github.com/ACEYL/ZZPhotoKit/raw/master/image/examplepic.png)
-
-```
 
 * 简单的图片浏览器
 ```
