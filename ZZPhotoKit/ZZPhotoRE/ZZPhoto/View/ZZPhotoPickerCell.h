@@ -8,13 +8,13 @@
 
 #import <UIKit/UIKit.h>
 #import "ZZResourceConfig.h"
-
+#import "ZZPhoto.h"
 @interface ZZPhotoPickerCell : UICollectionViewCell
 
 @property(strong,nonatomic) UIImageView *photo;
 @property(strong,nonatomic) UIButton *selectBtn;
 
 
--(void)loadPhotoData:(PHAsset *)assetItem;
--(void)selectBtnStage:(NSMutableArray *)selectArray existence:(PHAsset *)assetItem;
+-(void)loadPhotoData:(ZZPhoto *)assetItem;
+-(void)selectBtnStage:(NSMutableArray *)selectArray existence:(ZZPhoto *)photo;
 @end

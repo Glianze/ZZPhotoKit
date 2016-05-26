@@ -131,14 +131,15 @@
         [ZZPhotoHud showActiveHud];
         NSMutableArray<ZZPhoto *> *photos = [NSMutableArray array];
         for (int i = 0; i < self.selectArray.count; i++) {
-            PHAsset *asset = [self.selectArray objectAtIndex:i];
-            [self.datas GetImageObject:asset complection:^(UIImage *image,NSString *imageUrl) {
+            ZZPhoto *photo = [self.selectArray objectAtIndex:i];
+            [self.datas GetImageObject:photo.asset complection:^(UIImage *image,NSURL *imageUrl) {
                 
                 if (image){
                     ZZPhoto *model = [[ZZPhoto alloc]init];
-                    model.image = image;
+                    model.asset = photo.asset;
+                    model.originImage = image;
                     model.imageUrl = imageUrl;
-                    model.createDate = asset.creationDate;
+                    model.createDate = photo.asset.creationDate;
                     [photos addObject:model];
                 }
                 if (photos.count < self.selectArray.count){
@@ -335,7 +336,7 @@
 
 -(void)refreshTotalNumLabelData:(NSInteger)totalNum
 {
-    self.totalNumLabel.text = [NSString stringWithFormat:Total_Pic_Num,(long)totalNum];
+    self.totalNumLabel.text = [NSString stringWithFormat:Total_Photo_Num,(long)totalNum];
 }
 
 

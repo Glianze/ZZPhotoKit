@@ -57,7 +57,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    _array = @[@"相册",@"相机",@"图片浏览器"];
+    _array = @[@"相册选择",@"相机",@"图片浏览器"];
     
     _tableView = [[UITableView alloc]initWithFrame:CGRectMake(0, 0, ZZ_VW, 150)];
     _tableView.dataSource = self;
@@ -188,10 +188,10 @@
     }
     if ([[self.picArray objectAtIndex:indexPath.row] isKindOfClass:[ZZPhoto class]]) {
         ZZPhoto *photo = [self.picArray objectAtIndex:indexPath.row];
-        photoCell.photo.image = photo.image;
+        photoCell.photo.image = photo.originImage;
     }else if([[self.picArray objectAtIndex:indexPath.row] isKindOfClass:[ZZCamera class]]){
-        ZZCamera *photo = [self.picArray objectAtIndex:indexPath.row];
-        photoCell.photo.image = photo.image;
+        ZZCamera *camera = [self.picArray objectAtIndex:indexPath.row];
+        photoCell.photo.image = camera.image;
     }
     
     

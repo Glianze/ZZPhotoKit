@@ -9,6 +9,7 @@
 #import "ZZBrowserPickerViewController.h"
 #import "ZZBrowserPickerCell.h"
 #import "ZZPageControl.h"
+#import "ZZPhoto.h"
 #import "ZZCamera.h"
 
 @interface ZZBrowserPickerViewController ()<UICollectionViewDelegate,UICollectionViewDataSource,UINavigationControllerDelegate,UIViewControllerTransitioningDelegate>
@@ -166,13 +167,12 @@
         cell = [[ZZBrowserPickerCell alloc]init];
     }
 
-    if ([[_photoDataArray objectAtIndex:indexPath.row] isKindOfClass:[PHAsset class]]) {
+    if ([[_photoDataArray objectAtIndex:indexPath.row] isKindOfClass:[ZZPhoto class]]) {
         //加载相册中的数据时实用
-        PHAsset *assetItem = [_photoDataArray objectAtIndex:indexPath.row];
-        [cell loadPHAssetItemForPics:assetItem];
+        ZZPhoto *photo = [_photoDataArray objectAtIndex:indexPath.row];
+        [cell loadPHAssetItemForPics:photo.asset];
     }else if ([[_photoDataArray objectAtIndex:indexPath.row] isKindOfClass:[NSString class]]){
         //加载网络中的图片数据，图片地址使用
-        
         [cell.pics sd_setImageWithURL:[NSURL URLWithString:[_photoDataArray objectAtIndex:indexPath.row]]];
     
     }else if ([[_photoDataArray objectAtIndex:indexPath.row] isKindOfClass:[UIImage class]]){

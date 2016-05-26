@@ -19,7 +19,6 @@
 @property (assign,nonatomic) BOOL            isAlubSeclect;
 @property (strong,nonatomic) PHFetchResult   *fetch;
 @property (strong,nonatomic) UIColor         *roundColor;
-//@property (assign,nonatomic) ZZImageType     imageType;
 
 
 @end

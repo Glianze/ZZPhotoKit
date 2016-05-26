@@ -82,7 +82,12 @@
     
     self.alubms = [self.datas GetPhotoListDatas];
 
-        
+    
+}
+-(void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    [self.alumbTable deselectRowAtIndexPath:[self.alumbTable indexPathForSelectedRow] animated:YES];
 }
 
 -(void) makeAlumListUI
@@ -137,18 +142,18 @@
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    ZZPhotoPickerViewController *photopickerController = [[ZZPhotoPickerViewController alloc]initWithNibName:nil bundle:nil];
 
-    photopickerController.PhotoResult = self.photoResult;
-    photopickerController.selectNum = self.selectNum;
+    ZZPhotoPickerViewController *photoPickerController = [[ZZPhotoPickerViewController alloc]initWithNibName:nil bundle:nil];
+
+    photoPickerController.PhotoResult = self.photoResult;
+    photoPickerController.selectNum = self.selectNum;
     
     ZZPhotoListModel *listmodel = [self.alubms objectAtIndex:indexPath.row];
     
-    photopickerController.fetch = [self.datas GetFetchResult:listmodel.assetCollection];
-    photopickerController.isAlubSeclect = YES;
+    photoPickerController.fetch = [self.datas GetFetchResult:listmodel.assetCollection];
+    photoPickerController.isAlubSeclect = YES;
     
-    [self.navigationController pushViewController:photopickerController animated:YES];
+    [self.navigationController pushViewController:photoPickerController animated:YES];
 }
 
 - (void)didReceiveMemoryWarning {

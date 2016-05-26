@@ -24,17 +24,27 @@
 
 -(void)loadPHAssetItemForPics:(PHAsset *)assetItem
 {
-    PHImageRequestOptions *options = [[PHImageRequestOptions alloc]init];
-    options.synchronous = YES;
-    [[PHImageManager defaultManager] requestImageForAsset:assetItem
-                                               targetSize:PHImageManagerMaximumSize
-                                              contentMode:PHImageContentModeDefault
-                                                  options:options
-                                            resultHandler:^(UIImage *result, NSDictionary *info) {
-                                                NSLog(@"%@",[UIImageHandle scaleImage:result multiple:0.1]);
-                                                
-                                                self.pics.image = [UIImageHandle scaleImage:result multiple:0.5];
-                                                
-                                            }];
+    PHAsset *phAsset = (PHAsset *)assetItem;
+    
+    CGFloat photoWidth = [UIScreen mainScreen].bounds.size.width;
+    
+    CGFloat aspectRatio = phAsset.pixelWidth / (CGFloat)phAsset.pixelHeight;
+    CGFloat multiple = [UIScreen mainScreen].scale;
+    CGFloat pixelWidth = photoWidth * multiple;
+    CGFloat pixelHeight = pixelWidth / aspectRatio;
+    
+    [[PHImageManager defaultManager] requestImageForAsset:phAsset targetSize:CGSizeMake(pixelWidth, pixelHeight) contentMode:PHImageContentModeAspectFit options:nil resultHandler:^(UIImage * _Nullable result, NSDictionary * _Nullable info) {
+        
+        
+        BOOL downloadFinined = ![[info objectForKey:PHImageCancelledKey] boolValue] && ![info objectForKey:PHImageErrorKey] && ![[info objectForKey:PHImageResultIsDegradedKey] boolValue];
+        
+        //设置BOOL判断，确定返回高清照片
+        if (downloadFinined) {
+
+            self.pics.image = result;
+            
+        }
+        
+    }];
 }
 @end

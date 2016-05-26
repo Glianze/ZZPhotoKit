@@ -13,4 +13,5 @@
 @property(assign,nonatomic) NSInteger selectNum;
 
 @property(strong,nonatomic) void (^photoResult)(id responseObject);
+
 @end

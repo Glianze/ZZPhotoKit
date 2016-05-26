@@ -55,23 +55,16 @@
 {
     if ([listmodel isKindOfClass:[ZZPhotoListModel class]]) {
         
-        
-        [[PHImageManager defaultManager] requestImageForAsset:listmodel.lastObject
-                                                   targetSize:CGSizeMake(200,200)
-                                                  contentMode:PHImageContentModeDefault
-                                                      options:nil
-                                                resultHandler:^(UIImage *result, NSDictionary *info) {
-                                                    if (result == nil) {
-                                                        self.coverImage.image = NOPhoto_Data_Pic;
-                                                    }else{
-                                                        self.coverImage.image = result;
-                                                    }
-                                                }];
-
+        [[PHImageManager defaultManager] requestImageForAsset:listmodel.lastObject targetSize:CGSizeMake(200,200) contentMode:PHImageContentModeDefault options:nil resultHandler:^(UIImage *result, NSDictionary *info)
+        {
+            if (result == nil) {
+                self.coverImage.image = NOPhoto_Data_Pic;
+            }else{
+                self.coverImage.image = result;
+            }
+            
+        }];
         self.title.text = listmodel.title;
-
-        
-        
         self.subTitle.text = [NSString stringWithFormat:@"%lu",(unsigned long)listmodel.count];
     }
 }

@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "ZZResourceConfig.h"
-@interface ZZPhotoListModel : UIView
+@interface ZZPhotoListModel : NSObject
 
 @property (assign, nonatomic) NSInteger count;
 @property (strong, nonatomic) PHAsset *lastObject;

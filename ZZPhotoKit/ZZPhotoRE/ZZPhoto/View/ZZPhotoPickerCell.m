@@ -38,9 +38,9 @@
 }
 
 //记录按钮选中和非选中的状态
--(void)selectBtnStage:(NSMutableArray *)selectArray existence:(PHAsset *)assetItem
+-(void)selectBtnStage:(NSMutableArray *)selectArray existence:(ZZPhoto *)photo
 {
-    if ([selectArray containsObject:assetItem]) {
+    if ([selectArray containsObject:photo]) {
         _selectBtn.selected = YES;
         [_selectBtn setImage:Pic_Btn_Selected forState:UIControlStateNormal];
     }else{
@@ -49,15 +49,11 @@
     }
 }
 
--(void)loadPhotoData:(PHAsset *)assetItem
+-(void)loadPhotoData:(ZZPhoto *)assetItem
 {
-    if ([assetItem isKindOfClass:[PHAsset class]]) {
-        
-        
-        PHAsset *phAsset = assetItem;
-        
-        [[PHImageManager defaultManager] requestImageForAsset:phAsset targetSize:CGSizeMake(200, 200) contentMode:PHImageContentModeAspectFit options:nil resultHandler:^(UIImage *result, NSDictionary *info){
-            
+    if ([assetItem isKindOfClass:[ZZPhoto class]]) {
+
+        [[PHImageManager defaultManager] requestImageForAsset:assetItem.asset targetSize:CGSizeMake(200, 200) contentMode:PHImageContentModeAspectFit options:nil resultHandler:^(UIImage *result, NSDictionary *info){
             self.photo.image = result;
             
         }];

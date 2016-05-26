@@ -31,6 +31,6 @@
 /*
  *    回调方法使用数组
  */
--(void) GetImageObject:(id)asset complection:(void (^)(UIImage *,NSString *imageUrl))complection;
+-(void) GetImageObject:(id)asset complection:(void (^)(UIImage *,NSURL *))complection;
 
 @end

@@ -8,6 +8,7 @@
 
 #import "ZZPhotoDatas.h"
 #import "ZZPhotoListModel.h"
+#import "ZZPhoto.h"
 @implementation ZZPhotoDatas
 
 -(NSMutableArray *)GetPhotoListDatas
@@ -80,7 +81,9 @@
     for (PHAsset *asset in fetchResult) {
         //只添加图片类型资源，过滤除视频类型资源
         if (asset.mediaType == PHAssetMediaTypeImage) {
-            [dataArray addObject:asset];
+            ZZPhoto *photo = [[ZZPhoto alloc]init];
+            photo.asset = asset;
+            [dataArray addObject:photo];
         }
         
     }
@@ -98,7 +101,7 @@
     return fetch;
 }
 
--(void) GetImageObject:(id)asset complection:(void (^)(UIImage *,NSString *imageUrl))complection
+-(void) GetImageObject:(id)asset complection:(void (^)(UIImage *,NSURL *))complection
 {
     if ([asset isKindOfClass:[PHAsset class]]) {
         PHAsset *phAsset = (PHAsset *)asset;
@@ -111,12 +114,14 @@
         CGFloat pixelHeight = pixelWidth / aspectRatio;
         
         [[PHImageManager defaultManager] requestImageForAsset:phAsset targetSize:CGSizeMake(pixelWidth, pixelHeight) contentMode:PHImageContentModeAspectFit options:nil resultHandler:^(UIImage * _Nullable result, NSDictionary * _Nullable info) {
-
+            
+            
             BOOL downloadFinined = ![[info objectForKey:PHImageCancelledKey] boolValue] && ![info objectForKey:PHImageErrorKey] && ![[info objectForKey:PHImageResultIsDegradedKey] boolValue];
             
             //设置BOOL判断，确定返回高清照片
             if (downloadFinined) {
-                complection(result,[info objectForKey:@"PHImageFileURLKey"]);
+                NSURL *imageUrl = (NSURL *)[info objectForKey:@"PHImageFileURLKey"];
+                complection(result,imageUrl);
                 
             }
  
