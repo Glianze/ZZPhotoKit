@@ -14,7 +14,7 @@
 {
     self = [super initWithFrame:frame];
     if (self) {
-        
+
         _pageControl = [[UILabel alloc]initWithFrame:CGRectMake(5, 3, self.frame.size.width - 10, self.frame.size.height - 6)];
         _pageControl.backgroundColor = [UIColor clearColor];
         _pageControl.textAlignment = NSTextAlignmentCenter;

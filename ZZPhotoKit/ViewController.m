@@ -57,6 +57,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.edgesForExtendedLayout = UIRectEdgeNone;
     _array = @[@"相册选择",@"相机",@"图片浏览器"];
     
     _tableView = [[UITableView alloc]initWithFrame:CGRectMake(0, 0, ZZ_VW, 150)];
@@ -188,6 +189,7 @@
     }
     if ([[self.picArray objectAtIndex:indexPath.row] isKindOfClass:[ZZPhoto class]]) {
         ZZPhoto *photo = [self.picArray objectAtIndex:indexPath.row];
+        NSLog(@"%@",photo.originImage);
         photoCell.photo.image = photo.originImage;
     }else if([[self.picArray objectAtIndex:indexPath.row] isKindOfClass:[ZZCamera class]]){
         ZZCamera *camera = [self.picArray objectAtIndex:indexPath.row];

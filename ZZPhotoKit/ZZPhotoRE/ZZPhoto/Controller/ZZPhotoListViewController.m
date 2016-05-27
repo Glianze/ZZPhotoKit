@@ -75,7 +75,7 @@
     // Do any additional setup after loading the view.
     
     self.navigationItem.rightBarButtonItem = self.closeBtn;
-    
+    self.edgesForExtendedLayout = UIRectEdgeNone;
     
     [self makeAlumListUI];
 
@@ -151,6 +151,7 @@
     ZZPhotoListModel *listmodel = [self.alubms objectAtIndex:indexPath.row];
     
     photoPickerController.fetch = [self.datas GetFetchResult:listmodel.assetCollection];
+    photoPickerController.navigationItem.title = listmodel.title;
     photoPickerController.isAlubSeclect = YES;
     
     [self.navigationController pushViewController:photoPickerController animated:YES];

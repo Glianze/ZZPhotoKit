@@ -1,21 +1,20 @@
 //
-//  ZZBrowserPickerViewController.m
-//  ZZFramework
+//  ZZPhotoBrowerViewController.m
+//  ZZPhotoKit
 //
-//  Created by Yuan on 15/12/23.
-//  Copyright © 2015年 zzl. All rights reserved.
+//  Created by 袁亮 on 16/5/27.
+//  Copyright © 2016年 Ace. All rights reserved.
 //
 
-#import "ZZBrowserPickerViewController.h"
+#import "ZZPhotoBrowerViewController.h"
 #import "ZZBrowserPickerCell.h"
 #import "ZZPageControl.h"
 #import "ZZPhoto.h"
-#import "ZZCamera.h"
 
-@interface ZZBrowserPickerViewController ()<UICollectionViewDelegate,UICollectionViewDataSource,UINavigationControllerDelegate,UIViewControllerTransitioningDelegate>
+
+@interface ZZPhotoBrowerViewController ()<UICollectionViewDelegate,UICollectionViewDataSource>
 
 @property (nonatomic, strong) UICollectionView *picBrowse;
-@property (nonatomic, strong) UICollectionViewFlowLayout *flowLayout;
 
 @property (nonatomic, strong) NSMutableArray *photoDataArray;
 
@@ -26,7 +25,7 @@
 
 @end
 
-@implementation ZZBrowserPickerViewController
+@implementation ZZPhotoBrowerViewController
 
 -(void)setupBackItemUI
 {
@@ -54,15 +53,15 @@
      */
     self.view.backgroundColor = [UIColor blackColor];
     
-    _flowLayout = [[UICollectionViewFlowLayout alloc] init];
-    _flowLayout.itemSize = (CGSize){self.view.frame.size.width,self.view.frame.size.height};
-    _flowLayout.minimumLineSpacing = 0;
-    _flowLayout.scrollDirection = UICollectionViewScrollDirectionHorizontal;
+    UICollectionViewFlowLayout *flowLayout = [[UICollectionViewFlowLayout alloc] init];
+    flowLayout.itemSize = (CGSize){self.view.frame.size.width,self.view.frame.size.height-64};
+    flowLayout.minimumLineSpacing = 0.0f;
+    flowLayout.scrollDirection = UICollectionViewScrollDirectionHorizontal;
     
-    _picBrowse = [[UICollectionView alloc] initWithFrame:CGRectZero collectionViewLayout:_flowLayout];
+    _picBrowse = [[UICollectionView alloc] initWithFrame:CGRectZero collectionViewLayout:flowLayout];
     _picBrowse.backgroundColor = [UIColor clearColor];
     _picBrowse.pagingEnabled = YES;
-
+    
     _picBrowse.showsHorizontalScrollIndicator = NO;
     _picBrowse.showsVerticalScrollIndicator = NO;
     [_picBrowse registerClass:[ZZBrowserPickerCell class] forCellWithReuseIdentifier:@"Cell"];
@@ -73,25 +72,18 @@
     
     [self.view addSubview:_picBrowse];
     
-    NSLayoutConstraint *list_top = [NSLayoutConstraint constraintWithItem:self.view attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationEqual toItem:_picBrowse attribute:NSLayoutAttributeTop multiplier:1 constant:64.0f];
+    NSLayoutConstraint *list_top = [NSLayoutConstraint constraintWithItem:_picBrowse attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationEqual toItem:self.view attribute:NSLayoutAttributeTop multiplier:1 constant:0.0f];
     
-    NSLayoutConstraint *list_bottom = [NSLayoutConstraint constraintWithItem:self.view attribute:NSLayoutAttributeBottom relatedBy:NSLayoutRelationEqual toItem:_picBrowse attribute:NSLayoutAttributeBottom multiplier:1 constant:0.0f];
+    NSLayoutConstraint *list_bottom = [NSLayoutConstraint constraintWithItem:_picBrowse attribute:NSLayoutAttributeBottom relatedBy:NSLayoutRelationEqual toItem:self.view attribute:NSLayoutAttributeBottom multiplier:1 constant:0.0f];
     
-    NSLayoutConstraint *list_left = [NSLayoutConstraint constraintWithItem:self.view attribute:NSLayoutAttributeLeft relatedBy:NSLayoutRelationEqual toItem:_picBrowse attribute:NSLayoutAttributeLeft multiplier:1 constant:0.0f];
+    NSLayoutConstraint *list_left = [NSLayoutConstraint constraintWithItem:_picBrowse attribute:NSLayoutAttributeLeft relatedBy:NSLayoutRelationEqual toItem:self.view attribute:NSLayoutAttributeLeft multiplier:1 constant:0.0f];
     
-    NSLayoutConstraint *list_right = [NSLayoutConstraint constraintWithItem:self.view attribute:NSLayoutAttributeRight relatedBy:NSLayoutRelationEqual toItem:_picBrowse attribute:NSLayoutAttributeRight multiplier:1 constant:0.0f];
+    NSLayoutConstraint *list_right = [NSLayoutConstraint constraintWithItem:_picBrowse attribute:NSLayoutAttributeRight relatedBy:NSLayoutRelationEqual toItem:self.view attribute:NSLayoutAttributeRight multiplier:1 constant:0.0f];
     
     [self.view addConstraints:@[list_top,list_bottom,list_left,list_right]];
     
 }
 
--(void)viewDidLayoutSubviews
-{
-    [super viewDidLayoutSubviews];
-    if (self.indexPath != nil) {
-        [_picBrowse scrollToItemAtIndexPath:self.indexPath atScrollPosition:UICollectionViewScrollPositionNone animated:NO];
-    }
-}
 
 -(void)setPageControlUI
 {
@@ -102,18 +94,13 @@
     _pageControl.currentPage = 0;
     _pageControl.backgroundColor = [UIColor clearColor];
     _pageControl.pageControl.textColor = [UIColor whiteColor];
-//    [self.navigationItem.titleView addSubview:_pageControl];
+    //    [self.navigationItem.titleView addSubview:_pageControl];
     self.navigationItem.titleView = _pageControl;
     
     //照片总数通过delegate获取
     _numberOfItems = [self.delegate zzbrowserPickerPhotoNum:self];
-
-    //判断是否需要滚动到指定图片
-    if (self.indexPath != nil) {
-        _pageControl.pageControl.text = [NSString stringWithFormat:@"%ld / %ld",(long)self.indexPath.row + 1,(long)_numberOfItems];
-    }else{
-        _pageControl.pageControl.text = [NSString stringWithFormat:@"%d / %ld",1,(long)_numberOfItems];
-    }
+    
+    _pageControl.pageControl.text = [NSString stringWithFormat:@"%d / %ld",1,(long)_numberOfItems];
     
 }
 
@@ -161,13 +148,8 @@
     if ([self.delegate respondsToSelector:@selector(zzbrowserPickerPhotoNum:)]) {
         _numberOfItems = [self.delegate zzbrowserPickerPhotoNum:self];
     }
-
-    //判断是否需要滚动到指定图片
-    if (self.indexPath != nil) {
-        _pageControl.pageControl.text = [NSString stringWithFormat:@"%ld / %ld",(long)self.indexPath.row + 1,(long)_numberOfItems];
-    }else{
-        _pageControl.pageControl.text = [NSString stringWithFormat:@"%d / %ld",1,(long)_numberOfItems];
-    }
+    
+    _pageControl.pageControl.text = [NSString stringWithFormat:@"%d / %ld",1,(long)_numberOfItems];
 }
 
 #pragma mark --- UICollectionviewDelegate or dataSource
@@ -187,36 +169,16 @@
     if (!cell) {
         cell = [[ZZBrowserPickerCell alloc]init];
     }
-
+    
     if ([[_photoDataArray objectAtIndex:indexPath.row] isKindOfClass:[ZZPhoto class]]) {
         //加载相册中的数据时实用
         ZZPhoto *photo = [_photoDataArray objectAtIndex:indexPath.row];
         [cell loadPHAssetItemForPics:photo.asset];
-    }else if ([[_photoDataArray objectAtIndex:indexPath.row] isKindOfClass:[NSString class]]){
-        //加载网络中的图片数据，图片地址使用
-        [cell.pics sd_setImageWithURL:[NSURL URLWithString:[_photoDataArray objectAtIndex:indexPath.row]]];
-    
-    }else if ([[_photoDataArray objectAtIndex:indexPath.row] isKindOfClass:[UIImage class]]){
-        //加载 UIImage 类型的数据
-        cell.pics.image = [_photoDataArray objectAtIndex:indexPath.row];
-    }else if ([[_photoDataArray objectAtIndex:indexPath.row] isKindOfClass:[ZZCamera class]]){
-        
-        ZZCamera *photo = [_photoDataArray objectAtIndex:indexPath.row];
-        cell.pics.image = photo.image;
     }
-    
-    
 
     return cell;
 }
 
-- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)index
-{
-    if (self.showAnimation == ShowAnimationOfPresent) {
-        [self dismissViewControllerAnimated:YES completion:nil];
-    }
-    
-}
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView
 {
@@ -230,31 +192,9 @@
     
 }
 
--(void)showIn:(UIViewController *)controller animation:(ShowAnimation)animation
+-(void)showIn:(UIViewController *)controller
 {
-    if (animation == ShowAnimationOfPush) {
-        
-        if (_isOpenAnimation == NO) {
-            [controller.navigationController pushViewController:self animated:YES];
-        }else{
-            controller.navigationController.delegate = self;
-            
-            [controller.navigationController pushViewController:self animated:YES];
-        }
-        
-    }else if (animation == ShowAnimationOfPresent){
-        if (_isOpenAnimation == NO) {
-            self.showAnimation = ShowAnimationOfPresent;
-            [controller presentViewController:self animated:YES completion:nil];
-        }else{
-            self.showAnimation = ShowAnimationOfPresent;
-            //设置动画效果
-            self.transitioningDelegate = self;
-
-            
-            [controller presentViewController:self animated:YES completion:nil];
-        }
-    }
+    [controller.navigationController pushViewController:self animated:YES];
 }
 
 
@@ -263,6 +203,14 @@
     // Dispose of any resources that can be recreated.
 }
 
+/*
+#pragma mark - Navigation
 
+// In a storyboard-based application, you will often want to do a little preparation before navigation
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    // Get the new view controller using [segue destinationViewController].
+    // Pass the selected object to the new view controller.
+}
+*/
 
 @end

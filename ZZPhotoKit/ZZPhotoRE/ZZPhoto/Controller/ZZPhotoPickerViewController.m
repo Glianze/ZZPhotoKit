@@ -11,12 +11,12 @@
 #import "ZZPhotoPickerViewController.h"
 #import "ZZPhotoDatas.h"
 #import "ZZPhotoPickerCell.h"
-#import "ZZBrowserPickerViewController.h"
+#import "ZZPhotoBrowerViewController.h"
 #import "ZZPhotoHud.h"
 #import "ZZAlumAnimation.h"
 #import "ZZPhoto.h"
 
-@interface ZZPhotoPickerViewController ()<UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout,ZZBrowserPickerDelegate>
+@interface ZZPhotoPickerViewController ()<UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout,ZZPhotoBrowerDataSource>
 
 @property (strong, nonatomic) NSMutableArray *photoArray;
 @property (strong, nonatomic) NSMutableArray *selectArray;
@@ -35,7 +35,7 @@
 @property (strong, nonatomic) UILabel *totalNumLabel;
 @property (strong, nonatomic) UILabel *totalRound;                     //小红点
 @property (strong, nonatomic) ZZPhotoDatas *datas;
-@property (strong, nonatomic) ZZBrowserPickerViewController *browserController;
+@property (strong, nonatomic) ZZPhotoBrowerViewController *browserController;
 @property (strong, nonatomic) UILabel *numSelectLabel;
 @end
 
@@ -52,15 +52,14 @@
 #pragma SETUP backButtonUI Method
 - (UIBarButtonItem *)backBtn{
     if (!_backBtn) {
-        UIButton *button = [[UIButton alloc]initWithFrame:CGRectMake(0, 0, 50, 44)];
-        [button addTarget:self action:@selector(back) forControlEvents:UIControlEventTouchUpInside];
-        button.titleLabel.font = [UIFont systemFontOfSize:17.0f];
-        [button.titleLabel setFont:[UIFont fontWithName:@"Helvetica-Bold" size:17]];
-        [button setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-        [button setTitle:@"返回" forState:UIControlStateNormal];
-        [button setTitleColor:[UIColor blueColor] forState:UIControlStateNormal];
-        
-        _backBtn = [[UIBarButtonItem alloc] initWithCustomView:button];
+
+        UIButton *back_btn = [[UIButton alloc]initWithFrame:CGRectMake(0, 0, 45, 44)];
+        [back_btn setImage:[UIImage imageNamed:@"back_button_normal.png"] forState:UIControlStateNormal];
+        [back_btn setImage:[UIImage imageNamed:@"back_button_high.png"] forState:UIControlStateHighlighted];
+        back_btn.frame = CGRectMake(0, 0, 45, 44);
+        [back_btn addTarget:self action:@selector(back) forControlEvents:UIControlEventTouchUpInside];
+
+        _backBtn = [[UIBarButtonItem alloc] initWithCustomView:back_btn];
         
     }
     return _backBtn;
@@ -163,10 +162,10 @@
     if (self.selectArray.count == 0) {
         [self showPhotoPickerAlertView:@"提醒" message:@"您还没有选中图片，不需要预览"];
     }else{
-        self.browserController = [[ZZBrowserPickerViewController alloc]init];
+        self.browserController = [[ZZPhotoBrowerViewController alloc]init];
         self.browserController.delegate = self;
         [self.browserController reloadData];
-        [self.browserController showIn:self animation:ShowAnimationOfPresent];
+        [self.browserController showIn:self];
     }
 
 }
@@ -253,6 +252,8 @@
 
 -(void)setupCollectionViewUI
 {
+    self.edgesForExtendedLayout = UIRectEdgeNone;
+    
     UICollectionViewFlowLayout *flowLayout = [[UICollectionViewFlowLayout alloc]init];
     
     CGFloat photoSize = ([UIScreen mainScreen].bounds.size.width - 3) / 4;
@@ -324,11 +325,11 @@
 -(void)loadPhotoData
 {
     if (_isAlubSeclect == YES) {
-        
         self.photoArray = [self.datas GetPhotoAssets:_fetch];
         [self refreshTotalNumLabelData:_photoArray.count];
 
     }else{
+        self.navigationItem.title = @"相机胶卷";
         self.photoArray = [self.datas GetPhotoAssets:[self.datas GetCameraRollFetchResul]];
         [self refreshTotalNumLabelData:_photoArray.count];
     }
@@ -429,12 +430,12 @@
     return CGSizeMake(self.view.frame.size.width, 60);
 }
 #pragma mark --- ZZBrowserPickerDelegate
--(NSInteger)zzbrowserPickerPhotoNum:(ZZBrowserPickerViewController *)controller
+-(NSInteger)zzbrowserPickerPhotoNum:(ZZPhotoBrowerViewController *)controller
 {
     return self.selectArray.count;
 }
 
--(NSArray *)zzbrowserPickerPhotoContent:(ZZBrowserPickerViewController *)controller
+-(NSArray *)zzbrowserPickerPhotoContent:(ZZPhotoBrowerViewController *)controller
 {
     return self.selectArray;
 }

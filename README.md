@@ -2,24 +2,29 @@
 ##说明
 
 * 此开源目前接近于成熟状态，不喜欢的大神们还望轻虐。
-* 目前只支持 IOS 8.0 及以上系统使用。
-* 框架代码以及功能正在养成中。
+* 注意此框架只支持 IOS 8.0 及以上系统使用。
+* 注意由于工作原因后续不做IOS7适配了，IOS7占有率也比较低了，所以也不考虑后续再做了。
+* 这次升级了版本之后以后可能不会有太大变动的。
 * 相册多选基于最新的 Photos 框架。
 * 相机连续拍摄基于AVFundation 框架。
 * 图片浏览器支持 SDWebImage 加载图片
 * 欢迎大家使用，欢迎大家Star
 
+###告诉我您的APP，使用到我框架的把APP名字告诉我，谢谢哦。单纯看看使用率。(*^__^*)
 ###有什么不明白的地方，或者哪里需要改进的可以联系我
 ###联系方式
 ###关注微博：袁亮_  *** QQ:412016060
 
-##项目Gif介绍
+##项目介绍
 ![image](https://github.com/ACEYL/ZZPhotoKit/raw/master/image/demonstrate.gif)
+![image](https://github.com/ACEYL/ZZPhotoKit/raw/master/image/zz_camera_intro.jpg)
+
 
 ##更新内容
 
-* 修复图片浏览器浏览图片卡顿问题。
 * 框架中加入两个model，ZZPhoto、ZZCamera。里面包含图片，图片地址和照片创建时间。详见demo
+* 更新照片多选器中图片浏览器
+* 更新自定义相机中图片浏览器
 * 更新ZZCamera文件夹下目录结构
 * 修复图片浏览器不定位滚动问题。
 * 新增ZZCameraController自动对焦视图自动消失功能。

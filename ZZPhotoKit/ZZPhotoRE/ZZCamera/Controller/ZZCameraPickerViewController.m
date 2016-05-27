@@ -9,11 +9,11 @@
 #import "ZZCameraPickerViewController.h"
 #import "ZZCameraPickerCell.h"
 #import "ZZCameraFocusView.h"
-#import "ZZBrowserPickerViewController.h"
+#import "ZZCameraBrowerViewController.h"
 #import "ZZCamera.h"
 typedef void(^codeBlock)();
 
-@interface ZZCameraPickerViewController()<UICollectionViewDelegate,UICollectionViewDataSource,ZZCameraFocusDelegate,ZZBrowserPickerDelegate>
+@interface ZZCameraPickerViewController()<UICollectionViewDelegate,UICollectionViewDataSource,ZZCameraFocusDelegate,ZZCameraBrowerDataSource>
 
 
 @property (strong, nonatomic) NSMutableArray<ZZCamera *> *cameraArray;
@@ -226,19 +226,20 @@ typedef void(^codeBlock)();
 #pragma UICollectionView --- Deleate
 -(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    ZZBrowserPickerViewController *browserController = [[ZZBrowserPickerViewController alloc]init];
+    ZZCameraBrowerViewController *browserController = [[ZZCameraBrowerViewController alloc]init];
     browserController.delegate = self;
     browserController.indexPath = indexPath;
-    [browserController showIn:self animation:ShowAnimationOfPresent];
+    [browserController setModalTransitionStyle:UIModalTransitionStyleCrossDissolve];
+    [browserController showIn:self];
 }
 
 #pragma mark --- ZZBrowserPickerDelegate
--(NSInteger)zzbrowserPickerPhotoNum:(ZZBrowserPickerViewController *)controller
+-(NSInteger)zzbrowserPickerPhotoNum:(ZZCameraBrowerViewController *)controller
 {
     return self.cameraArray.count;;
 }
 
--(NSArray *)zzbrowserPickerPhotoContent:(ZZBrowserPickerViewController *)controller
+-(NSArray *)zzbrowserPickerPhotoContent:(ZZCameraBrowerViewController *)controller
 {
     return self.cameraArray;
 }
@@ -323,12 +324,7 @@ typedef void(^codeBlock)();
     //get UIImage
     [self.captureOutput captureStillImageAsynchronouslyFromConnection:videoConnection completionHandler:
      ^(CMSampleBufferRef imageSampleBuffer, NSError *error) {
-         CFDictionaryRef exifAttachments =
-         CMGetAttachment(imageSampleBuffer, kCGImagePropertyExifDictionary, NULL);
-         if (exifAttachments) {
-             // Do something with the attachments.
-         }
-         
+
          // Continue as appropriate.
          NSData *imageData = [AVCaptureStillImageOutput jpegStillImageNSDataRepresentation:imageSampleBuffer];
          UIImage *t_image = [UIImage imageWithData:imageData];
@@ -337,6 +333,7 @@ typedef void(^codeBlock)();
          //拍摄后的照片
          t_image = [self fixOrientation:t_image];
          
+         NSLog(@"%@",t_image);
          if (self.isSavelocal == YES) {
              UIImageWriteToSavedPhotosAlbum(t_image, self, @selector(imageSavedToPhotosAlbum:didFinishSavingWithError:contextInfo:), nil);
          }
