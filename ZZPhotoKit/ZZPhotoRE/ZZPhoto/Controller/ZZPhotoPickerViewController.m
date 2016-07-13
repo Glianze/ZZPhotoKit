@@ -225,6 +225,29 @@
     return _totalRound;
 }
 
+
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    
+    [self initInterUI];
+    
+    [self loadPhotoData];
+    // 更新UI
+    [self setupCollectionViewUI];
+    //创建底部工具栏
+    [self setUpTabbar];
+    
+
+}
+
+- (void)initInterUI
+{
+    self.automaticallyAdjustsScrollViewInsets = NO;
+    self.view.backgroundColor = [UIColor whiteColor];
+    self.navigationItem.leftBarButtonItem = self.backBtn;
+    self.navigationItem.rightBarButtonItem = self.cancelBtn;
+}
+
 -(void)setUpTabbar
 {
     UIView *view = [[UIView alloc]initWithFrame:CGRectZero];
@@ -234,18 +257,21 @@
     [view addSubview:self.previewBtn];
     [view addSubview:self.totalRound];
     [self.view addSubview:view];
+    NSLayoutConstraint *tab_left = [NSLayoutConstraint constraintWithItem:self.view attribute:NSLayoutAttributeLeft relatedBy:NSLayoutRelationEqual toItem:view attribute:NSLayoutAttributeLeft multiplier:1 constant:0.0f];
     
-    UIView *viewLine = [[UIView alloc]initWithFrame:CGRectMake(0, 0, ZZ_VW, 1)];
-    viewLine.backgroundColor = ZZ_RGB(230, 230, 230);
-    [view addSubview:viewLine];
+    NSLayoutConstraint *tab_right = [NSLayoutConstraint constraintWithItem:self.view attribute:NSLayoutAttributeRight relatedBy:NSLayoutRelationEqual toItem:view attribute:NSLayoutAttributeRight multiplier:1 constant:0.0f];
     
     NSLayoutConstraint *tab_bottom = [NSLayoutConstraint constraintWithItem:_picsCollection attribute:NSLayoutAttributeBottom relatedBy:NSLayoutRelationEqual toItem:view attribute:NSLayoutAttributeTop multiplier:1 constant:0.0f];
     
-    NSLayoutConstraint *tab_width = [NSLayoutConstraint constraintWithItem:view attribute:NSLayoutAttributeWidth relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeNotAnAttribute multiplier:1 constant:ZZ_VW];
-    
     NSLayoutConstraint *tab_height = [NSLayoutConstraint constraintWithItem:view attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeNotAnAttribute multiplier:1 constant:44];
     
-    [self.view addConstraints:@[tab_bottom,tab_width,tab_height]];
+    [self.view addConstraints:@[tab_left,tab_right,tab_bottom,tab_height]];
+    
+    
+    UIView *viewLine = [[UIView alloc]initWithFrame:CGRectMake(0, 0, ZZ_VW, 1)];
+    viewLine.backgroundColor = ZZ_RGB(230, 230, 230);
+    viewLine.translatesAutoresizingMaskIntoConstraints = NO;
+    [view addSubview:viewLine];
     
     
 }
@@ -260,7 +286,6 @@
     flowLayout.minimumInteritemSpacing = 1.0;//item 之间的行的距离
     flowLayout.minimumLineSpacing = 1.0;//item 之间竖的距离
     flowLayout.itemSize = (CGSize){photoSize,photoSize};
-    //        self.sectionInset = UIEdgeInsetsMake(0, 2, 0, 0);
     flowLayout.scrollDirection = UICollectionViewScrollDirectionVertical;
     
     _picsCollection = [[UICollectionView alloc]initWithFrame:CGRectZero collectionViewLayout:flowLayout];
@@ -291,35 +316,11 @@
 -(void)viewDidLayoutSubviews
 {
     [super viewDidLayoutSubviews];
-
+    
     //滚动到底部
     if (self.photoArray.count != 0) {
         [_picsCollection scrollToItemAtIndexPath:[NSIndexPath indexPathForItem:self.photoArray.count - 1 inSection:0] atScrollPosition:UICollectionViewScrollPositionBottom animated:NO];
     }
-}
-
-
-
-- (void)initInterUI
-{
-    self.automaticallyAdjustsScrollViewInsets = NO;
-    self.view.backgroundColor = [UIColor whiteColor];
-    self.navigationItem.leftBarButtonItem = self.backBtn;
-    self.navigationItem.rightBarButtonItem = self.cancelBtn;
-}
-
-- (void)viewDidLoad {
-    [super viewDidLoad];
-    
-    [self initInterUI];
-    
-    [self loadPhotoData];
-    // 更新UI
-    [self setupCollectionViewUI];
-    //创建底部工具栏
-    [self setUpTabbar];
-    
-
 }
 
 -(void)loadPhotoData

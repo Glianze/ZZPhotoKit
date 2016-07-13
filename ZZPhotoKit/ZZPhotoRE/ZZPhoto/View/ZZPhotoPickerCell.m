@@ -16,7 +16,7 @@
         
         CGFloat photoSize = ([UIScreen mainScreen].bounds.size.width - 3) / 4;
         
-        _photo = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, photoSize, photoSize)];
+        _photo = [[UIImageView alloc]initWithFrame:self.bounds];
         
         _photo.layer.masksToBounds = YES;
         
@@ -25,11 +25,9 @@
         [self.contentView addSubview:_photo];
         
         
-        CGFloat picViewSize = ([UIScreen mainScreen].bounds.size.width - 3) / 4;
+        CGFloat btnSize = self.frame.size.width / 4;
         
-        CGFloat btnSize = picViewSize / 4;
-        
-        _selectBtn = [[UIButton alloc]initWithFrame:CGRectMake(picViewSize - btnSize - 5, 5, btnSize, btnSize)];
+        _selectBtn = [[UIButton alloc]initWithFrame:CGRectMake(self.frame.size.width - btnSize - 5, 5, btnSize, btnSize)];
         
         [self.contentView addSubview:_selectBtn];
         

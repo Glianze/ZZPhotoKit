@@ -121,7 +121,6 @@
         [photoController showIn:self result:^(id responseObject){
             
             NSArray *array = (NSArray *)responseObject;
-            NSLog(@"%@",responseObject);
             
             [self.picArray addObjectsFromArray:array];
 //            NSLog(@"重载");
@@ -188,12 +187,19 @@
         photoCell = [[PicsCell alloc]init];
     }
     if ([[self.picArray objectAtIndex:indexPath.row] isKindOfClass:[ZZPhoto class]]) {
+        
+        //从数组里面把model取出来
         ZZPhoto *photo = [self.picArray objectAtIndex:indexPath.row];
-        NSLog(@"%@",photo.originImage);
+        
+        //用photo对象中的originImage属性来展示图片
         photoCell.photo.image = photo.originImage;
+        NSLog(@"%@",photo.originImage);
+        
     }else if([[self.picArray objectAtIndex:indexPath.row] isKindOfClass:[ZZCamera class]]){
+        
         ZZCamera *camera = [self.picArray objectAtIndex:indexPath.row];
         photoCell.photo.image = camera.image;
+        
     }
     
     

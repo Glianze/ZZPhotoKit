@@ -28,4 +28,5 @@
 @property (nonatomic, copy)   NSDate *createDate;
 
 +(UIImage *) fetchThumbImageWithAsset:(PHAsset *)asset;
+
 @end
