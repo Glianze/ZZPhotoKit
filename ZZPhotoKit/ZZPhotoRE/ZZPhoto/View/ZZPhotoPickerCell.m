@@ -7,7 +7,7 @@
 //
 
 #import "ZZPhotoPickerCell.h"
-
+#import "ZZAlumAnimation.h"
 @implementation ZZPhotoPickerCell
 -(instancetype)initWithFrame:(CGRect)frame
 {
@@ -27,30 +27,41 @@
         CGFloat btnSize = self.frame.size.width / 4;
         
         _selectBtn = [[UIButton alloc]initWithFrame:CGRectMake(self.frame.size.width - btnSize - 5, 5, btnSize, btnSize)];
-        
+        [_selectBtn addTarget:self action:@selector(selectPhotoButtonMethod:) forControlEvents:UIControlEventTouchUpInside];
         [self.contentView addSubview:_selectBtn];
         
     }
     return self;
 }
 
-//记录按钮选中和非选中的状态
--(void)selectBtnStage:(NSMutableArray *)selectArray existence:(ZZPhoto *)photo
+-(void) selectPhotoButtonMethod:(UIButton *)sender
 {
-    if ([selectArray containsObject:photo]) {
-        _selectBtn.selected = YES;
+    [[ZZAlumAnimation sharedAnimation] selectAnimation:sender];
+    self.selectBlock();
+    
+}
+
+-(void)setIsSelect:(BOOL)isSelect
+{
+    if (isSelect == YES) {
         [_selectBtn setImage:Pic_Btn_Selected forState:UIControlStateNormal];
     }else{
-        _selectBtn.selected = NO;
         [_selectBtn setImage:Pic_btn_UnSelected forState:UIControlStateNormal];
     }
 }
 
--(void)loadPhotoData:(ZZPhoto *)assetItem
-{
-    if ([assetItem isKindOfClass:[ZZPhoto class]]) {
 
-        [[PHImageManager defaultManager] requestImageForAsset:assetItem.asset targetSize:CGSizeMake(200, 200) contentMode:PHImageContentModeAspectFit options:nil resultHandler:^(UIImage *result, NSDictionary *info){
+-(void)loadPhotoData:(ZZPhoto *)photo
+{
+    if (photo.isSelect == YES) {
+        [_selectBtn setImage:Pic_Btn_Selected forState:UIControlStateNormal];
+    }else{
+        [_selectBtn setImage:Pic_btn_UnSelected forState:UIControlStateNormal];
+    }
+    
+    if ([photo isKindOfClass:[ZZPhoto class]]) {
+
+        [[PHImageManager defaultManager] requestImageForAsset:photo.asset targetSize:CGSizeMake(200, 200) contentMode:PHImageContentModeAspectFit options:nil resultHandler:^(UIImage *result, NSDictionary *info){
             self.photo.image = result;
             
         }];

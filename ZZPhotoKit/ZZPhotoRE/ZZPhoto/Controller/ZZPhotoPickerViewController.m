@@ -24,9 +24,6 @@
 
 @property (strong, nonatomic) UICollectionView *picsCollection;
 
-@property (strong, nonatomic) UIButton *selectBtn;
-@property (assign, nonatomic) BOOL isSelect;
-
 @property (strong, nonatomic) UIBarButtonItem *backBtn;
 @property (strong, nonatomic) UIBarButtonItem *cancelBtn;
 
@@ -344,37 +341,44 @@
 
 
 #pragma mark 关键位置，选中的在数组中添加，取消的从数组中减少
--(void)selectPicBtn:(UIButton *)button
+-(void)selectPhotoAtIndex:(NSInteger)index
 {
-    NSInteger index = button.tag;
-    if (button.selected == NO) {
-        [[ZZAlumAnimation sharedAnimation] selectAnimation:button];
-        if (self.selectArray.count + 1 > _selectNum) {
-            [self showSelectPhotoAlertView:_selectNum];
-        }else{
-            [[ZZAlumAnimation sharedAnimation] roundAnimation:self.totalRound];
-            ZZPhoto *photo = [self.photoArray objectAtIndex:index];
-            if ([self.datas CheckIsiCloudAsset:photo.asset] == YES) {
-                [[ZZPhotoAlert sharedAlert] showPhotoAlert];
+    ZZPhoto *photo = [self.photoArray objectAtIndex:index];
+    
+    if (photo != nil) {
+        if (photo.isSelect == NO) {
+            
+            if (self.selectArray.count + 1 > _selectNum) {
+                [self showSelectPhotoAlertView:_selectNum];
             }else{
-                [self.selectArray addObject:[self.photoArray objectAtIndex:index]];
-                self.totalRound.text = [NSString stringWithFormat:@"%lu",self.selectArray.count];
-                [button setImage:Pic_Btn_Selected forState:UIControlStateNormal];
-                button.selected = YES;
+                [[ZZAlumAnimation sharedAnimation] roundAnimation:self.totalRound];
+                
+                if ([self.datas CheckIsiCloudAsset:photo.asset] == YES) {
+                    [[ZZPhotoAlert sharedAlert] showPhotoAlert];
+                }else{
+                    photo.isSelect = YES;
+                    [self changeSelectButtonStateAtIndex:index withPhoto:photo];
+                    [self.selectArray addObject:[self.photoArray objectAtIndex:index]];
+                    self.totalRound.text = [NSString stringWithFormat:@"%lu",self.selectArray.count];
+                }
             }
+        }else{
+            photo.isSelect = NO;
+            [self changeSelectButtonStateAtIndex:index withPhoto:photo];
+            [self.selectArray removeObject:[self.photoArray objectAtIndex:index]];
+            [[ZZAlumAnimation sharedAnimation] roundAnimation:self.totalRound];
+            self.totalRound.text = [NSString stringWithFormat:@"%lu",self.selectArray.count];
+            
         }
-    }else{
-        [[ZZAlumAnimation sharedAnimation] selectAnimation:button];
-        [self.selectArray removeObject:[self.photoArray objectAtIndex:index]];
-        [[ZZAlumAnimation sharedAnimation] roundAnimation:self.totalRound];
-        self.totalRound.text = [NSString stringWithFormat:@"%lu",self.selectArray.count];
-        [button setImage:Pic_btn_UnSelected forState:UIControlStateNormal];
-        button.selected = NO;
     }
+    
 }
 
-
-
+-(void)changeSelectButtonStateAtIndex:(NSInteger)index withPhoto:(ZZPhoto *)photo
+{
+    ZZPhotoPickerCell *cell = (ZZPhotoPickerCell *)[_picsCollection cellForItemAtIndexPath:[NSIndexPath indexPathForItem:index inSection:0]];
+    cell.isSelect = photo.isSelect;
+}
 
 #pragma UICollectionView --- Datasource
 
@@ -393,11 +397,11 @@
     ZZPhotoPickerCell *photoCell = [collectionView dequeueReusableCellWithReuseIdentifier:@"PhotoPickerCell" forIndexPath:indexPath];
     
     
-    photoCell.selectBtn.tag = indexPath.row;
-    [photoCell.selectBtn addTarget:self action:@selector(selectPicBtn:) forControlEvents:UIControlEventTouchUpInside];
+    photoCell.selectBlock = ^(){
+        [self selectPhotoAtIndex:indexPath.row];
+    };
     
     [photoCell loadPhotoData:[self.photoArray objectAtIndex:indexPath.row]];
-    [photoCell selectBtnStage:self.selectArray existence:[self.photoArray objectAtIndex:indexPath.row]];
     
     return photoCell;
 }

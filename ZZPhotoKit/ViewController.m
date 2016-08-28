@@ -81,7 +81,7 @@
     [_collectionView registerClass:[PicsCell class] forCellWithReuseIdentifier:@"PhotoCell"];
     _collectionView.delegate = self;
     _collectionView.dataSource = self;
-    _collectionView.backgroundColor = [UIColor redColor];
+    _collectionView.backgroundColor = [UIColor whiteColor];
     [_collectionView setUserInteractionEnabled:YES];
     [self.view addSubview:_collectionView];
     

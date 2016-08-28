@@ -9,12 +9,16 @@
 #import <UIKit/UIKit.h>
 #import "ZZResourceConfig.h"
 #import "ZZPhoto.h"
+
 @interface ZZPhotoPickerCell : UICollectionViewCell
 
 @property(strong,nonatomic) UIImageView *photo;
 @property(strong,nonatomic) UIButton *selectBtn;
 
+@property(strong,nonatomic) void(^selectBlock)();
 
--(void)loadPhotoData:(ZZPhoto *)assetItem;
--(void)selectBtnStage:(NSMutableArray *)selectArray existence:(ZZPhoto *)photo;
+@property(assign,nonatomic) BOOL isSelect;
+
+-(void)loadPhotoData:(ZZPhoto *)photo;
+
 @end
