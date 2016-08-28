@@ -19,7 +19,6 @@
 ![image](https://github.com/ACEYL/ZZPhotoKit/raw/master/image/demonstrate.gif)
 ![image](https://github.com/ACEYL/ZZPhotoKit/raw/master/image/zz_camera_intro.jpg)
 
-
 ##更新内容
 
 * 本次更新，重要事情说三遍
