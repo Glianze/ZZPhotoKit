@@ -359,7 +359,7 @@
                     photo.isSelect = YES;
                     [self changeSelectButtonStateAtIndex:index withPhoto:photo];
                     [self.selectArray addObject:[self.photoArray objectAtIndex:index]];
-                    self.totalRound.text = [NSString stringWithFormat:@"%lu",self.selectArray.count];
+                    self.totalRound.text = [NSString stringWithFormat:@"%lu",(unsigned long)self.selectArray.count];
                 }
             }
         }else{
@@ -367,7 +367,7 @@
             [self changeSelectButtonStateAtIndex:index withPhoto:photo];
             [self.selectArray removeObject:[self.photoArray objectAtIndex:index]];
             [[ZZAlumAnimation sharedAnimation] roundAnimation:self.totalRound];
-            self.totalRound.text = [NSString stringWithFormat:@"%lu",self.selectArray.count];
+            self.totalRound.text = [NSString stringWithFormat:@"%lu",(unsigned long)self.selectArray.count];
             
         }
     }
