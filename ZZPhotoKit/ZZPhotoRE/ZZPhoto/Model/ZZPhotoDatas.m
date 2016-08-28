@@ -61,6 +61,7 @@
     
     PHFetchResult *result = [self GetFetchResult:assetCollection];
     [result enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        
         if (((PHAsset *)obj).mediaType == PHAssetMediaTypeImage) {
             [arr addObject:obj];
         }
@@ -87,6 +88,7 @@
         }
         
     }
+    
     return dataArray;
 }
 
@@ -129,5 +131,27 @@
 
     }
     
+}
+
+-(BOOL) CheckIsiCloudAsset:(PHAsset *)asset
+{
+    CGFloat photoWidth = [UIScreen mainScreen].bounds.size.width;
+    
+    CGFloat aspectRatio = asset.pixelWidth / (CGFloat)asset.pixelHeight;
+    CGFloat multiple = [UIScreen mainScreen].scale;
+    CGFloat pixelWidth = photoWidth * multiple;
+    CGFloat pixelHeight = pixelWidth / aspectRatio;
+    
+    PHImageRequestOptions *options = [[PHImageRequestOptions alloc] init];
+    options.resizeMode = PHImageRequestOptionsResizeModeFast;
+    options.synchronous = YES;
+    __block BOOL isICloudAsset = NO;
+    [[PHImageManager defaultManager] requestImageForAsset:asset targetSize:CGSizeMake(pixelWidth, pixelHeight) contentMode:PHImageContentModeAspectFit options:options resultHandler:^(UIImage *result, NSDictionary *info) {
+        if([[info objectForKey:PHImageResultIsInCloudKey] boolValue]) {
+            isICloudAsset = YES;
+        }
+    }];
+    
+    return isICloudAsset;
 }
 @end

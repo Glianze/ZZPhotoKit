@@ -26,6 +26,10 @@
    照片保存到相册中的时间
  */
 @property (nonatomic, copy)   NSDate *createDate;
+/**
+   判断该图片是否选中
+ */
+@property (nonatomic, assign) BOOL isSelect;
 
 +(UIImage *) fetchThumbImageWithAsset:(PHAsset *)asset;
 

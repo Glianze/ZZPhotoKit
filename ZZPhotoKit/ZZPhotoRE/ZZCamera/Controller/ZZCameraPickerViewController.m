@@ -332,8 +332,7 @@ typedef void(^codeBlock)();
          NSDate *createDate = [NSDate date];
          //拍摄后的照片
          t_image = [self fixOrientation:t_image];
-         
-         NSLog(@"%@",t_image);
+
          if (self.isSavelocal == YES) {
              UIImageWriteToSavedPhotosAlbum(t_image, self, @selector(imageSavedToPhotosAlbum:didFinishSavingWithError:contextInfo:), nil);
          }
@@ -351,7 +350,7 @@ typedef void(^codeBlock)();
 
 -(void)imageSavedToPhotosAlbum:(UIImage *)image didFinishSavingWithError:(NSError *)error contextInfo:(void *)contextInfo
 {
-    NSLog(@"调用");
+
 }
 
 

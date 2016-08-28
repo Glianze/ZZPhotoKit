@@ -13,6 +13,7 @@
 #import "ZZPhotoPickerCell.h"
 #import "ZZPhotoBrowerViewController.h"
 #import "ZZPhotoHud.h"
+#import "ZZPhotoAlert.h"
 #import "ZZAlumAnimation.h"
 #import "ZZPhoto.h"
 
@@ -351,11 +352,16 @@
         if (self.selectArray.count + 1 > _selectNum) {
             [self showSelectPhotoAlertView:_selectNum];
         }else{
-            [self.selectArray addObject:[self.photoArray objectAtIndex:index]];
             [[ZZAlumAnimation sharedAnimation] roundAnimation:self.totalRound];
-            self.totalRound.text = [NSString stringWithFormat:@"%lu",self.selectArray.count];
-            [button setImage:Pic_Btn_Selected forState:UIControlStateNormal];
-            button.selected = YES;
+            ZZPhoto *photo = [self.photoArray objectAtIndex:index];
+            if ([self.datas CheckIsiCloudAsset:photo.asset] == YES) {
+                [[ZZPhotoAlert sharedAlert] showPhotoAlert];
+            }else{
+                [self.selectArray addObject:[self.photoArray objectAtIndex:index]];
+                self.totalRound.text = [NSString stringWithFormat:@"%lu",self.selectArray.count];
+                [button setImage:Pic_Btn_Selected forState:UIControlStateNormal];
+                button.selected = YES;
+            }
         }
     }else{
         [[ZZAlumAnimation sharedAnimation] selectAnimation:button];

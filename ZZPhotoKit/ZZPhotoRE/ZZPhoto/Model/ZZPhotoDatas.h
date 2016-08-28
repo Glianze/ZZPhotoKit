@@ -33,4 +33,8 @@
  */
 -(void) GetImageObject:(id)asset complection:(void (^)(UIImage *,NSURL *))complection;
 
+/*
+ *    检测是否为iCloud资源
+ */
+-(BOOL) CheckIsiCloudAsset:(PHAsset *)asset;
 @end

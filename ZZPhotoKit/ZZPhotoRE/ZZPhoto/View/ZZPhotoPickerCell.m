@@ -14,7 +14,6 @@
     self = [super initWithFrame:frame];
     if (self) {
         
-        CGFloat photoSize = ([UIScreen mainScreen].bounds.size.width - 3) / 4;
         
         _photo = [[UIImageView alloc]initWithFrame:self.bounds];
         

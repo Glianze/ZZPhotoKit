@@ -81,7 +81,7 @@
     [_collectionView registerClass:[PicsCell class] forCellWithReuseIdentifier:@"PhotoCell"];
     _collectionView.delegate = self;
     _collectionView.dataSource = self;
-    _collectionView.backgroundColor = [UIColor whiteColor];
+    _collectionView.backgroundColor = [UIColor redColor];
     [_collectionView setUserInteractionEnabled:YES];
     [self.view addSubview:_collectionView];
     
@@ -113,6 +113,8 @@
 {
     if (indexPath.row == 0) {
         
+        __unsafe_unretained __typeof(self) weakSelf = self;
+        
         ZZPhotoController *photoController = [[ZZPhotoController alloc]init];
         photoController.selectPhotoOfMax = 8;
         //设置相册中完成按钮旁边小圆点颜色。
@@ -122,7 +124,7 @@
             
             NSArray *array = (NSArray *)responseObject;
             
-            [self.picArray addObjectsFromArray:array];
+            [weakSelf.picArray addObjectsFromArray:array];
 //            NSLog(@"重载");
             [_collectionView reloadData];
             
@@ -193,7 +195,7 @@
         
         //用photo对象中的originImage属性来展示图片
         photoCell.photo.image = photo.originImage;
-        NSLog(@"%@",photo.originImage);
+
         
     }else if([[self.picArray objectAtIndex:indexPath.row] isKindOfClass:[ZZCamera class]]){
         

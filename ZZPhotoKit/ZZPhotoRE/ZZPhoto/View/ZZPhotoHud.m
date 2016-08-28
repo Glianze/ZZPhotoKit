@@ -21,9 +21,10 @@
 +(ZZPhotoHud *)sharedHud
 {
     static ZZPhotoHud *_photoHud = nil;
-    if (_photoHud == nil) {
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
         _photoHud = [[ZZPhotoHud alloc]init];
-    }
+    });
     return _photoHud;
 }
 
