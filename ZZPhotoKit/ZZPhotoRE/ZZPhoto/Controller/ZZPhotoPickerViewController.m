@@ -126,7 +126,8 @@
         [self dismissViewControllerAnimated:YES completion:nil];
     }else{
         [ZZPhotoHud showActiveHud];
-        NSMutableArray<ZZPhoto *> *photos = [NSMutableArray array];
+        __block NSMutableArray<ZZPhoto *> *photos = [NSMutableArray array];
+        __unsafe_unretained __typeof(self) weakSelf = self;
         for (int i = 0; i < self.selectArray.count; i++) {
             ZZPhoto *photo = [self.selectArray objectAtIndex:i];
             [self.datas GetImageObject:photo.asset complection:^(UIImage *image,NSURL *imageUrl) {
@@ -139,15 +140,15 @@
                     model.createDate = photo.asset.creationDate;
                     [photos addObject:model];
                 }
-                if (photos.count < self.selectArray.count){
+                if (photos.count < weakSelf.selectArray.count){
                     return;
                 }
-                if (self.PhotoResult) {
-                    self.PhotoResult(photos);
+                if (weakSelf.PhotoResult) {
+                    weakSelf.PhotoResult(photos);
                 }
                 
                 [ZZPhotoHud hideActiveHud];
-                [self dismissViewControllerAnimated:YES completion:nil];
+                [weakSelf dismissViewControllerAnimated:YES completion:nil];
             }];
         }
  
@@ -358,7 +359,7 @@
                 }else{
                     photo.isSelect = YES;
                     [self changeSelectButtonStateAtIndex:index withPhoto:photo];
-                    [self.selectArray addObject:[self.photoArray objectAtIndex:index]];
+                    [self.selectArray insertObject:[self.photoArray objectAtIndex:index] atIndex:self.selectArray.count];
                     self.totalRound.text = [NSString stringWithFormat:@"%lu",(unsigned long)self.selectArray.count];
                 }
             }

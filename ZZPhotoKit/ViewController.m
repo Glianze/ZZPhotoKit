@@ -113,7 +113,7 @@
 {
     if (indexPath.row == 0) {
         
-        __unsafe_unretained __typeof(self) weakSelf = self;
+        
         
         ZZPhotoController *photoController = [[ZZPhotoController alloc]init];
         photoController.selectPhotoOfMax = 8;
@@ -121,10 +121,10 @@
 //        photoController.roundColor = [UIColor greenColor];
         
         [photoController showIn:self result:^(id responseObject){
-            
+
             NSArray *array = (NSArray *)responseObject;
             
-            [weakSelf.picArray addObjectsFromArray:array];
+            [self.picArray addObjectsFromArray:array];
 //            NSLog(@"重载");
             [_collectionView reloadData];
             
