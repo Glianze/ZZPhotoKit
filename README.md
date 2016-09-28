@@ -13,7 +13,7 @@
 ###告诉我您的APP，使用到我框架的把APP名字告诉我，谢谢哦。单纯看看使用率。(*^__^*)
 ###有什么不明白的地方，或者哪里需要改进的可以联系我
 ###联系方式
-###关注微博：袁亮_  *** QQ:412016060
+###关注微博：袁亮_
 
 ##项目介绍
 ![image](https://github.com/ACEYL/ZZPhotoKit/raw/master/image/demonstrate.gif)
@@ -21,11 +21,12 @@
 
 ##更新内容
 
-* 本次更新，重要事情说三遍
-* 加入iCloud图片资源处理
-* 加入iCloud图片资源处理
-* 加入iCloud图片资源处理
-* 选择方法更改，ZZPhoto中加入选择状态处理。
+* iOS 10适配框架
+* info.plist文件中添加相册与相机的权限
+* 相册权限 Privacy - Photo Library Usage Description
+* 相机权限 Privacy - Camera Usage Description
+* 在iOS 10 使用时，如不添加如上权限则会导致崩溃闪退。
+![image](https://github.com/ACEYL/ZZPhotoKit/raw/master/image/privacy_use.png)
 
 ##使用方法
 
@@ -47,12 +48,11 @@ ZZPhotoController *photoController = [[ZZPhotoController alloc]init];
 photoController.selectPhotoOfMax = 5;
 
 [photoController showIn:self result:^(id responseObject){
+	//responseObject 中元素类型为 ZZPhoto
 	//返回结果集
 	NSLog(@"%@",responseObject);
 	NSArray *array = (NSArray *)responseObject;
 
-	UIImage *image = [array objectAtIndex:0];
-	_imageView.image = image;
 }];
 ```
 
@@ -64,12 +64,10 @@ cameraController.takePhotoOfMax = 8;
 //设置图片返回类型 （下面例子为缩略图）
 cameraController.imageType = ZZImageTypeOfThumb;
 [cameraController showIn:self result:^(id responseObject){
+	//responseObject 中元素类型为 ZZCamera
 	//返回结果集
 	NSLog(@"%@",responseObject);
 	NSArray *array = (NSArray *)responseObject;
-
-	UIImage *image = [array objectAtIndex:0];
-	_imageView.image = image;
 }];
 
 ```
