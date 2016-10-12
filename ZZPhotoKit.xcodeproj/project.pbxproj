@@ -37,6 +37,7 @@
 		1C94AD4B1C3A7DC800B26FAE /* scv5.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 1C94AD461C3A7DC800B26FAE /* scv5.jpg */; };
 		1CFF40301C45FF77007D43AF /* PicsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CFF402F1C45FF77007D43AF /* PicsCell.m */; };
 		49061AE11D731651001B8004 /* ZZPhotoAlert.m in Sources */ = {isa = PBXBuildFile; fileRef = 49061AE01D731651001B8004 /* ZZPhotoAlert.m */; };
+		490AE78F1DAE1893005EEDA7 /* ZZPhotoPickerFooterView.m in Sources */ = {isa = PBXBuildFile; fileRef = 490AE78E1DAE1893005EEDA7 /* ZZPhotoPickerFooterView.m */; };
 		4937E7A31CF814AA0016AB5F /* back_button_normal.png in Resources */ = {isa = PBXBuildFile; fileRef = 4937E7A21CF814AA0016AB5F /* back_button_normal.png */; };
 		4937E7A61CF821880016AB5F /* ZZPhotoBrowerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4937E7A51CF821880016AB5F /* ZZPhotoBrowerViewController.m */; };
 		4937E7A91CF82C2A0016AB5F /* ZZCameraBrowerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4937E7A81CF82C2A0016AB5F /* ZZCameraBrowerViewController.m */; };
@@ -149,6 +150,8 @@
 		1CFF402F1C45FF77007D43AF /* PicsCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PicsCell.m; sourceTree = "<group>"; };
 		49061ADF1D731651001B8004 /* ZZPhotoAlert.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZZPhotoAlert.h; sourceTree = "<group>"; };
 		49061AE01D731651001B8004 /* ZZPhotoAlert.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZZPhotoAlert.m; sourceTree = "<group>"; };
+		490AE78D1DAE1893005EEDA7 /* ZZPhotoPickerFooterView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZZPhotoPickerFooterView.h; sourceTree = "<group>"; };
+		490AE78E1DAE1893005EEDA7 /* ZZPhotoPickerFooterView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZZPhotoPickerFooterView.m; sourceTree = "<group>"; };
 		4937E7A21CF814AA0016AB5F /* back_button_normal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = back_button_normal.png; sourceTree = "<group>"; };
 		4937E7A41CF821880016AB5F /* ZZPhotoBrowerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZZPhotoBrowerViewController.h; sourceTree = "<group>"; };
 		4937E7A51CF821880016AB5F /* ZZPhotoBrowerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZZPhotoBrowerViewController.m; sourceTree = "<group>"; };
@@ -461,6 +464,8 @@
 		49D736731CEE148B00AE804F /* View */ = {
 			isa = PBXGroup;
 			children = (
+				490AE78D1DAE1893005EEDA7 /* ZZPhotoPickerFooterView.h */,
+				490AE78E1DAE1893005EEDA7 /* ZZPhotoPickerFooterView.m */,
 				49D736741CEE148B00AE804F /* ZZPhotoHud.h */,
 				49D736751CEE148B00AE804F /* ZZPhotoHud.m */,
 				49D736761CEE148B00AE804F /* ZZPhotoListCell.h */,
@@ -672,6 +677,7 @@
 				1C94AD381C3A7D9500B26FAE /* SDWebImageManager.m in Sources */,
 				4937E7A61CF821880016AB5F /* ZZPhotoBrowerViewController.m in Sources */,
 				49061AE11D731651001B8004 /* ZZPhotoAlert.m in Sources */,
+				490AE78F1DAE1893005EEDA7 /* ZZPhotoPickerFooterView.m in Sources */,
 				49D495481CF54CAB00E42318 /* ZZCameraController.m in Sources */,
 				49D736891CEE148B00AE804F /* ZZBrowserPickerCell.m in Sources */,
 				49D7368A1CEE148B00AE804F /* ZZBrowserPickerViewController.m in Sources */,
