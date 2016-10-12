@@ -110,12 +110,19 @@
         
         CGFloat photoWidth = [UIScreen mainScreen].bounds.size.width;
         
-        CGFloat aspectRatio = phAsset.pixelWidth / (CGFloat)phAsset.pixelHeight;
-        CGFloat multiple = [UIScreen mainScreen].scale;
-        CGFloat pixelWidth = photoWidth * multiple;
-        CGFloat pixelHeight = pixelWidth / aspectRatio;
+        CGFloat screenScale = 2.0;
+        if (photoWidth > 700) {
+            screenScale = 1.5;
+        }
         
-        [[PHImageManager defaultManager] requestImageForAsset:phAsset targetSize:CGSizeMake(pixelWidth, pixelHeight) contentMode:PHImageContentModeAspectFit options:nil resultHandler:^(UIImage * _Nullable result, NSDictionary * _Nullable info) {
+        CGFloat aspectRatio = phAsset.pixelWidth / (CGFloat)phAsset.pixelHeight;
+        CGFloat pixelWidth = photoWidth * screenScale;
+        CGFloat pixelHeight = pixelWidth / aspectRatio;
+        CGSize imageSize = CGSizeMake(pixelWidth, pixelHeight);
+        
+        PHImageRequestOptions *option = [[PHImageRequestOptions alloc] init];
+        option.resizeMode = PHImageRequestOptionsResizeModeFast;
+        [[PHImageManager defaultManager] requestImageForAsset:phAsset targetSize:imageSize contentMode:PHImageContentModeAspectFit options:option resultHandler:^(UIImage * _Nullable result, NSDictionary * _Nullable info) {
             
             BOOL downloadFinined = ![[info objectForKey:PHImageCancelledKey] boolValue] && ![info objectForKey:PHImageErrorKey] && ![[info objectForKey:PHImageResultIsDegradedKey] boolValue];
             

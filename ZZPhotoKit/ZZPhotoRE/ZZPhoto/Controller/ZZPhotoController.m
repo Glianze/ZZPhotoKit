@@ -55,11 +55,12 @@
     }else if(status == PHAuthorizationStatusNotDetermined){
         //相册进行授权
         /* * * 第一次安装应用时直接进行这个判断进行授权 * * */
+        __weak typeof (self) weakSelf = self;
         [PHPhotoLibrary requestAuthorization:^(PHAuthorizationStatus status){
             //授权后直接打开照片库
             if (status == PHAuthorizationStatusAuthorized){
                 dispatch_async(dispatch_get_main_queue(), ^{
-                    [self showController:controller result:result];
+                    [weakSelf showController:controller result:result];
                 });
  
             }
@@ -73,8 +74,7 @@
 -(void)showController:(UIViewController *)controller result:(ZZPhotoResult)result
 {
     //授权完成，打开相册
-    
-    //Block传值
+
     self.photoListController.photoResult = result;
     //先向presentViewController控制器ZZPhotoListViewController，此控制器为全部相册控制器
     

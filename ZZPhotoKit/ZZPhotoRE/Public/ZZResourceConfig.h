@@ -67,10 +67,10 @@
  文字
  */
 //   相册详细页面底部Footer显示文字
-#define Total_Photo_Num @"%ld 张照片"
-#define Total_Video_Num @"%ld 个视频"
-#define Alert_Max_Selected @"最多只能选择%ld张图片"
-#define Alert_Max_TakePhoto @"最多连拍张数为%ld张图片"
+#define Total_Photo_Num @"%lu 张照片"
+#define Total_Video_Num @"%lu 个视频"
+#define Alert_Max_Selected @"最多只能选择%lu张图片"
+#define Alert_Max_TakePhoto @"最多连拍张数为%lu张图片"
 
 
 #endif /* ZZResourceConfig_h */

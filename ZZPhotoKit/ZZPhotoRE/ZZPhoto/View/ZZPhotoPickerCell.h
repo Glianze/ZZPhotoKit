@@ -15,7 +15,7 @@
 @property(strong,nonatomic) UIImageView *photo;
 @property(strong,nonatomic) UIButton *selectBtn;
 
-@property(strong,nonatomic) void(^selectBlock)();
+@property(copy  ,nonatomic) void(^selectBlock)();
 
 @property(assign,nonatomic) BOOL isSelect;
 

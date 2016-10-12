@@ -322,6 +322,8 @@ typedef void(^codeBlock)();
     }
     
     //get UIImage
+    
+    __weak typeof (self) weakSelf = self;
     [self.captureOutput captureStillImageAsynchronouslyFromConnection:videoConnection completionHandler:
      ^(CMSampleBufferRef imageSampleBuffer, NSError *error) {
 
@@ -331,7 +333,7 @@ typedef void(^codeBlock)();
          //拍摄时间
          NSDate *createDate = [NSDate date];
          //拍摄后的照片
-         t_image = [self fixOrientation:t_image];
+         t_image = [weakSelf fixOrientation:t_image];
 
          if (self.isSavelocal == YES) {
              UIImageWriteToSavedPhotosAlbum(t_image, self, @selector(imageSavedToPhotosAlbum:didFinishSavingWithError:contextInfo:), nil);
@@ -342,8 +344,8 @@ typedef void(^codeBlock)();
          camera.image = t_image;
          camera.createDate = createDate;
          
-         [self.cameraArray addObject:camera];
-         [_picsCollection reloadData];
+         [weakSelf.cameraArray addObject:camera];
+         [weakSelf.picsCollection reloadData];
      }];
 }
 
@@ -352,8 +354,6 @@ typedef void(^codeBlock)();
 {
 
 }
-
-
 
 - (UIImage *)fixOrientation:(UIImage *)srcImg
 {

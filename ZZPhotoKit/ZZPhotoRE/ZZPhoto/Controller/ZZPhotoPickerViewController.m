@@ -16,6 +16,7 @@
 #import "ZZPhotoAlert.h"
 #import "ZZAlumAnimation.h"
 #import "ZZPhoto.h"
+#import "ZZPhotoPickerFooterView.h"
 
 @interface ZZPhotoPickerViewController ()<UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout,ZZPhotoBrowerDataSource>
 
@@ -30,7 +31,6 @@
 @property (strong, nonatomic) UIButton *doneBtn;                       //完成按钮
 @property (strong, nonatomic) UIButton *previewBtn;                    //预览按钮
 
-@property (strong, nonatomic) UILabel *totalNumLabel;
 @property (strong, nonatomic) UILabel *totalRound;                     //小红点
 @property (strong, nonatomic) ZZPhotoDatas *datas;
 @property (strong, nonatomic) ZZPhotoBrowerViewController *browserController;
@@ -127,7 +127,7 @@
     }else{
         [ZZPhotoHud showActiveHud];
         __block NSMutableArray<ZZPhoto *> *photos = [NSMutableArray array];
-        __unsafe_unretained __typeof(self) weakSelf = self;
+        __weak __typeof(self) weakSelf = self;
         for (int i = 0; i < self.selectArray.count; i++) {
             ZZPhoto *photo = [self.selectArray objectAtIndex:i];
             [self.datas GetImageObject:photo.asset complection:^(UIImage *image,NSURL *imageUrl) {
@@ -195,16 +195,6 @@
     return _datas;
 }
 
-#pragma mark ---  总共多少张照片Label
-
--(UILabel *)totalNumLabel{
-    if (!_totalNumLabel) {
-        _totalNumLabel = [[UILabel alloc]initWithFrame:CGRectMake(0, 20, ZZ_VW, 20)];
-        _totalNumLabel.textColor = [UIColor blackColor];
-        _totalNumLabel.textAlignment = NSTextAlignmentCenter;
-    }
-    return _totalNumLabel;
-}
 
 #pragma mark ---  红色小圆点
 -(UILabel *)totalRound{
@@ -289,7 +279,7 @@
     
     _picsCollection = [[UICollectionView alloc]initWithFrame:CGRectZero collectionViewLayout:flowLayout];
     [_picsCollection registerClass:[ZZPhotoPickerCell class] forCellWithReuseIdentifier:@"PhotoPickerCell"];
-    [_picsCollection registerClass:[UICollectionReusableView class] forSupplementaryViewOfKind:UICollectionElementKindSectionFooter withReuseIdentifier:@"FooterView"];
+    [_picsCollection registerClass:[ZZPhotoPickerFooterView class] forSupplementaryViewOfKind:UICollectionElementKindSectionFooter withReuseIdentifier:@"FooterView"];
     flowLayout.footerReferenceSize = CGSizeMake(ZZ_VW, 70);
     _picsCollection.delegate = self;
     _picsCollection.dataSource = self;
@@ -326,18 +316,11 @@
 {
     if (_isAlubSeclect == YES) {
         self.photoArray = [self.datas GetPhotoAssets:_fetch];
-        [self refreshTotalNumLabelData:_photoArray.count];
 
     }else{
         self.navigationItem.title = @"相机胶卷";
         self.photoArray = [self.datas GetPhotoAssets:[self.datas GetCameraRollFetchResul]];
-        [self refreshTotalNumLabelData:_photoArray.count];
     }
-}
-
--(void)refreshTotalNumLabelData:(NSInteger)totalNum
-{
-    self.totalNumLabel.text = [NSString stringWithFormat:Total_Photo_Num,(long)totalNum];
 }
 
 
@@ -397,9 +380,10 @@
 
     ZZPhotoPickerCell *photoCell = [collectionView dequeueReusableCellWithReuseIdentifier:@"PhotoPickerCell" forIndexPath:indexPath];
     
-    
+    __unsafe_unretained __typeof(self) weakSelf = self;
     photoCell.selectBlock = ^(){
-        [self selectPhotoAtIndex:indexPath.row];
+        
+        [weakSelf selectPhotoAtIndex:indexPath.row];
     };
     
     [photoCell loadPhotoData:[self.photoArray objectAtIndex:indexPath.row]];
@@ -410,13 +394,10 @@
 - (UICollectionReusableView *)collectionView:(UICollectionView *)collectionView viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath
 
 {
-    UICollectionReusableView *footerView = [[UICollectionReusableView alloc]init];
-    footerView.backgroundColor = [UIColor redColor];
-    if (kind == UICollectionElementKindSectionFooter){
-        footerView = [collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionFooter withReuseIdentifier:@"FooterView" forIndexPath:indexPath];
-    }
-
-    [footerView addSubview:self.totalNumLabel];
+    ZZPhotoPickerFooterView *footerView = [collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionFooter withReuseIdentifier:@"FooterView" forIndexPath:indexPath];
+    
+    footerView.total_photo_num = _photoArray.count;
+    
     return footerView;
     
 }
