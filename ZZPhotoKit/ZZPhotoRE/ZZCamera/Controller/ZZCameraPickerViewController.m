@@ -193,9 +193,9 @@ typedef void(^codeBlock)();
     
 }
 
--(void)removePicItem:(UIButton *)btn
+-(void)removePicItemAtIndex:(NSInteger )indexPath
 {
-    NSInteger index = btn.tag;
+    NSInteger index = indexPath;
     [_cameraArray removeObjectAtIndex:index];
     [_picsCollection reloadData];
 }
@@ -215,10 +215,15 @@ typedef void(^codeBlock)();
 {
     
     ZZCameraPickerCell *photoCell = [collectionView dequeueReusableCellWithReuseIdentifier:@"PhotoPickerCell" forIndexPath:indexPath];
-    photoCell.removeBtn.tag = indexPath.row;
-    [photoCell.removeBtn addTarget:self action:@selector(removePicItem:) forControlEvents:UIControlEventTouchUpInside];
-    ZZCamera *camera = [self.cameraArray objectAtIndex:indexPath.row];
-    [photoCell loadPhotoDatas:camera.image];
+    if ([[self.cameraArray objectAtIndex:indexPath.row] isKindOfClass:[ZZCamera class]]) {
+        ZZCamera *camera = [self.cameraArray objectAtIndex:indexPath.row];
+        [photoCell loadPhotoDatas:camera.image];
+    }
+    
+    __weak __typeof(self) weakSelf = self;
+    photoCell.deleteBlock = ^(){
+        [weakSelf removePicItemAtIndex:indexPath.row];
+    };
     
     return photoCell;
 }

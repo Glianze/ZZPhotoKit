@@ -9,23 +9,13 @@
 #import <UIKit/UIKit.h>
 #import "ZZResourceConfig.h"
 
-@class ZZPhotoBrowerViewController;
-
-@protocol ZZPhotoBrowerDataSource <NSObject>
-
-@required
--(NSInteger)zzbrowserPickerPhotoNum:(ZZPhotoBrowerViewController *)controller;
--(NSArray *)zzbrowserPickerPhotoContent:(ZZPhotoBrowerViewController *)controller;
-
-@end
 
 
 @interface ZZPhotoBrowerViewController : UIViewController
 
-@property (assign, nonatomic) id <ZZPhotoBrowerDataSource> delegate;
+@property (nonatomic, strong) NSArray *photoData;
 
-
--(void)reloadData;
+@property (nonatomic, assign) NSInteger scrollIndex;
 
 -(void)showIn:(UIViewController *)controller;
 

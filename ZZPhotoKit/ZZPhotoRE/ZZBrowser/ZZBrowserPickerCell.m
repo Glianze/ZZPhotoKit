@@ -28,9 +28,10 @@
         _browser_width = frame.size.width;
         _browser_height = frame.size.height;
         _scaleView = [[UIScrollView alloc]initWithFrame:CGRectMake(0, 0, _browser_width, _browser_height)];
+        _scaleView.contentSize = CGSizeMake(_browser_width, _browser_height);
         _scaleView.delegate = self;
-        _scaleView.maximumZoomScale=2.0;
-        _scaleView.minimumZoomScale=0.5;
+        _scaleView.maximumZoomScale = 2.0;
+        _scaleView.minimumZoomScale = 1.0;
         _scaleView.contentSize = CGSizeMake(_browser_width, _browser_height);
         _scaleView.userInteractionEnabled = YES;
         [self.contentView addSubview:_scaleView];
@@ -87,6 +88,15 @@
         
     }];
 }
+
+-(void)setNeedsDisplay
+{
+    _scaleView.frame = CGRectMake(0, 0, _browser_width, _browser_height);
+    _scaleView.contentSize = CGSizeMake(_browser_width, _browser_height);
+    
+    _pics.frame = _scaleView.bounds;
+}
+
 -(UIView *)viewForZoomingInScrollView:(UIScrollView *)scrollView
 {
     return _pics;
@@ -102,8 +112,6 @@
                                  scrollView.contentSize.height * 0.5 + offsetY);
 }
 
-
-
 - (void)handleSingleFingerEvent:(UITapGestureRecognizer *)sender
 {
     if (sender.numberOfTapsRequired == 1) {
@@ -116,8 +124,6 @@
         
     }
 }
-
-
 
 
 @end

@@ -13,6 +13,8 @@
 @property(strong,nonatomic) UIImageView *pics;
 @property(strong,nonatomic) UIButton *removeBtn;
 
+@property(copy  ,nonatomic) void(^deleteBlock)();
+
 -(void)loadPhotoDatas:(UIImage *)image;
 
 @end

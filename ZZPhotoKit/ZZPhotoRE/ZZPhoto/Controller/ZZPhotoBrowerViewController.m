@@ -15,11 +15,6 @@
 @interface ZZPhotoBrowerViewController ()<UICollectionViewDelegate,UICollectionViewDataSource>
 
 @property (nonatomic, strong) UICollectionView *picBrowse;
-
-@property (nonatomic, strong) NSMutableArray *photoDataArray;
-
-@property (nonatomic, strong) ZZPageControl *pageControl;
-
 //照片的总数
 @property (nonatomic, assign) NSInteger numberOfItems;
 
@@ -64,12 +59,10 @@
     
     _picBrowse.showsHorizontalScrollIndicator = NO;
     _picBrowse.showsVerticalScrollIndicator = NO;
-    [_picBrowse registerClass:[ZZBrowserPickerCell class] forCellWithReuseIdentifier:@"Cell"];
+    [_picBrowse registerClass:[ZZBrowserPickerCell class] forCellWithReuseIdentifier:NSStringFromClass([ZZBrowserPickerCell class])];
     _picBrowse.dataSource = self;
     _picBrowse.delegate = self;
     _picBrowse.translatesAutoresizingMaskIntoConstraints = NO;
-    
-    
     [self.view addSubview:_picBrowse];
     
     NSLayoutConstraint *list_top = [NSLayoutConstraint constraintWithItem:_picBrowse attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationEqual toItem:self.view attribute:NSLayoutAttributeTop multiplier:1 constant:0.0f];
@@ -84,34 +77,6 @@
     
 }
 
-
--(void)setPageControlUI
-{
-    /*
-     *   创建底部PageControl（自定义）
-     */
-    _pageControl = [[ZZPageControl alloc]initWithFrame:CGRectMake(0, 0, 80, 30)];
-    _pageControl.currentPage = 0;
-    _pageControl.backgroundColor = [UIColor clearColor];
-    _pageControl.pageControl.textColor = [UIColor whiteColor];
-    //    [self.navigationItem.titleView addSubview:_pageControl];
-    self.navigationItem.titleView = _pageControl;
-    
-    //照片总数通过delegate获取
-    _numberOfItems = [self.delegate zzbrowserPickerPhotoNum:self];
-    
-    _pageControl.pageControl.text = [NSString stringWithFormat:@"%d / %ld",1,(long)_numberOfItems];
-    
-}
-
--(NSMutableArray *)photoDataArray{
-    if (!_photoDataArray) {
-        _photoDataArray = [NSMutableArray array];
-    }
-    return _photoDataArray;
-}
-
-
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
@@ -120,36 +85,16 @@
     
     [self setupCollectionViewUI];
     
-    [self setPageControlUI];
-    
-    [self loadPhotoData];
-    
-    if ([self.delegate respondsToSelector:@selector(zzbrowserPickerPhotoContent:)]) {
-        [self.photoDataArray addObjectsFromArray:[self.delegate zzbrowserPickerPhotoContent:self]];
-    }
+
 }
 
--(void)loadPhotoData
+-(void)viewDidLayoutSubviews
 {
-    if ([self.delegate respondsToSelector:@selector(zzbrowserPickerPhotoContent:)]) {
-        [self.photoDataArray addObjectsFromArray:[self.delegate zzbrowserPickerPhotoContent:self]];
-    }
-}
-
-/*
- *   更新数据刷新方法
- */
-
--(void)reloadData
-{
+    [super viewDidLayoutSubviews];
     
-    [_picBrowse reloadData];
-    //照片总数通过delegate获取
-    if ([self.delegate respondsToSelector:@selector(zzbrowserPickerPhotoNum:)]) {
-        _numberOfItems = [self.delegate zzbrowserPickerPhotoNum:self];
-    }
+    //滚动到指定位置
     
-    _pageControl.pageControl.text = [NSString stringWithFormat:@"%d / %ld",1,(long)_numberOfItems];
+    [_picBrowse scrollToItemAtIndexPath:[NSIndexPath indexPathForItem:_scrollIndex inSection:0] atScrollPosition:UICollectionViewScrollPositionRight animated:NO];
 }
 
 #pragma mark --- UICollectionviewDelegate or dataSource
@@ -159,34 +104,24 @@
 }
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {
-    return [self.delegate zzbrowserPickerPhotoNum:self];
+    return _photoData.count;
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    ZZBrowserPickerCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"Cell" forIndexPath:indexPath];
+    ZZBrowserPickerCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:NSStringFromClass([ZZBrowserPickerCell class]) forIndexPath:indexPath];
 
-    if ([[_photoDataArray objectAtIndex:indexPath.row] isKindOfClass:[ZZPhoto class]]) {
+    if ([[_photoData objectAtIndex:indexPath.row] isKindOfClass:[ZZPhoto class]]) {
         //加载相册中的数据时实用
-        ZZPhoto *photo = [_photoDataArray objectAtIndex:indexPath.row];
+        ZZPhoto *photo = [_photoData objectAtIndex:indexPath.row];
         [cell loadPHAssetItemForPics:photo.asset];
     }
+    
+    [cell setNeedsDisplay];
 
     return cell;
 }
 
-
-- (void)scrollViewDidScroll:(UIScrollView *)scrollView
-{
-    
-    int itemIndex = (scrollView.contentOffset.x + self.picBrowse.frame.size.width * 0.5) / self.picBrowse.frame.size.width;
-    if (!self.numberOfItems) return;
-    int indexOnPageControl = itemIndex % self.numberOfItems;
-    
-    _pageControl.pageControl.text = [NSString stringWithFormat:@"%d / %ld",indexOnPageControl+1,(long)_numberOfItems];
-    self.pageControl.currentPage = indexOnPageControl;
-    
-}
 
 -(void)showIn:(UIViewController *)controller
 {
@@ -199,14 +134,5 @@
     // Dispose of any resources that can be recreated.
 }
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end

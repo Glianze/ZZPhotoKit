@@ -47,7 +47,7 @@
     
     _picBrowse.showsHorizontalScrollIndicator = NO;
     _picBrowse.showsVerticalScrollIndicator = NO;
-    [_picBrowse registerClass:[ZZBrowserPickerCell class] forCellWithReuseIdentifier:@"Cell"];
+    [_picBrowse registerClass:[ZZBrowserPickerCell class] forCellWithReuseIdentifier:NSStringFromClass([ZZBrowserPickerCell class])];
     _picBrowse.dataSource = self;
     _picBrowse.delegate = self;
     _picBrowse.translatesAutoresizingMaskIntoConstraints = NO;
@@ -161,16 +161,16 @@
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    ZZBrowserPickerCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"Cell" forIndexPath:indexPath];
+    ZZBrowserPickerCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:NSStringFromClass([ZZBrowserPickerCell class]) forIndexPath:indexPath];
     
     cell.delegate = self;
+    
     if ([[_photoDataArray objectAtIndex:indexPath.row] isKindOfClass:[ZZCamera class]]){
-        
         ZZCamera *photo = [_photoDataArray objectAtIndex:indexPath.row];
         cell.pics.image = photo.image;
     }
     
-    
+    [cell setNeedsDisplay];
     
     return cell;
 }

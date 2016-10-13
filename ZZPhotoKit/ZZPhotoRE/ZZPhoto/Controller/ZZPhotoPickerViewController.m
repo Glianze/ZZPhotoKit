@@ -18,7 +18,7 @@
 #import "ZZPhoto.h"
 #import "ZZPhotoPickerFooterView.h"
 
-@interface ZZPhotoPickerViewController ()<UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout,ZZPhotoBrowerDataSource>
+@interface ZZPhotoPickerViewController ()<UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout>
 
 @property (strong, nonatomic) NSMutableArray *photoArray;
 @property (strong, nonatomic) NSMutableArray *selectArray;
@@ -162,8 +162,7 @@
         [self showPhotoPickerAlertView:@"提醒" message:@"您还没有选中图片，不需要预览"];
     }else{
         self.browserController = [[ZZPhotoBrowerViewController alloc]init];
-        self.browserController.delegate = self;
-        [self.browserController reloadData];
+        self.browserController.photoData = self.selectArray;
         [self.browserController showIn:self];
     }
 
@@ -408,14 +407,10 @@
 }
 -(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    /*
-     *   此功能未完成，待后期完善。
-     */
-//    [self.browserDataArray removeAllObjects];
-//    [self.browserDataArray addObjectsFromArray:self.photoArray];
-//    self.browserController.indexPath = indexPath;
-//    [self.browserController showIn:self animation:ShowAnimationOfPresent];
-//    [self.browserController reloadData];
+    self.browserController = [[ZZPhotoBrowerViewController alloc]init];
+    self.browserController.photoData = self.photoArray;
+    self.browserController.scrollIndex = indexPath.row;
+    [self.browserController showIn:self];
 }
 
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout referenceSizeForFooterInSection:(NSInteger)section
