@@ -8,6 +8,16 @@
 
 #import "ZZBrowserPickerCell.h"
 #import "UIImageHandle.h"
+
+@interface ZZBrowserPickerCell()<UIScrollViewDelegate, UIGestureRecognizerDelegate>
+{
+    CGFloat _browser_width;
+    CGFloat _browser_height;
+}
+@property (nonatomic, strong) UIScrollView *scaleView;
+
+@end
+
 @implementation ZZBrowserPickerCell
 
 -(instancetype)initWithFrame:(CGRect)frame
@@ -15,9 +25,39 @@
     self = [super initWithFrame:frame];
     if (self) {
         
-        _pics = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, frame.size.width, frame.size.height)];
+        _browser_width = frame.size.width;
+        _browser_height = frame.size.height;
+        _scaleView = [[UIScrollView alloc]initWithFrame:CGRectMake(0, 0, _browser_width, _browser_height)];
+        _scaleView.delegate = self;
+        _scaleView.maximumZoomScale=2.0;
+        _scaleView.minimumZoomScale=0.5;
+        _scaleView.contentSize = CGSizeMake(_browser_width, _browser_height);
+        _scaleView.userInteractionEnabled = YES;
+        [self.contentView addSubview:_scaleView];
+        
+        
+        _pics = [[UIImageView alloc]initWithFrame:_scaleView.bounds];
+        _pics.userInteractionEnabled = YES;
         _pics.contentMode = UIViewContentModeScaleAspectFit;
-        [self.contentView addSubview:_pics];
+        [_scaleView addSubview:_pics];
+        
+        
+        UITapGestureRecognizer *tapScaleFingerOne = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleSingleFingerEvent:)];
+        tapScaleFingerOne.delegate = self;
+        tapScaleFingerOne.numberOfTapsRequired = 1;
+        [_scaleView addGestureRecognizer:tapScaleFingerOne];
+        
+        UITapGestureRecognizer *singleFingerOne = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleSingleFingerEvent:)];
+        singleFingerOne.delegate = self;
+        singleFingerOne.numberOfTapsRequired = 1;
+        [_pics addGestureRecognizer:singleFingerOne];
+        
+        
+        UITapGestureRecognizer *singleFingerTwo = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleSingleFingerEvent:)];
+        singleFingerTwo.delegate = self;
+        singleFingerTwo.numberOfTapsRequired = 2;
+        [_pics addGestureRecognizer:singleFingerTwo];
+
     }
     return self;
 }
@@ -47,4 +87,37 @@
         
     }];
 }
+-(UIView *)viewForZoomingInScrollView:(UIScrollView *)scrollView
+{
+    return _pics;
+}
+
+-(void)scrollViewDidZoom:(UIScrollView *)scrollView
+{
+    CGFloat offsetX = (scrollView.bounds.size.width > scrollView.contentSize.width)?
+    (scrollView.bounds.size.width - scrollView.contentSize.width) * 0.5 : 0.0;
+    CGFloat offsetY = (scrollView.bounds.size.height > scrollView.contentSize.height)?
+    (scrollView.bounds.size.height - scrollView.contentSize.height) * 0.5 : 0.0;
+    _pics.center = CGPointMake(scrollView.contentSize.width * 0.5 + offsetX,
+                                 scrollView.contentSize.height * 0.5 + offsetY);
+}
+
+
+
+- (void)handleSingleFingerEvent:(UITapGestureRecognizer *)sender
+{
+    if (sender.numberOfTapsRequired == 1) {
+        if ([self.delegate respondsToSelector:@selector(clickZoomView)]) {
+            [self.delegate clickZoomView];
+        }
+    }else if(sender.numberOfTapsRequired == 2){
+        
+        
+        
+    }
+}
+
+
+
+
 @end

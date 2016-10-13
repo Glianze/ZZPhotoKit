@@ -8,9 +8,18 @@
 
 #import <UIKit/UIKit.h>
 #import "ZZResourceConfig.h"
+
+@protocol ZZBrowserPickerCellDelegate <NSObject>
+
+-(void) clickZoomView;
+
+@end
+
 @interface ZZBrowserPickerCell : UICollectionViewCell
 
 @property (nonatomic, strong) UIImageView *pics;
+
+@property (nonatomic, weak)   id<ZZBrowserPickerCellDelegate>delegate;
 
 -(void)loadPHAssetItemForPics:(PHAsset *)assetItem;
 

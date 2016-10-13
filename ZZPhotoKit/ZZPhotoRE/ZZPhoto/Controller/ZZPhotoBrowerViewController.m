@@ -165,11 +165,7 @@
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
     ZZBrowserPickerCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"Cell" forIndexPath:indexPath];
-    
-    if (!cell) {
-        cell = [[ZZBrowserPickerCell alloc]init];
-    }
-    
+
     if ([[_photoDataArray objectAtIndex:indexPath.row] isKindOfClass:[ZZPhoto class]]) {
         //加载相册中的数据时实用
         ZZPhoto *photo = [_photoDataArray objectAtIndex:indexPath.row];

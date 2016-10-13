@@ -11,7 +11,7 @@
 #import "ZZPageControl.h"
 #import "ZZCamera.h"
 
-@interface ZZCameraBrowerViewController ()<UICollectionViewDelegate,UICollectionViewDataSource>
+@interface ZZCameraBrowerViewController ()<UICollectionViewDelegate,UICollectionViewDataSource, ZZBrowserPickerCellDelegate>
 
 @property (nonatomic, strong) UICollectionView *picBrowse;
 
@@ -163,10 +163,7 @@
 {
     ZZBrowserPickerCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"Cell" forIndexPath:indexPath];
     
-    if (!cell) {
-        cell = [[ZZBrowserPickerCell alloc]init];
-    }
-    
+    cell.delegate = self;
     if ([[_photoDataArray objectAtIndex:indexPath.row] isKindOfClass:[ZZCamera class]]){
         
         ZZCamera *photo = [_photoDataArray objectAtIndex:indexPath.row];
@@ -178,11 +175,11 @@
     return cell;
 }
 
-- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)index
+-(void)clickZoomView
 {
     [self dismissViewControllerAnimated:YES completion:nil];
-    
 }
+
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView
 {
