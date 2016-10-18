@@ -26,18 +26,26 @@
         
         _browser_width = frame.size.width;
         _browser_height = frame.size.height;
+        
         _scaleView = [[UIScrollView alloc]initWithFrame:CGRectMake(0, 0, _browser_width, _browser_height)];
-        _scaleView.contentSize = CGSizeMake(_browser_width, _browser_height);
         _scaleView.delegate = self;
-        _scaleView.maximumZoomScale = 2.0;
+        _scaleView.maximumZoomScale = 2.5;
         _scaleView.minimumZoomScale = 1.0;
-        _scaleView.contentSize = CGSizeMake(_browser_width, _browser_height);
+        _scaleView.bouncesZoom = YES;
+        _scaleView.multipleTouchEnabled = YES;
+        _scaleView.delegate = self;
+        _scaleView.scrollsToTop = NO;
+        _scaleView.showsHorizontalScrollIndicator = NO;
+        _scaleView.showsVerticalScrollIndicator = NO;
+        _scaleView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
+        _scaleView.delaysContentTouches = NO;
+        _scaleView.canCancelContentTouches = YES;
+        _scaleView.alwaysBounceVertical = NO;
         _scaleView.userInteractionEnabled = YES;
         [self.contentView addSubview:_scaleView];
         
         
-        _pics = [[UIImageView alloc]initWithFrame:_scaleView.bounds];
-        _pics.userInteractionEnabled = YES;
+        _pics = [[UIImageView alloc]init];
         _pics.contentMode = UIViewContentModeScaleAspectFit;
         [_scaleView addSubview:_pics];
         
@@ -81,20 +89,27 @@
         
         //设置BOOL判断，确定返回高清照片
         if (downloadFinined) {
-
-            self.pics.image = result;
             
+            if (result != nil) {
+                [self changeFrameWithImage:result];
+                self.pics.image = result;
+            }
         }
         
     }];
 }
 
+-(void)changeFrameWithImage:(UIImage *)image
+{
+    CGFloat height = image.size.height / image.size.width * _browser_width;
+    self.pics.frame = CGRectMake(0, 0, _browser_width, height);
+    self.pics.center = CGPointMake(_browser_width / 2, _browser_height / 2);
+    _scaleView.contentSize = CGSizeMake(_browser_width, MAX(self.pics.frame.size.height, _browser_height));
+}
+
 -(void)setNeedsDisplay
 {
-    _scaleView.frame = CGRectMake(0, 0, _browser_width, _browser_height);
-    _scaleView.contentSize = CGSizeMake(_browser_width, _browser_height);
-    
-    _pics.frame = _scaleView.bounds;
+    [_scaleView setZoomScale:1.0 animated:NO];
 }
 
 -(UIView *)viewForZoomingInScrollView:(UIScrollView *)scrollView
