@@ -37,7 +37,6 @@
 		1C94AD4B1C3A7DC800B26FAE /* scv5.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 1C94AD461C3A7DC800B26FAE /* scv5.jpg */; };
 		1CFF40301C45FF77007D43AF /* PicsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CFF402F1C45FF77007D43AF /* PicsCell.m */; };
 		496D476E1DB5F8E600A99CD4 /* ZZAlumAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = 496D47291DB5F8E600A99CD4 /* ZZAlumAnimation.m */; };
-		496D476F1DB5F8E600A99CD4 /* back_button_normal.png in Resources */ = {isa = PBXBuildFile; fileRef = 496D472B1DB5F8E600A99CD4 /* back_button_normal.png */; };
 		496D47701DB5F8E600A99CD4 /* camera_focus_pic.png in Resources */ = {isa = PBXBuildFile; fileRef = 496D472C1DB5F8E600A99CD4 /* camera_focus_pic.png */; };
 		496D47711DB5F8E600A99CD4 /* change_camera_pic.png in Resources */ = {isa = PBXBuildFile; fileRef = 496D472D1DB5F8E600A99CD4 /* change_camera_pic.png */; };
 		496D47721DB5F8E600A99CD4 /* flash_close_pic.png in Resources */ = {isa = PBXBuildFile; fileRef = 496D472E1DB5F8E600A99CD4 /* flash_close_pic.png */; };
@@ -72,6 +71,8 @@
 		496D478F1DB5F8E600A99CD4 /* ZZPhotoListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 496D47681DB5F8E600A99CD4 /* ZZPhotoListCell.m */; };
 		496D47901DB5F8E600A99CD4 /* ZZPhotoPickerCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 496D476A1DB5F8E600A99CD4 /* ZZPhotoPickerCell.m */; };
 		496D47911DB5F8E600A99CD4 /* ZZPhotoPickerFooterView.m in Sources */ = {isa = PBXBuildFile; fileRef = 496D476C1DB5F8E600A99CD4 /* ZZPhotoPickerFooterView.m */; };
+		4998FBF21DB5FBAA00DE4C16 /* back_button_normal.png in Resources */ = {isa = PBXBuildFile; fileRef = 4998FBF01DB5FBAA00DE4C16 /* back_button_normal.png */; };
+		4998FBF31DB5FBAA00DE4C16 /* back_button_normal@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4998FBF11DB5FBAA00DE4C16 /* back_button_normal@2x.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -149,7 +150,6 @@
 		1CFF402F1C45FF77007D43AF /* PicsCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PicsCell.m; sourceTree = "<group>"; };
 		496D47281DB5F8E600A99CD4 /* ZZAlumAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZZAlumAnimation.h; sourceTree = "<group>"; };
 		496D47291DB5F8E600A99CD4 /* ZZAlumAnimation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZZAlumAnimation.m; sourceTree = "<group>"; };
-		496D472B1DB5F8E600A99CD4 /* back_button_normal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = back_button_normal.png; sourceTree = "<group>"; };
 		496D472C1DB5F8E600A99CD4 /* camera_focus_pic.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = camera_focus_pic.png; sourceTree = "<group>"; };
 		496D472D1DB5F8E600A99CD4 /* change_camera_pic.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = change_camera_pic.png; sourceTree = "<group>"; };
 		496D472E1DB5F8E600A99CD4 /* flash_close_pic.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = flash_close_pic.png; sourceTree = "<group>"; };
@@ -207,6 +207,8 @@
 		496D476B1DB5F8E600A99CD4 /* ZZPhotoPickerFooterView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZZPhotoPickerFooterView.h; sourceTree = "<group>"; };
 		496D476C1DB5F8E600A99CD4 /* ZZPhotoPickerFooterView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZZPhotoPickerFooterView.m; sourceTree = "<group>"; };
 		496D476D1DB5F8E600A99CD4 /* ZZPhotoKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZZPhotoKit.h; sourceTree = "<group>"; };
+		4998FBF01DB5FBAA00DE4C16 /* back_button_normal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = back_button_normal.png; sourceTree = "<group>"; };
+		4998FBF11DB5FBAA00DE4C16 /* back_button_normal@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "back_button_normal@2x.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -386,7 +388,8 @@
 		496D472A1DB5F8E600A99CD4 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				496D472B1DB5F8E600A99CD4 /* back_button_normal.png */,
+				4998FBF01DB5FBAA00DE4C16 /* back_button_normal.png */,
+				4998FBF11DB5FBAA00DE4C16 /* back_button_normal@2x.png */,
 				496D472C1DB5F8E600A99CD4 /* camera_focus_pic.png */,
 				496D472D1DB5F8E600A99CD4 /* change_camera_pic.png */,
 				496D472E1DB5F8E600A99CD4 /* flash_close_pic.png */,
@@ -473,14 +476,14 @@
 		496D47521DB5F8E600A99CD4 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				496D47531DB5F8E600A99CD4 /* ZZPhotoBrowerViewController.h */,
-				496D47541DB5F8E600A99CD4 /* ZZPhotoBrowerViewController.m */,
 				496D47551DB5F8E600A99CD4 /* ZZPhotoController.h */,
 				496D47561DB5F8E600A99CD4 /* ZZPhotoController.m */,
 				496D47571DB5F8E600A99CD4 /* ZZPhotoListViewController.h */,
 				496D47581DB5F8E600A99CD4 /* ZZPhotoListViewController.m */,
 				496D47591DB5F8E600A99CD4 /* ZZPhotoPickerViewController.h */,
 				496D475A1DB5F8E600A99CD4 /* ZZPhotoPickerViewController.m */,
+				496D47531DB5F8E600A99CD4 /* ZZPhotoBrowerViewController.h */,
+				496D47541DB5F8E600A99CD4 /* ZZPhotoBrowerViewController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -622,6 +625,7 @@
 				496D47751DB5F8E600A99CD4 /* photo_add.png in Resources */,
 				1C94AD471C3A7DC800B26FAE /* scv1.jpg in Resources */,
 				1C94AD491C3A7DC800B26FAE /* scv3.jpg in Resources */,
+				4998FBF21DB5FBAA00DE4C16 /* back_button_normal.png in Resources */,
 				1C94AD481C3A7DC800B26FAE /* scv2.jpg in Resources */,
 				496D47781DB5F8E600A99CD4 /* select_yes.png in Resources */,
 				496D47721DB5F8E600A99CD4 /* flash_close_pic.png in Resources */,
@@ -633,8 +637,8 @@
 				496D47791DB5F8E600A99CD4 /* take_photo_pic.png in Resources */,
 				496D477A1DB5F8E600A99CD4 /* take_photo_pic@2x.png in Resources */,
 				496D47731DB5F8E600A99CD4 /* flash_open_pic.png in Resources */,
-				496D476F1DB5F8E600A99CD4 /* back_button_normal.png in Resources */,
 				496D47711DB5F8E600A99CD4 /* change_camera_pic.png in Resources */,
+				4998FBF31DB5FBAA00DE4C16 /* back_button_normal@2x.png in Resources */,
 				496D47771DB5F8E600A99CD4 /* select_no.png in Resources */,
 				496D47761DB5F8E600A99CD4 /* remove_btn_pic.png in Resources */,
 				496D477C1DB5F8E600A99CD4 /* zz_alumb_rightCell.png in Resources */,
