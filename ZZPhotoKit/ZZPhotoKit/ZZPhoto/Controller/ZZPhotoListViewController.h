@@ -10,8 +10,7 @@
 #import "ZZResourceConfig.h"
 @interface ZZPhotoListViewController : UIViewController
 
-@property(assign,nonatomic) NSInteger selectNum;
-
-@property(strong,nonatomic) void (^photoResult)(id responseObject);
+@property (nonatomic, assign) NSInteger selectNum;
+@property (nonatomic,   copy) void (^photoResult)(id responseObject);
 
 @end

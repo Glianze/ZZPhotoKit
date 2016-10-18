@@ -11,13 +11,10 @@
 #import "ZZPhoto.h"
 @implementation ZZPhotoDatas
 
--(NSMutableArray *)GetPhotoListDatas
+- (NSMutableArray *)GetPhotoListDatas
 {
-    
     NSMutableArray *dataArray = [NSMutableArray array];
-    
     PHFetchOptions *fetchOptions = [[PHFetchOptions alloc]init];
-    
     PHFetchResult *smartAlbumsFetchResult = [PHAssetCollection fetchAssetCollectionsWithType:PHAssetCollectionTypeSmartAlbum subtype:PHAssetCollectionSubtypeSmartAlbumUserLibrary options:fetchOptions];
     //遍历相机胶卷
     [smartAlbumsFetchResult enumerateObjectsUsingBlock:^(PHAssetCollection * _Nonnull collection, NSUInteger idx, BOOL *stop) {
@@ -47,7 +44,8 @@
     
     return dataArray;
 }
--(NSString *) FormatPhotoAlumTitle:(NSString *)title
+
+- (NSString *)FormatPhotoAlumTitle:(NSString *)title
 {
     if ([title isEqualToString:@"All Photos"] || [title isEqualToString:@"Camera Roll"]) {
         return @"相机胶卷";
@@ -58,7 +56,6 @@
 - (NSArray *)GetAssetsInAssetCollection:(PHAssetCollection *)assetCollection
 {
     NSMutableArray<PHAsset *> *arr = [NSMutableArray array];
-    
     PHFetchResult *result = [self GetFetchResult:assetCollection];
     [result enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
         
@@ -69,14 +66,13 @@
     return arr;
 }
 
--(PHFetchResult *)GetFetchResult:(PHAssetCollection *)assetCollection
+- (PHFetchResult *)GetFetchResult:(PHAssetCollection *)assetCollection
 {
     PHFetchResult *fetchResult = [PHAsset fetchAssetsInAssetCollection:assetCollection options:nil];
     return fetchResult;
-    
 }
 
--(NSMutableArray *)GetPhotoAssets:(PHFetchResult *)fetchResult
+- (NSMutableArray *)GetPhotoAssets:(PHFetchResult *)fetchResult
 {
     NSMutableArray *dataArray = [NSMutableArray array];
     for (PHAsset *asset in fetchResult) {
@@ -86,13 +82,12 @@
             photo.asset = asset;
             [dataArray addObject:photo];
         }
-        
     }
     
     return dataArray;
 }
 
--(PHFetchResult *)GetCameraRollFetchResul
+- (PHFetchResult *)GetCameraRollFetchResul
 {
     PHFetchOptions *fetchOptions = [[PHFetchOptions alloc]init];
     
@@ -103,7 +98,7 @@
     return fetch;
 }
 
--(void) GetImageObject:(id)asset complection:(void (^)(UIImage *,NSURL *))complection
+- (void)GetImageObject:(id)asset complection:(void (^)(UIImage *,NSURL *))complection
 {
     if ([asset isKindOfClass:[PHAsset class]]) {
         PHAsset *phAsset = (PHAsset *)asset;
@@ -130,16 +125,12 @@
             if (downloadFinined) {
                 NSURL *imageUrl = (NSURL *)[info objectForKey:@"PHImageFileURLKey"];
                 complection(result,imageUrl);
-                
             }
- 
         }];
-
     }
-    
 }
 
--(BOOL) CheckIsiCloudAsset:(PHAsset *)asset
+- (BOOL)CheckIsiCloudAsset:(PHAsset *)asset
 {
     CGFloat photoWidth = [UIScreen mainScreen].bounds.size.width;
     

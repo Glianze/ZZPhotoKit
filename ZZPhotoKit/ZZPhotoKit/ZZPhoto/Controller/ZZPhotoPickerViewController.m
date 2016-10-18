@@ -20,24 +20,27 @@
 
 @interface ZZPhotoPickerViewController ()<UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout>
 
-@property (strong, nonatomic) NSMutableArray *photoArray;
-@property (strong, nonatomic) NSMutableArray *selectArray;
+@property (strong, nonatomic) NSMutableArray              *photoArray;
+@property (strong, nonatomic) NSMutableArray              *selectArray;
 
-@property (strong, nonatomic) UICollectionView *picsCollection;
+@property (strong, nonatomic) UICollectionView            *picsCollection;
 
-@property (strong, nonatomic) UIBarButtonItem *backBtn;
-@property (strong, nonatomic) UIBarButtonItem *cancelBtn;
+@property (strong, nonatomic) UIBarButtonItem             *backBtn;
+@property (strong, nonatomic) UIBarButtonItem             *cancelBtn;
 
-@property (strong, nonatomic) UIButton *doneBtn;                       //完成按钮
-@property (strong, nonatomic) UIButton *previewBtn;                    //预览按钮
+@property (strong, nonatomic) UIButton                    *doneBtn;                       //完成按钮
+@property (strong, nonatomic) UIButton                    *previewBtn;                    //预览按钮
 
-@property (strong, nonatomic) UILabel *totalRound;                     //小红点
-@property (strong, nonatomic) ZZPhotoDatas *datas;
+@property (strong, nonatomic) UILabel                     *totalRound;                     //小红点
+@property (strong, nonatomic) UILabel                     *numSelectLabel;
+
+@property (strong, nonatomic) ZZPhotoDatas                *datas;
 @property (strong, nonatomic) ZZPhotoBrowerViewController *browserController;
-@property (strong, nonatomic) UILabel *numSelectLabel;
+
 @end
 
 @implementation ZZPhotoPickerViewController
+
 -(instancetype)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -69,7 +72,6 @@
         UIButton *button = [[UIButton alloc]initWithFrame:CGRectMake(0, 0, 50, 44)];
         [button addTarget:self action:@selector(cancel) forControlEvents:UIControlEventTouchUpInside];
         button.titleLabel.font = [UIFont systemFontOfSize:17.0f];
-        [button.titleLabel setFont:[UIFont fontWithName:@"Helvetica-Bold" size:17]];
         [button setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
         [button setTitle:@"取消" forState:UIControlStateNormal];
         [button setTitleColor:[UIColor blueColor] forState:UIControlStateNormal];
@@ -82,12 +84,11 @@
 
 #pragma mark SETUP doneButtonUI Method
 
--(UIButton *)doneBtn{
+- (UIButton *)doneBtn{
     if (!_doneBtn) {
         _doneBtn = [[UIButton alloc]initWithFrame:CGRectMake(ZZ_VW - 60, 0, 50, 44)];
         [_doneBtn addTarget:self action:@selector(done) forControlEvents:UIControlEventTouchUpInside];
         _doneBtn.titleLabel.font = [UIFont systemFontOfSize:17.0f];
-        [_doneBtn.titleLabel setFont:[UIFont fontWithName:@"Helvetica-Bold" size:17]];
         [_doneBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
         [_doneBtn setTitle:@"完成" forState:UIControlStateNormal];
         [_doneBtn setTitleColor:[UIColor blueColor] forState:UIControlStateNormal];
@@ -97,12 +98,11 @@
 
 #pragma merk SETUP previewButtonUI Method
 
--(UIButton *)previewBtn{
+- (UIButton *)previewBtn{
     if (!_previewBtn) {
         _previewBtn = [[UIButton alloc]initWithFrame:CGRectMake(10, 0, 50, 44)];
         [_previewBtn addTarget:self action:@selector(preview) forControlEvents:UIControlEventTouchUpInside];
         _previewBtn.titleLabel.font = [UIFont systemFontOfSize:17.0f];
-        [_previewBtn.titleLabel setFont:[UIFont fontWithName:@"Helvetica-Bold" size:17]];
         [_previewBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
         [_previewBtn setTitle:@"预览" forState:UIControlStateNormal];
         [_previewBtn setTitleColor:[UIColor blueColor] forState:UIControlStateNormal];
@@ -110,17 +110,16 @@
     return _previewBtn;
 }
 
-
--(void)back{
+- (void)back{
     [self.navigationController popViewControllerAnimated:YES];
 }
 
--(void)cancel{
+- (void)cancel{
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 #pragma mark --- 完成然后回调
--(void)done{
+- (void)done{
 
     if ([self.selectArray count] == 0) {
         [self dismissViewControllerAnimated:YES completion:nil];
@@ -156,7 +155,7 @@
 }
 
 //预览按钮，弹出图片浏览器
--(void)preview{
+- (void)preview{
     
     if (self.selectArray.count == 0) {
         [self showPhotoPickerAlertView:@"提醒" message:@"您还没有选中图片，不需要预览"];
@@ -169,7 +168,7 @@
 }
 
 #pragma Declaration Array
--(NSMutableArray *)photoArray
+- (NSMutableArray *)photoArray
 {
     if (!_photoArray) {
         _photoArray = [NSMutableArray array];
@@ -177,7 +176,7 @@
     return _photoArray;
 }
 
--(NSMutableArray *)selectArray
+- (NSMutableArray *)selectArray
 {
     if (!_selectArray) {
         _selectArray = [NSMutableArray array];
@@ -186,7 +185,7 @@
 }
 
 #pragma mark ---  懒加载图片数据
--(ZZPhotoDatas *)datas{
+- (ZZPhotoDatas *)datas{
     if (!_datas) {
         _datas = [[ZZPhotoDatas alloc]init];
 
@@ -194,9 +193,8 @@
     return _datas;
 }
 
-
 #pragma mark ---  红色小圆点
--(UILabel *)totalRound{
+- (UILabel *)totalRound{
     if (!_totalRound) {
         _totalRound = [[UILabel alloc]initWithFrame:CGRectMake(ZZ_VW - 90, 10, 22, 22)];
         if (self.roundColor == nil) {
@@ -213,7 +211,6 @@
     return _totalRound;
 }
 
-
 - (void)viewDidLoad {
     [super viewDidLoad];
     
@@ -221,22 +218,20 @@
     
     [self loadPhotoData];
     // 更新UI
-    [self setupCollectionViewUI];
+    [self makeCollectionViewUI];
     //创建底部工具栏
-    [self setUpTabbar];
-    
-
+    [self makeTabbarUI];
 }
 
 - (void)initInterUI
 {
     self.automaticallyAdjustsScrollViewInsets = NO;
-    self.view.backgroundColor = [UIColor whiteColor];
-    self.navigationItem.leftBarButtonItem = self.backBtn;
-    self.navigationItem.rightBarButtonItem = self.cancelBtn;
+    self.view.backgroundColor                 = [UIColor whiteColor];
+    self.navigationItem.leftBarButtonItem     = self.backBtn;
+    self.navigationItem.rightBarButtonItem    = self.cancelBtn;
 }
 
--(void)setUpTabbar
+- (void)makeTabbarUI
 {
     UIView *view = [[UIView alloc]initWithFrame:CGRectZero];
     view.backgroundColor = ZZ_RGB(245, 245, 245);
@@ -260,11 +255,9 @@
     viewLine.backgroundColor = ZZ_RGB(230, 230, 230);
     viewLine.translatesAutoresizingMaskIntoConstraints = NO;
     [view addSubview:viewLine];
-    
-    
 }
 
--(void)setupCollectionViewUI
+- (void)makeCollectionViewUI
 {
     self.edgesForExtendedLayout = UIRectEdgeNone;
     
@@ -301,17 +294,16 @@
     
 }
 
--(void)viewDidLayoutSubviews
+- (void)viewDidLayoutSubviews
 {
     [super viewDidLayoutSubviews];
-    
     //滚动到底部
     if (self.photoArray.count != 0) {
         [_picsCollection scrollToItemAtIndexPath:[NSIndexPath indexPathForItem:self.photoArray.count - 1 inSection:0] atScrollPosition:UICollectionViewScrollPositionBottom animated:NO];
     }
 }
 
--(void)loadPhotoData
+- (void)loadPhotoData
 {
     if (_isAlubSeclect == YES) {
         self.photoArray = [self.datas GetPhotoAssets:_fetch];
@@ -324,7 +316,7 @@
 
 
 #pragma mark 关键位置，选中的在数组中添加，取消的从数组中减少
--(void)selectPhotoAtIndex:(NSInteger)index
+- (void)selectPhotoAtIndex:(NSInteger)index
 {
     ZZPhoto *photo = [self.photoArray objectAtIndex:index];
     
@@ -332,7 +324,9 @@
         if (photo.isSelect == NO) {
             
             if (self.selectArray.count + 1 > _selectNum) {
+                
                 [self showSelectPhotoAlertView:_selectNum];
+                
             }else{
                 [[ZZAlumAnimation sharedAnimation] roundAnimation:self.totalRound];
                 
@@ -345,7 +339,9 @@
                     self.totalRound.text = [NSString stringWithFormat:@"%lu",(unsigned long)self.selectArray.count];
                 }
             }
+            
         }else{
+            
             photo.isSelect = NO;
             [self changeSelectButtonStateAtIndex:index withPhoto:photo];
             [self.selectArray removeObject:[self.photoArray objectAtIndex:index]];
@@ -357,7 +353,7 @@
     
 }
 
--(void)changeSelectButtonStateAtIndex:(NSInteger)index withPhoto:(ZZPhoto *)photo
+- (void)changeSelectButtonStateAtIndex:(NSInteger)index withPhoto:(ZZPhoto *)photo
 {
     ZZPhotoPickerCell *cell = (ZZPhotoPickerCell *)[_picsCollection cellForItemAtIndexPath:[NSIndexPath indexPathForItem:index inSection:0]];
     cell.isSelect = photo.isSelect;
@@ -365,7 +361,7 @@
 
 #pragma UICollectionView --- Datasource
 
--(NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView
+- (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView
 {
     return 1;
 }
@@ -374,15 +370,17 @@
     return self.photoArray.count;
 }
 
--(UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
+- (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
 
     ZZPhotoPickerCell *photoCell = [collectionView dequeueReusableCellWithReuseIdentifier:@"PhotoPickerCell" forIndexPath:indexPath];
     
     __unsafe_unretained __typeof(self) weakSelf = self;
+    
     photoCell.selectBlock = ^(){
         
         [weakSelf selectPhotoAtIndex:indexPath.row];
+        
     };
     
     [photoCell loadPhotoData:[self.photoArray objectAtIndex:indexPath.row]];
@@ -398,17 +396,16 @@
     footerView.total_photo_num = _photoArray.count;
     
     return footerView;
-    
 }
 
--(BOOL)collectionView:(UICollectionView *)collectionView shouldSelectItemAtIndexPath:(NSIndexPath *)indexPath
+- (BOOL)collectionView:(UICollectionView *)collectionView shouldSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
     return YES;
 }
--(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
+- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    self.browserController = [[ZZPhotoBrowerViewController alloc]init];
-    self.browserController.photoData = self.photoArray;
+    self.browserController             = [[ZZPhotoBrowerViewController alloc]init];
+    self.browserController.photoData   = self.photoArray;
     self.browserController.scrollIndex = indexPath.row;
     [self.browserController showIn:self];
 }
@@ -417,18 +414,19 @@
 {
     return CGSizeMake(self.view.frame.size.width, 60);
 }
+
 #pragma mark --- ZZBrowserPickerDelegate
--(NSInteger)zzbrowserPickerPhotoNum:(ZZPhotoBrowerViewController *)controller
+- (NSInteger)zzbrowserPickerPhotoNum:(ZZPhotoBrowerViewController *)controller
 {
     return self.selectArray.count;
 }
 
--(NSArray *)zzbrowserPickerPhotoContent:(ZZPhotoBrowerViewController *)controller
+- (NSArray *)zzbrowserPickerPhotoContent:(ZZPhotoBrowerViewController *)controller
 {
     return self.selectArray;
 }
 
--(void)showSelectPhotoAlertView:(NSInteger)photoNumOfMax
+- (void)showSelectPhotoAlertView:(NSInteger)photoNumOfMax
 {
     UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"提醒" message:[NSString stringWithFormat:Alert_Max_Selected,(long)photoNumOfMax]preferredStyle:UIAlertControllerStyleAlert];
     
@@ -440,7 +438,7 @@
     [self presentViewController:alert animated:YES completion:nil];
 }
 
--(void)showPhotoPickerAlertView:(NSString *)title message:(NSString *)message
+- (void)showPhotoPickerAlertView:(NSString *)title message:(NSString *)message
 {
     UIAlertController *alert = [UIAlertController alertControllerWithTitle:title message:message preferredStyle:UIAlertControllerStyleAlert];
     
@@ -451,8 +449,6 @@
     [alert addAction:action1];
     [self presentViewController:alert animated:YES completion:nil];
 }
-
-
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

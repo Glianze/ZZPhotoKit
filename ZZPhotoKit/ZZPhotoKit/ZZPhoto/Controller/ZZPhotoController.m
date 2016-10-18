@@ -42,7 +42,6 @@
     return _photoPickerController;
 }
 
-
 #pragma mark ---- 弹出控制器
 -(void)showIn:(UIViewController *)controller result:(ZZPhotoResult)result{
     
@@ -68,7 +67,6 @@
     }else if (status == PHAuthorizationStatusAuthorized){
         [self showController:controller result:result];
     }
-
 }
 
 -(void)showController:(UIViewController *)controller result:(ZZPhotoResult)result
@@ -79,24 +77,21 @@
     //先向presentViewController控制器ZZPhotoListViewController，此控制器为全部相册控制器
     
     /* * *   同时设定最多选择照片的张数  * * */
-    self.photoListController.selectNum = _selectPhotoOfMax;
+    self.photoListController.selectNum       = _selectPhotoOfMax;
     
     [self showPhotoList:controller];
     
-    
     //Block传值
-    self.photoPickerController.PhotoResult = result;
+    self.photoPickerController.PhotoResult   = result;
     self.photoPickerController.isAlubSeclect = NO;
-    self.photoPickerController.roundColor = self.roundColor;
+    self.photoPickerController.roundColor    = self.roundColor;
     /* * *   同时设定最多选择照片的张数  * * */
-    self.photoPickerController.selectNum = _selectPhotoOfMax;
+    self.photoPickerController.selectNum     = _selectPhotoOfMax;
     
     //然后再执行pushViewController控制器ZZPhotoPickerViewController
     //此控制器为详情相册，显示某个相册中的详细照片
     [self showPhotoPicker:self.photoListController.navigationController];
 }
-
-
 
 -(void)showPhotoList:(UIViewController *)controller
 {

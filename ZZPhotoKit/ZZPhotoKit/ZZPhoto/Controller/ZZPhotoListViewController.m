@@ -30,7 +30,6 @@
         UIButton *button = [[UIButton alloc]initWithFrame:CGRectMake(0, 0, 50, 44)];
         [button addTarget:self action:@selector(close) forControlEvents:UIControlEventTouchUpInside];
         button.titleLabel.font = [UIFont systemFontOfSize:17.0f];
-        [button.titleLabel setFont:[UIFont fontWithName:@"Helvetica-Bold" size:17]];
         [button setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
         [button setTitle:@"关闭" forState:UIControlStateNormal];
         [button setTitleColor:[UIColor blueColor] forState:UIControlStateNormal];
@@ -79,11 +78,10 @@
     
     [self makeAlumListUI];
 
-    
     self.alubms = [self.datas GetPhotoListDatas];
 
-    
 }
+
 -(void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
@@ -109,7 +107,6 @@
     
     [self.view addConstraints:@[list_top,list_bottom,list_left,list_right]];
 }
-
 
 #pragma mark --- UITableView协议方法
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
@@ -142,18 +139,13 @@
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-
     ZZPhotoPickerViewController *photoPickerController = [[ZZPhotoPickerViewController alloc]initWithNibName:nil bundle:nil];
-
-    photoPickerController.PhotoResult = self.photoResult;
-    photoPickerController.selectNum = self.selectNum;
-    
-    ZZPhotoListModel *listmodel = [self.alubms objectAtIndex:indexPath.row];
-    
-    photoPickerController.fetch = [self.datas GetFetchResult:listmodel.assetCollection];
+    photoPickerController.PhotoResult          = self.photoResult;
+    photoPickerController.selectNum            = self.selectNum;
+    ZZPhotoListModel *listmodel                = [self.alubms objectAtIndex:indexPath.row];
+    photoPickerController.fetch                = [self.datas GetFetchResult:listmodel.assetCollection];
     photoPickerController.navigationItem.title = listmodel.title;
-    photoPickerController.isAlubSeclect = YES;
-    
+    photoPickerController.isAlubSeclect        = YES;
     [self.navigationController pushViewController:photoPickerController animated:YES];
 }
 

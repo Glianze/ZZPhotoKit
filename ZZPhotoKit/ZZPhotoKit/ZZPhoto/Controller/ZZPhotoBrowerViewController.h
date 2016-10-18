@@ -17,6 +17,6 @@
 
 @property (nonatomic, assign) NSInteger scrollIndex;
 
--(void)showIn:(UIViewController *)controller;
+-(void) showIn:(UIViewController *)controller;
 
 @end

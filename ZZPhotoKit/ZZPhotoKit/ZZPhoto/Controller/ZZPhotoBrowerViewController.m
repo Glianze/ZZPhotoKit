@@ -15,23 +15,24 @@
 @interface ZZPhotoBrowerViewController ()<UICollectionViewDelegate,UICollectionViewDataSource>
 
 @property (nonatomic, strong) UICollectionView *picBrowse;
-//照片的总数
-@property (nonatomic, assign) NSInteger numberOfItems;
-
+@property (nonatomic, assign) NSInteger        numberOfItems;
+@property (nonatomic, strong) UIBarButtonItem  *backBarButton;
 @end
 
 @implementation ZZPhotoBrowerViewController
 
--(void)setupBackItemUI
+-(UIBarButtonItem *)backBarButton
 {
-    UIButton *back_btn = [[UIButton alloc]initWithFrame:CGRectMake(0, 0, 45, 44)];
-    [back_btn setImage:[UIImage imageNamed:@"back_button_normal.png"] forState:UIControlStateNormal];
-    [back_btn setImage:[UIImage imageNamed:@"back_button_high.png"] forState:UIControlStateHighlighted];
-    back_btn.frame = CGRectMake(0, 0, 45, 44);
-    [back_btn addTarget:self action:@selector(backItemMethod) forControlEvents:UIControlEventTouchUpInside];
-    
-    UIBarButtonItem *item = [[UIBarButtonItem alloc] initWithCustomView:back_btn];
-    self.navigationItem.leftBarButtonItem = item;
+    if (!_backBarButton) {
+        UIButton *back_btn = [[UIButton alloc]initWithFrame:CGRectMake(0, 0, 45, 44)];
+        [back_btn setImage:[UIImage imageNamed:@"back_button_normal.png"] forState:UIControlStateNormal];
+        [back_btn setImage:[UIImage imageNamed:@"back_button_high.png"] forState:UIControlStateHighlighted];
+        back_btn.frame = CGRectMake(0, 0, 45, 44);
+        [back_btn addTarget:self action:@selector(backItemMethod) forControlEvents:UIControlEventTouchUpInside];
+        
+        _backBarButton = [[UIBarButtonItem alloc] initWithCustomView:back_btn];
+    }
+    return _backBarButton;
 }
 
 -(void)backItemMethod
@@ -40,7 +41,7 @@
     
 }
 
--(void)setupCollectionViewUI
+-(void) makeCollectionViewUI
 {
     self.edgesForExtendedLayout = UIRectEdgeNone;
     /*
@@ -77,18 +78,17 @@
     
 }
 
-- (void)viewDidLoad {
+- (void) viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-    [self setupBackItemUI];
+    self.navigationItem.leftBarButtonItem = self.backBarButton;
     
-    [self setupCollectionViewUI];
+    [self makeCollectionViewUI];
     
-
 }
 
--(void)viewDidLayoutSubviews
+-(void) viewDidLayoutSubviews
 {
     [super viewDidLayoutSubviews];
     
@@ -98,16 +98,16 @@
 }
 
 #pragma mark --- UICollectionviewDelegate or dataSource
--(NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView
+-(NSInteger) numberOfSectionsInCollectionView:(UICollectionView *)collectionView
 {
     return 1;
 }
-- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
+-(NSInteger) collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {
     return _photoData.count;
 }
 
-- (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
+-(UICollectionViewCell *) collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
     ZZBrowserPickerCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:NSStringFromClass([ZZBrowserPickerCell class]) forIndexPath:indexPath];
 
@@ -122,12 +122,10 @@
     return cell;
 }
 
-
--(void)showIn:(UIViewController *)controller
+-(void) showIn:(UIViewController *)controller
 {
     [controller.navigationController pushViewController:self animated:YES];
 }
-
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

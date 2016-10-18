@@ -15,7 +15,6 @@ typedef void (^ZZPhotoResult)(id responseObject);
 
 
 @interface ZZPhotoController : NSObject
-
 /*
  *    设置圆点颜色
  */
@@ -24,7 +23,6 @@ typedef void (^ZZPhotoResult)(id responseObject);
  *    选择照片的最多张数
  */
 @property(assign,nonatomic) NSInteger selectPhotoOfMax;
-
 /*
  *    设置回调方法
  */

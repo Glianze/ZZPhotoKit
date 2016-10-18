@@ -14,13 +14,9 @@
 @interface ZZCameraBrowerViewController ()<UICollectionViewDelegate,UICollectionViewDataSource, ZZBrowserPickerCellDelegate>
 
 @property (nonatomic, strong) UICollectionView *picBrowse;
-
-@property (nonatomic, strong) NSMutableArray *photoDataArray;
-
-@property (nonatomic, strong) ZZPageControl *pageControl;
-
-//照片的总数
-@property (nonatomic, assign) NSInteger numberOfItems;
+@property (nonatomic, strong) NSMutableArray   *photoDataArray;
+@property (nonatomic, strong) ZZPageControl    *pageControl;
+@property (nonatomic, assign) NSInteger        numberOfItems;
 
 @end
 
@@ -77,9 +73,6 @@
 
 -(void)setPageControlUI
 {
-    /*
-     *   创建底部PageControl（自定义）
-     */
     _pageControl = [[ZZPageControl alloc]initWithFrame:CGRectMake(0, self.view.frame.size.height - 80, self.view.frame.size.width, 30)];
     _pageControl.currentPage = 0;
     _pageControl.backgroundColor = [UIColor clearColor];
@@ -183,14 +176,12 @@
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView
 {
-    
     int itemIndex = (scrollView.contentOffset.x + self.picBrowse.frame.size.width * 0.5) / self.picBrowse.frame.size.width;
     if (!self.numberOfItems) return;
     int indexOnPageControl = itemIndex % self.numberOfItems;
     
     _pageControl.pageControl.text = [NSString stringWithFormat:@"%d / %ld",indexOnPageControl+1,(long)_numberOfItems];
     self.pageControl.currentPage = indexOnPageControl;
-    
 }
 
 

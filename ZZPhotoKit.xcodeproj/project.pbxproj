@@ -36,43 +36,42 @@
 		1C94AD4A1C3A7DC800B26FAE /* scv4.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 1C94AD451C3A7DC800B26FAE /* scv4.jpg */; };
 		1C94AD4B1C3A7DC800B26FAE /* scv5.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 1C94AD461C3A7DC800B26FAE /* scv5.jpg */; };
 		1CFF40301C45FF77007D43AF /* PicsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CFF402F1C45FF77007D43AF /* PicsCell.m */; };
-		49061AE11D731651001B8004 /* ZZPhotoAlert.m in Sources */ = {isa = PBXBuildFile; fileRef = 49061AE01D731651001B8004 /* ZZPhotoAlert.m */; };
-		490AE78F1DAE1893005EEDA7 /* ZZPhotoPickerFooterView.m in Sources */ = {isa = PBXBuildFile; fileRef = 490AE78E1DAE1893005EEDA7 /* ZZPhotoPickerFooterView.m */; };
-		4937E7A31CF814AA0016AB5F /* back_button_normal.png in Resources */ = {isa = PBXBuildFile; fileRef = 4937E7A21CF814AA0016AB5F /* back_button_normal.png */; };
-		4937E7A61CF821880016AB5F /* ZZPhotoBrowerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4937E7A51CF821880016AB5F /* ZZPhotoBrowerViewController.m */; };
-		4937E7A91CF82C2A0016AB5F /* ZZCameraBrowerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4937E7A81CF82C2A0016AB5F /* ZZCameraBrowerViewController.m */; };
-		49D4953C1CF540EE00E42318 /* ZZPhoto.m in Sources */ = {isa = PBXBuildFile; fileRef = 49D4953B1CF540EE00E42318 /* ZZPhoto.m */; };
-		49D495481CF54CAB00E42318 /* ZZCameraController.m in Sources */ = {isa = PBXBuildFile; fileRef = 49D4953F1CF54CAB00E42318 /* ZZCameraController.m */; };
-		49D495491CF54CAB00E42318 /* ZZCameraPickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 49D495411CF54CAB00E42318 /* ZZCameraPickerViewController.m */; };
-		49D4954A1CF54CAB00E42318 /* ZZCameraFocusView.m in Sources */ = {isa = PBXBuildFile; fileRef = 49D495451CF54CAB00E42318 /* ZZCameraFocusView.m */; };
-		49D4954B1CF54CAB00E42318 /* ZZCameraPickerCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 49D495471CF54CAB00E42318 /* ZZCameraPickerCell.m */; };
-		49D4954E1CF54CC000E42318 /* ZZCamera.m in Sources */ = {isa = PBXBuildFile; fileRef = 49D4954D1CF54CC000E42318 /* ZZCamera.m */; };
-		49D736891CEE148B00AE804F /* ZZBrowserPickerCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 49D736561CEE148B00AE804F /* ZZBrowserPickerCell.m */; };
-		49D7368A1CEE148B00AE804F /* ZZBrowserPickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 49D736581CEE148B00AE804F /* ZZBrowserPickerViewController.m */; };
-		49D736901CEE148B00AE804F /* ZZPhotoController.m in Sources */ = {isa = PBXBuildFile; fileRef = 49D736671CEE148B00AE804F /* ZZPhotoController.m */; };
-		49D736911CEE148B00AE804F /* ZZPhotoListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 49D736691CEE148B00AE804F /* ZZPhotoListViewController.m */; };
-		49D736921CEE148B00AE804F /* ZZPhotoPickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 49D7366B1CEE148B00AE804F /* ZZPhotoPickerViewController.m */; };
-		49D736941CEE148B00AE804F /* ZZPhotoDatas.m in Sources */ = {isa = PBXBuildFile; fileRef = 49D736701CEE148B00AE804F /* ZZPhotoDatas.m */; };
-		49D736951CEE148B00AE804F /* ZZPhotoListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 49D736721CEE148B00AE804F /* ZZPhotoListModel.m */; };
-		49D736961CEE148B00AE804F /* ZZPhotoHud.m in Sources */ = {isa = PBXBuildFile; fileRef = 49D736751CEE148B00AE804F /* ZZPhotoHud.m */; };
-		49D736971CEE148B00AE804F /* ZZPhotoListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 49D736771CEE148B00AE804F /* ZZPhotoListCell.m */; };
-		49D736981CEE148B00AE804F /* ZZPhotoPickerCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 49D736791CEE148B00AE804F /* ZZPhotoPickerCell.m */; };
-		49D7369B1CEE14AE00AE804F /* ZZPageControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 49D7369A1CEE14AE00AE804F /* ZZPageControl.m */; };
-		49D736B21CEE16FC00AE804F /* UIImageHandle.m in Sources */ = {isa = PBXBuildFile; fileRef = 49D7369F1CEE16FC00AE804F /* UIImageHandle.m */; };
-		49D736B41CEE16FC00AE804F /* camera_focus_pic.png in Resources */ = {isa = PBXBuildFile; fileRef = 49D736A31CEE16FC00AE804F /* camera_focus_pic.png */; };
-		49D736B51CEE16FC00AE804F /* change_camera_pic.png in Resources */ = {isa = PBXBuildFile; fileRef = 49D736A41CEE16FC00AE804F /* change_camera_pic.png */; };
-		49D736B61CEE16FC00AE804F /* flash_close_pic.png in Resources */ = {isa = PBXBuildFile; fileRef = 49D736A51CEE16FC00AE804F /* flash_close_pic.png */; };
-		49D736B71CEE16FC00AE804F /* flash_open_pic.png in Resources */ = {isa = PBXBuildFile; fileRef = 49D736A61CEE16FC00AE804F /* flash_open_pic.png */; };
-		49D736B81CEE16FC00AE804F /* no_data.png in Resources */ = {isa = PBXBuildFile; fileRef = 49D736A71CEE16FC00AE804F /* no_data.png */; };
-		49D736B91CEE16FC00AE804F /* photo_add.png in Resources */ = {isa = PBXBuildFile; fileRef = 49D736A81CEE16FC00AE804F /* photo_add.png */; };
-		49D736BA1CEE16FC00AE804F /* remove_btn_pic.png in Resources */ = {isa = PBXBuildFile; fileRef = 49D736A91CEE16FC00AE804F /* remove_btn_pic.png */; };
-		49D736BB1CEE16FC00AE804F /* select_no.png in Resources */ = {isa = PBXBuildFile; fileRef = 49D736AA1CEE16FC00AE804F /* select_no.png */; };
-		49D736BC1CEE16FC00AE804F /* select_yes.png in Resources */ = {isa = PBXBuildFile; fileRef = 49D736AB1CEE16FC00AE804F /* select_yes.png */; };
-		49D736BD1CEE16FC00AE804F /* take_photo_pic.png in Resources */ = {isa = PBXBuildFile; fileRef = 49D736AC1CEE16FC00AE804F /* take_photo_pic.png */; };
-		49D736BE1CEE16FC00AE804F /* take_photo_pic@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 49D736AD1CEE16FC00AE804F /* take_photo_pic@2x.png */; };
-		49D736BF1CEE16FC00AE804F /* trash_btn_pic.png in Resources */ = {isa = PBXBuildFile; fileRef = 49D736AE1CEE16FC00AE804F /* trash_btn_pic.png */; };
-		49D736C01CEE16FC00AE804F /* zz_alumb_rightCell.png in Resources */ = {isa = PBXBuildFile; fileRef = 49D736AF1CEE16FC00AE804F /* zz_alumb_rightCell.png */; };
-		49D736C31CEE178A00AE804F /* ZZAlumAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = 49D736C21CEE178A00AE804F /* ZZAlumAnimation.m */; };
+		496D476E1DB5F8E600A99CD4 /* ZZAlumAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = 496D47291DB5F8E600A99CD4 /* ZZAlumAnimation.m */; };
+		496D476F1DB5F8E600A99CD4 /* back_button_normal.png in Resources */ = {isa = PBXBuildFile; fileRef = 496D472B1DB5F8E600A99CD4 /* back_button_normal.png */; };
+		496D47701DB5F8E600A99CD4 /* camera_focus_pic.png in Resources */ = {isa = PBXBuildFile; fileRef = 496D472C1DB5F8E600A99CD4 /* camera_focus_pic.png */; };
+		496D47711DB5F8E600A99CD4 /* change_camera_pic.png in Resources */ = {isa = PBXBuildFile; fileRef = 496D472D1DB5F8E600A99CD4 /* change_camera_pic.png */; };
+		496D47721DB5F8E600A99CD4 /* flash_close_pic.png in Resources */ = {isa = PBXBuildFile; fileRef = 496D472E1DB5F8E600A99CD4 /* flash_close_pic.png */; };
+		496D47731DB5F8E600A99CD4 /* flash_open_pic.png in Resources */ = {isa = PBXBuildFile; fileRef = 496D472F1DB5F8E600A99CD4 /* flash_open_pic.png */; };
+		496D47741DB5F8E600A99CD4 /* no_data.png in Resources */ = {isa = PBXBuildFile; fileRef = 496D47301DB5F8E600A99CD4 /* no_data.png */; };
+		496D47751DB5F8E600A99CD4 /* photo_add.png in Resources */ = {isa = PBXBuildFile; fileRef = 496D47311DB5F8E600A99CD4 /* photo_add.png */; };
+		496D47761DB5F8E600A99CD4 /* remove_btn_pic.png in Resources */ = {isa = PBXBuildFile; fileRef = 496D47321DB5F8E600A99CD4 /* remove_btn_pic.png */; };
+		496D47771DB5F8E600A99CD4 /* select_no.png in Resources */ = {isa = PBXBuildFile; fileRef = 496D47331DB5F8E600A99CD4 /* select_no.png */; };
+		496D47781DB5F8E600A99CD4 /* select_yes.png in Resources */ = {isa = PBXBuildFile; fileRef = 496D47341DB5F8E600A99CD4 /* select_yes.png */; };
+		496D47791DB5F8E600A99CD4 /* take_photo_pic.png in Resources */ = {isa = PBXBuildFile; fileRef = 496D47351DB5F8E600A99CD4 /* take_photo_pic.png */; };
+		496D477A1DB5F8E600A99CD4 /* take_photo_pic@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 496D47361DB5F8E600A99CD4 /* take_photo_pic@2x.png */; };
+		496D477B1DB5F8E600A99CD4 /* trash_btn_pic.png in Resources */ = {isa = PBXBuildFile; fileRef = 496D47371DB5F8E600A99CD4 /* trash_btn_pic.png */; };
+		496D477C1DB5F8E600A99CD4 /* zz_alumb_rightCell.png in Resources */ = {isa = PBXBuildFile; fileRef = 496D47381DB5F8E600A99CD4 /* zz_alumb_rightCell.png */; };
+		496D477D1DB5F8E600A99CD4 /* ZZBrowserPickerCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 496D473C1DB5F8E600A99CD4 /* ZZBrowserPickerCell.m */; };
+		496D477E1DB5F8E600A99CD4 /* ZZBrowserPickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 496D473E1DB5F8E600A99CD4 /* ZZBrowserPickerViewController.m */; };
+		496D477F1DB5F8E600A99CD4 /* ZZPageControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 496D47401DB5F8E600A99CD4 /* ZZPageControl.m */; };
+		496D47801DB5F8E600A99CD4 /* ZZCameraBrowerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 496D47441DB5F8E600A99CD4 /* ZZCameraBrowerViewController.m */; };
+		496D47811DB5F8E600A99CD4 /* ZZCameraController.m in Sources */ = {isa = PBXBuildFile; fileRef = 496D47461DB5F8E600A99CD4 /* ZZCameraController.m */; };
+		496D47821DB5F8E600A99CD4 /* ZZCameraPickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 496D47481DB5F8E600A99CD4 /* ZZCameraPickerViewController.m */; };
+		496D47831DB5F8E600A99CD4 /* ZZCamera.m in Sources */ = {isa = PBXBuildFile; fileRef = 496D474B1DB5F8E600A99CD4 /* ZZCamera.m */; };
+		496D47841DB5F8E600A99CD4 /* ZZCameraFocusView.m in Sources */ = {isa = PBXBuildFile; fileRef = 496D474E1DB5F8E600A99CD4 /* ZZCameraFocusView.m */; };
+		496D47851DB5F8E600A99CD4 /* ZZCameraPickerCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 496D47501DB5F8E600A99CD4 /* ZZCameraPickerCell.m */; };
+		496D47861DB5F8E600A99CD4 /* ZZPhotoBrowerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 496D47541DB5F8E600A99CD4 /* ZZPhotoBrowerViewController.m */; };
+		496D47871DB5F8E600A99CD4 /* ZZPhotoController.m in Sources */ = {isa = PBXBuildFile; fileRef = 496D47561DB5F8E600A99CD4 /* ZZPhotoController.m */; };
+		496D47881DB5F8E600A99CD4 /* ZZPhotoListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 496D47581DB5F8E600A99CD4 /* ZZPhotoListViewController.m */; };
+		496D47891DB5F8E600A99CD4 /* ZZPhotoPickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 496D475A1DB5F8E600A99CD4 /* ZZPhotoPickerViewController.m */; };
+		496D478A1DB5F8E600A99CD4 /* ZZPhoto.m in Sources */ = {isa = PBXBuildFile; fileRef = 496D475D1DB5F8E600A99CD4 /* ZZPhoto.m */; };
+		496D478B1DB5F8E600A99CD4 /* ZZPhotoDatas.m in Sources */ = {isa = PBXBuildFile; fileRef = 496D475F1DB5F8E600A99CD4 /* ZZPhotoDatas.m */; };
+		496D478C1DB5F8E600A99CD4 /* ZZPhotoListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 496D47611DB5F8E600A99CD4 /* ZZPhotoListModel.m */; };
+		496D478D1DB5F8E600A99CD4 /* ZZPhotoAlert.m in Sources */ = {isa = PBXBuildFile; fileRef = 496D47641DB5F8E600A99CD4 /* ZZPhotoAlert.m */; };
+		496D478E1DB5F8E600A99CD4 /* ZZPhotoHud.m in Sources */ = {isa = PBXBuildFile; fileRef = 496D47661DB5F8E600A99CD4 /* ZZPhotoHud.m */; };
+		496D478F1DB5F8E600A99CD4 /* ZZPhotoListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 496D47681DB5F8E600A99CD4 /* ZZPhotoListCell.m */; };
+		496D47901DB5F8E600A99CD4 /* ZZPhotoPickerCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 496D476A1DB5F8E600A99CD4 /* ZZPhotoPickerCell.m */; };
+		496D47911DB5F8E600A99CD4 /* ZZPhotoPickerFooterView.m in Sources */ = {isa = PBXBuildFile; fileRef = 496D476C1DB5F8E600A99CD4 /* ZZPhotoPickerFooterView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -148,68 +147,66 @@
 		1C94AD461C3A7DC800B26FAE /* scv5.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = scv5.jpg; sourceTree = "<group>"; };
 		1CFF402E1C45FF77007D43AF /* PicsCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PicsCell.h; sourceTree = "<group>"; };
 		1CFF402F1C45FF77007D43AF /* PicsCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PicsCell.m; sourceTree = "<group>"; };
-		49061ADF1D731651001B8004 /* ZZPhotoAlert.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZZPhotoAlert.h; sourceTree = "<group>"; };
-		49061AE01D731651001B8004 /* ZZPhotoAlert.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZZPhotoAlert.m; sourceTree = "<group>"; };
-		490AE78D1DAE1893005EEDA7 /* ZZPhotoPickerFooterView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZZPhotoPickerFooterView.h; sourceTree = "<group>"; };
-		490AE78E1DAE1893005EEDA7 /* ZZPhotoPickerFooterView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZZPhotoPickerFooterView.m; sourceTree = "<group>"; };
-		4937E7A21CF814AA0016AB5F /* back_button_normal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = back_button_normal.png; sourceTree = "<group>"; };
-		4937E7A41CF821880016AB5F /* ZZPhotoBrowerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZZPhotoBrowerViewController.h; sourceTree = "<group>"; };
-		4937E7A51CF821880016AB5F /* ZZPhotoBrowerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZZPhotoBrowerViewController.m; sourceTree = "<group>"; };
-		4937E7A71CF82C2A0016AB5F /* ZZCameraBrowerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZZCameraBrowerViewController.h; sourceTree = "<group>"; };
-		4937E7A81CF82C2A0016AB5F /* ZZCameraBrowerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZZCameraBrowerViewController.m; sourceTree = "<group>"; };
-		49D4953A1CF540EE00E42318 /* ZZPhoto.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZZPhoto.h; sourceTree = "<group>"; };
-		49D4953B1CF540EE00E42318 /* ZZPhoto.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZZPhoto.m; sourceTree = "<group>"; };
-		49D4953E1CF54CAB00E42318 /* ZZCameraController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZZCameraController.h; sourceTree = "<group>"; };
-		49D4953F1CF54CAB00E42318 /* ZZCameraController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZZCameraController.m; sourceTree = "<group>"; };
-		49D495401CF54CAB00E42318 /* ZZCameraPickerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZZCameraPickerViewController.h; sourceTree = "<group>"; };
-		49D495411CF54CAB00E42318 /* ZZCameraPickerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZZCameraPickerViewController.m; sourceTree = "<group>"; };
-		49D495441CF54CAB00E42318 /* ZZCameraFocusView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZZCameraFocusView.h; sourceTree = "<group>"; };
-		49D495451CF54CAB00E42318 /* ZZCameraFocusView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZZCameraFocusView.m; sourceTree = "<group>"; };
-		49D495461CF54CAB00E42318 /* ZZCameraPickerCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZZCameraPickerCell.h; sourceTree = "<group>"; };
-		49D495471CF54CAB00E42318 /* ZZCameraPickerCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZZCameraPickerCell.m; sourceTree = "<group>"; };
-		49D4954C1CF54CC000E42318 /* ZZCamera.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZZCamera.h; sourceTree = "<group>"; };
-		49D4954D1CF54CC000E42318 /* ZZCamera.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZZCamera.m; sourceTree = "<group>"; };
-		49D736551CEE148B00AE804F /* ZZBrowserPickerCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZZBrowserPickerCell.h; sourceTree = "<group>"; };
-		49D736561CEE148B00AE804F /* ZZBrowserPickerCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZZBrowserPickerCell.m; sourceTree = "<group>"; };
-		49D736571CEE148B00AE804F /* ZZBrowserPickerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZZBrowserPickerViewController.h; sourceTree = "<group>"; };
-		49D736581CEE148B00AE804F /* ZZBrowserPickerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZZBrowserPickerViewController.m; sourceTree = "<group>"; };
-		49D736661CEE148B00AE804F /* ZZPhotoController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZZPhotoController.h; sourceTree = "<group>"; };
-		49D736671CEE148B00AE804F /* ZZPhotoController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZZPhotoController.m; sourceTree = "<group>"; };
-		49D736681CEE148B00AE804F /* ZZPhotoListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZZPhotoListViewController.h; sourceTree = "<group>"; };
-		49D736691CEE148B00AE804F /* ZZPhotoListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZZPhotoListViewController.m; sourceTree = "<group>"; };
-		49D7366A1CEE148B00AE804F /* ZZPhotoPickerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZZPhotoPickerViewController.h; sourceTree = "<group>"; };
-		49D7366B1CEE148B00AE804F /* ZZPhotoPickerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZZPhotoPickerViewController.m; sourceTree = "<group>"; };
-		49D7366F1CEE148B00AE804F /* ZZPhotoDatas.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZZPhotoDatas.h; sourceTree = "<group>"; };
-		49D736701CEE148B00AE804F /* ZZPhotoDatas.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZZPhotoDatas.m; sourceTree = "<group>"; };
-		49D736711CEE148B00AE804F /* ZZPhotoListModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZZPhotoListModel.h; sourceTree = "<group>"; };
-		49D736721CEE148B00AE804F /* ZZPhotoListModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZZPhotoListModel.m; sourceTree = "<group>"; };
-		49D736741CEE148B00AE804F /* ZZPhotoHud.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZZPhotoHud.h; sourceTree = "<group>"; };
-		49D736751CEE148B00AE804F /* ZZPhotoHud.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZZPhotoHud.m; sourceTree = "<group>"; };
-		49D736761CEE148B00AE804F /* ZZPhotoListCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZZPhotoListCell.h; sourceTree = "<group>"; };
-		49D736771CEE148B00AE804F /* ZZPhotoListCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZZPhotoListCell.m; sourceTree = "<group>"; };
-		49D736781CEE148B00AE804F /* ZZPhotoPickerCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZZPhotoPickerCell.h; sourceTree = "<group>"; };
-		49D736791CEE148B00AE804F /* ZZPhotoPickerCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZZPhotoPickerCell.m; sourceTree = "<group>"; };
-		49D736991CEE14AE00AE804F /* ZZPageControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZZPageControl.h; sourceTree = "<group>"; };
-		49D7369A1CEE14AE00AE804F /* ZZPageControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZZPageControl.m; sourceTree = "<group>"; };
-		49D7369E1CEE16FC00AE804F /* UIImageHandle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIImageHandle.h; sourceTree = "<group>"; };
-		49D7369F1CEE16FC00AE804F /* UIImageHandle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIImageHandle.m; sourceTree = "<group>"; };
-		49D736A31CEE16FC00AE804F /* camera_focus_pic.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = camera_focus_pic.png; sourceTree = "<group>"; };
-		49D736A41CEE16FC00AE804F /* change_camera_pic.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = change_camera_pic.png; sourceTree = "<group>"; };
-		49D736A51CEE16FC00AE804F /* flash_close_pic.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = flash_close_pic.png; sourceTree = "<group>"; };
-		49D736A61CEE16FC00AE804F /* flash_open_pic.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = flash_open_pic.png; sourceTree = "<group>"; };
-		49D736A71CEE16FC00AE804F /* no_data.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = no_data.png; sourceTree = "<group>"; };
-		49D736A81CEE16FC00AE804F /* photo_add.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = photo_add.png; sourceTree = "<group>"; };
-		49D736A91CEE16FC00AE804F /* remove_btn_pic.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = remove_btn_pic.png; sourceTree = "<group>"; };
-		49D736AA1CEE16FC00AE804F /* select_no.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = select_no.png; sourceTree = "<group>"; };
-		49D736AB1CEE16FC00AE804F /* select_yes.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = select_yes.png; sourceTree = "<group>"; };
-		49D736AC1CEE16FC00AE804F /* take_photo_pic.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = take_photo_pic.png; sourceTree = "<group>"; };
-		49D736AD1CEE16FC00AE804F /* take_photo_pic@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "take_photo_pic@2x.png"; sourceTree = "<group>"; };
-		49D736AE1CEE16FC00AE804F /* trash_btn_pic.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = trash_btn_pic.png; sourceTree = "<group>"; };
-		49D736AF1CEE16FC00AE804F /* zz_alumb_rightCell.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = zz_alumb_rightCell.png; sourceTree = "<group>"; };
-		49D736B01CEE16FC00AE804F /* ZZResourceConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZZResourceConfig.h; sourceTree = "<group>"; };
-		49D736B11CEE16FC00AE804F /* ZZPhotoKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZZPhotoKit.h; sourceTree = "<group>"; };
-		49D736C11CEE178A00AE804F /* ZZAlumAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZZAlumAnimation.h; sourceTree = "<group>"; };
-		49D736C21CEE178A00AE804F /* ZZAlumAnimation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZZAlumAnimation.m; sourceTree = "<group>"; };
+		496D47281DB5F8E600A99CD4 /* ZZAlumAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZZAlumAnimation.h; sourceTree = "<group>"; };
+		496D47291DB5F8E600A99CD4 /* ZZAlumAnimation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZZAlumAnimation.m; sourceTree = "<group>"; };
+		496D472B1DB5F8E600A99CD4 /* back_button_normal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = back_button_normal.png; sourceTree = "<group>"; };
+		496D472C1DB5F8E600A99CD4 /* camera_focus_pic.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = camera_focus_pic.png; sourceTree = "<group>"; };
+		496D472D1DB5F8E600A99CD4 /* change_camera_pic.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = change_camera_pic.png; sourceTree = "<group>"; };
+		496D472E1DB5F8E600A99CD4 /* flash_close_pic.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = flash_close_pic.png; sourceTree = "<group>"; };
+		496D472F1DB5F8E600A99CD4 /* flash_open_pic.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = flash_open_pic.png; sourceTree = "<group>"; };
+		496D47301DB5F8E600A99CD4 /* no_data.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = no_data.png; sourceTree = "<group>"; };
+		496D47311DB5F8E600A99CD4 /* photo_add.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = photo_add.png; sourceTree = "<group>"; };
+		496D47321DB5F8E600A99CD4 /* remove_btn_pic.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = remove_btn_pic.png; sourceTree = "<group>"; };
+		496D47331DB5F8E600A99CD4 /* select_no.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = select_no.png; sourceTree = "<group>"; };
+		496D47341DB5F8E600A99CD4 /* select_yes.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = select_yes.png; sourceTree = "<group>"; };
+		496D47351DB5F8E600A99CD4 /* take_photo_pic.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = take_photo_pic.png; sourceTree = "<group>"; };
+		496D47361DB5F8E600A99CD4 /* take_photo_pic@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "take_photo_pic@2x.png"; sourceTree = "<group>"; };
+		496D47371DB5F8E600A99CD4 /* trash_btn_pic.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = trash_btn_pic.png; sourceTree = "<group>"; };
+		496D47381DB5F8E600A99CD4 /* zz_alumb_rightCell.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = zz_alumb_rightCell.png; sourceTree = "<group>"; };
+		496D47391DB5F8E600A99CD4 /* ZZResourceConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZZResourceConfig.h; sourceTree = "<group>"; };
+		496D473B1DB5F8E600A99CD4 /* ZZBrowserPickerCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZZBrowserPickerCell.h; sourceTree = "<group>"; };
+		496D473C1DB5F8E600A99CD4 /* ZZBrowserPickerCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZZBrowserPickerCell.m; sourceTree = "<group>"; };
+		496D473D1DB5F8E600A99CD4 /* ZZBrowserPickerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZZBrowserPickerViewController.h; sourceTree = "<group>"; };
+		496D473E1DB5F8E600A99CD4 /* ZZBrowserPickerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZZBrowserPickerViewController.m; sourceTree = "<group>"; };
+		496D473F1DB5F8E600A99CD4 /* ZZPageControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZZPageControl.h; sourceTree = "<group>"; };
+		496D47401DB5F8E600A99CD4 /* ZZPageControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZZPageControl.m; sourceTree = "<group>"; };
+		496D47431DB5F8E600A99CD4 /* ZZCameraBrowerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZZCameraBrowerViewController.h; sourceTree = "<group>"; };
+		496D47441DB5F8E600A99CD4 /* ZZCameraBrowerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZZCameraBrowerViewController.m; sourceTree = "<group>"; };
+		496D47451DB5F8E600A99CD4 /* ZZCameraController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZZCameraController.h; sourceTree = "<group>"; };
+		496D47461DB5F8E600A99CD4 /* ZZCameraController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZZCameraController.m; sourceTree = "<group>"; };
+		496D47471DB5F8E600A99CD4 /* ZZCameraPickerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZZCameraPickerViewController.h; sourceTree = "<group>"; };
+		496D47481DB5F8E600A99CD4 /* ZZCameraPickerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZZCameraPickerViewController.m; sourceTree = "<group>"; };
+		496D474A1DB5F8E600A99CD4 /* ZZCamera.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZZCamera.h; sourceTree = "<group>"; };
+		496D474B1DB5F8E600A99CD4 /* ZZCamera.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZZCamera.m; sourceTree = "<group>"; };
+		496D474D1DB5F8E600A99CD4 /* ZZCameraFocusView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZZCameraFocusView.h; sourceTree = "<group>"; };
+		496D474E1DB5F8E600A99CD4 /* ZZCameraFocusView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZZCameraFocusView.m; sourceTree = "<group>"; };
+		496D474F1DB5F8E600A99CD4 /* ZZCameraPickerCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZZCameraPickerCell.h; sourceTree = "<group>"; };
+		496D47501DB5F8E600A99CD4 /* ZZCameraPickerCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZZCameraPickerCell.m; sourceTree = "<group>"; };
+		496D47531DB5F8E600A99CD4 /* ZZPhotoBrowerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZZPhotoBrowerViewController.h; sourceTree = "<group>"; };
+		496D47541DB5F8E600A99CD4 /* ZZPhotoBrowerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZZPhotoBrowerViewController.m; sourceTree = "<group>"; };
+		496D47551DB5F8E600A99CD4 /* ZZPhotoController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZZPhotoController.h; sourceTree = "<group>"; };
+		496D47561DB5F8E600A99CD4 /* ZZPhotoController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZZPhotoController.m; sourceTree = "<group>"; };
+		496D47571DB5F8E600A99CD4 /* ZZPhotoListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZZPhotoListViewController.h; sourceTree = "<group>"; };
+		496D47581DB5F8E600A99CD4 /* ZZPhotoListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZZPhotoListViewController.m; sourceTree = "<group>"; };
+		496D47591DB5F8E600A99CD4 /* ZZPhotoPickerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZZPhotoPickerViewController.h; sourceTree = "<group>"; };
+		496D475A1DB5F8E600A99CD4 /* ZZPhotoPickerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZZPhotoPickerViewController.m; sourceTree = "<group>"; };
+		496D475C1DB5F8E600A99CD4 /* ZZPhoto.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZZPhoto.h; sourceTree = "<group>"; };
+		496D475D1DB5F8E600A99CD4 /* ZZPhoto.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZZPhoto.m; sourceTree = "<group>"; };
+		496D475E1DB5F8E600A99CD4 /* ZZPhotoDatas.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZZPhotoDatas.h; sourceTree = "<group>"; };
+		496D475F1DB5F8E600A99CD4 /* ZZPhotoDatas.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZZPhotoDatas.m; sourceTree = "<group>"; };
+		496D47601DB5F8E600A99CD4 /* ZZPhotoListModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZZPhotoListModel.h; sourceTree = "<group>"; };
+		496D47611DB5F8E600A99CD4 /* ZZPhotoListModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZZPhotoListModel.m; sourceTree = "<group>"; };
+		496D47631DB5F8E600A99CD4 /* ZZPhotoAlert.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZZPhotoAlert.h; sourceTree = "<group>"; };
+		496D47641DB5F8E600A99CD4 /* ZZPhotoAlert.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZZPhotoAlert.m; sourceTree = "<group>"; };
+		496D47651DB5F8E600A99CD4 /* ZZPhotoHud.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZZPhotoHud.h; sourceTree = "<group>"; };
+		496D47661DB5F8E600A99CD4 /* ZZPhotoHud.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZZPhotoHud.m; sourceTree = "<group>"; };
+		496D47671DB5F8E600A99CD4 /* ZZPhotoListCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZZPhotoListCell.h; sourceTree = "<group>"; };
+		496D47681DB5F8E600A99CD4 /* ZZPhotoListCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZZPhotoListCell.m; sourceTree = "<group>"; };
+		496D47691DB5F8E600A99CD4 /* ZZPhotoPickerCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZZPhotoPickerCell.h; sourceTree = "<group>"; };
+		496D476A1DB5F8E600A99CD4 /* ZZPhotoPickerCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZZPhotoPickerCell.m; sourceTree = "<group>"; };
+		496D476B1DB5F8E600A99CD4 /* ZZPhotoPickerFooterView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZZPhotoPickerFooterView.h; sourceTree = "<group>"; };
+		496D476C1DB5F8E600A99CD4 /* ZZPhotoPickerFooterView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZZPhotoPickerFooterView.m; sourceTree = "<group>"; };
+		496D476D1DB5F8E600A99CD4 /* ZZPhotoKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZZPhotoKit.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -266,8 +263,8 @@
 				1C94AC0C1C3A7B1F00B26FAE /* ViewController.m */,
 				1CFF402E1C45FF77007D43AF /* PicsCell.h */,
 				1CFF402F1C45FF77007D43AF /* PicsCell.m */,
+				496D47251DB5F8E600A99CD4 /* ZZPhotoKit */,
 				1C94AD0F1C3A7D9500B26FAE /* SDWebImage */,
-				1C94AC381C3A7BA000B26FAE /* ZZPhotoRE */,
 				1C94AC111C3A7B1F00B26FAE /* Assets.xcassets */,
 				1C94AC131C3A7B1F00B26FAE /* LaunchScreen.storyboard */,
 				1C94AC161C3A7B1F00B26FAE /* Info.plist */,
@@ -301,18 +298,6 @@
 				1C94AC2C1C3A7B1F00B26FAE /* Info.plist */,
 			);
 			path = ZZPhotoKitUITests;
-			sourceTree = "<group>";
-		};
-		1C94AC381C3A7BA000B26FAE /* ZZPhotoRE */ = {
-			isa = PBXGroup;
-			children = (
-				49D736B11CEE16FC00AE804F /* ZZPhotoKit.h */,
-				49D7369C1CEE16FC00AE804F /* Public */,
-				49D736541CEE148B00AE804F /* ZZBrowser */,
-				49D736591CEE148B00AE804F /* ZZCamera */,
-				49D736641CEE148B00AE804F /* ZZPhoto */,
-			);
-			path = ZZPhotoRE;
 			sourceTree = "<group>";
 		};
 		1C94AD0F1C3A7D9500B26FAE /* SDWebImage */ = {
@@ -367,157 +352,167 @@
 			path = Resources;
 			sourceTree = "<group>";
 		};
-		49D4953D1CF54CAB00E42318 /* Controller */ = {
+		496D47251DB5F8E600A99CD4 /* ZZPhotoKit */ = {
 			isa = PBXGroup;
 			children = (
-				49D4953E1CF54CAB00E42318 /* ZZCameraController.h */,
-				49D4953F1CF54CAB00E42318 /* ZZCameraController.m */,
-				49D495401CF54CAB00E42318 /* ZZCameraPickerViewController.h */,
-				49D495411CF54CAB00E42318 /* ZZCameraPickerViewController.m */,
-				4937E7A71CF82C2A0016AB5F /* ZZCameraBrowerViewController.h */,
-				4937E7A81CF82C2A0016AB5F /* ZZCameraBrowerViewController.m */,
+				496D47261DB5F8E600A99CD4 /* Public */,
+				496D473A1DB5F8E600A99CD4 /* ZZBrowser */,
+				496D47411DB5F8E600A99CD4 /* ZZCamera */,
+				496D47511DB5F8E600A99CD4 /* ZZPhoto */,
+				496D476D1DB5F8E600A99CD4 /* ZZPhotoKit.h */,
 			);
-			path = Controller;
+			path = ZZPhotoKit;
 			sourceTree = "<group>";
 		};
-		49D495421CF54CAB00E42318 /* Model */ = {
+		496D47261DB5F8E600A99CD4 /* Public */ = {
 			isa = PBXGroup;
 			children = (
-				49D4954C1CF54CC000E42318 /* ZZCamera.h */,
-				49D4954D1CF54CC000E42318 /* ZZCamera.m */,
-			);
-			path = Model;
-			sourceTree = "<group>";
-		};
-		49D495431CF54CAB00E42318 /* View */ = {
-			isa = PBXGroup;
-			children = (
-				49D495441CF54CAB00E42318 /* ZZCameraFocusView.h */,
-				49D495451CF54CAB00E42318 /* ZZCameraFocusView.m */,
-				49D495461CF54CAB00E42318 /* ZZCameraPickerCell.h */,
-				49D495471CF54CAB00E42318 /* ZZCameraPickerCell.m */,
-			);
-			path = View;
-			sourceTree = "<group>";
-		};
-		49D736541CEE148B00AE804F /* ZZBrowser */ = {
-			isa = PBXGroup;
-			children = (
-				49D736991CEE14AE00AE804F /* ZZPageControl.h */,
-				49D7369A1CEE14AE00AE804F /* ZZPageControl.m */,
-				49D736551CEE148B00AE804F /* ZZBrowserPickerCell.h */,
-				49D736561CEE148B00AE804F /* ZZBrowserPickerCell.m */,
-				49D736571CEE148B00AE804F /* ZZBrowserPickerViewController.h */,
-				49D736581CEE148B00AE804F /* ZZBrowserPickerViewController.m */,
-			);
-			path = ZZBrowser;
-			sourceTree = "<group>";
-		};
-		49D736591CEE148B00AE804F /* ZZCamera */ = {
-			isa = PBXGroup;
-			children = (
-				49D4953D1CF54CAB00E42318 /* Controller */,
-				49D495421CF54CAB00E42318 /* Model */,
-				49D495431CF54CAB00E42318 /* View */,
-			);
-			path = ZZCamera;
-			sourceTree = "<group>";
-		};
-		49D736641CEE148B00AE804F /* ZZPhoto */ = {
-			isa = PBXGroup;
-			children = (
-				49D736651CEE148B00AE804F /* Controller */,
-				49D7366C1CEE148B00AE804F /* Model */,
-				49D736731CEE148B00AE804F /* View */,
-			);
-			path = ZZPhoto;
-			sourceTree = "<group>";
-		};
-		49D736651CEE148B00AE804F /* Controller */ = {
-			isa = PBXGroup;
-			children = (
-				49D736661CEE148B00AE804F /* ZZPhotoController.h */,
-				49D736671CEE148B00AE804F /* ZZPhotoController.m */,
-				49D736681CEE148B00AE804F /* ZZPhotoListViewController.h */,
-				49D736691CEE148B00AE804F /* ZZPhotoListViewController.m */,
-				49D7366A1CEE148B00AE804F /* ZZPhotoPickerViewController.h */,
-				49D7366B1CEE148B00AE804F /* ZZPhotoPickerViewController.m */,
-				4937E7A41CF821880016AB5F /* ZZPhotoBrowerViewController.h */,
-				4937E7A51CF821880016AB5F /* ZZPhotoBrowerViewController.m */,
-			);
-			path = Controller;
-			sourceTree = "<group>";
-		};
-		49D7366C1CEE148B00AE804F /* Model */ = {
-			isa = PBXGroup;
-			children = (
-				49D7366F1CEE148B00AE804F /* ZZPhotoDatas.h */,
-				49D736701CEE148B00AE804F /* ZZPhotoDatas.m */,
-				49D736711CEE148B00AE804F /* ZZPhotoListModel.h */,
-				49D736721CEE148B00AE804F /* ZZPhotoListModel.m */,
-				49D4953A1CF540EE00E42318 /* ZZPhoto.h */,
-				49D4953B1CF540EE00E42318 /* ZZPhoto.m */,
-			);
-			path = Model;
-			sourceTree = "<group>";
-		};
-		49D736731CEE148B00AE804F /* View */ = {
-			isa = PBXGroup;
-			children = (
-				490AE78D1DAE1893005EEDA7 /* ZZPhotoPickerFooterView.h */,
-				490AE78E1DAE1893005EEDA7 /* ZZPhotoPickerFooterView.m */,
-				49D736741CEE148B00AE804F /* ZZPhotoHud.h */,
-				49D736751CEE148B00AE804F /* ZZPhotoHud.m */,
-				49D736761CEE148B00AE804F /* ZZPhotoListCell.h */,
-				49D736771CEE148B00AE804F /* ZZPhotoListCell.m */,
-				49D736781CEE148B00AE804F /* ZZPhotoPickerCell.h */,
-				49D736791CEE148B00AE804F /* ZZPhotoPickerCell.m */,
-				49061ADF1D731651001B8004 /* ZZPhotoAlert.h */,
-				49061AE01D731651001B8004 /* ZZPhotoAlert.m */,
-			);
-			path = View;
-			sourceTree = "<group>";
-		};
-		49D7369C1CEE16FC00AE804F /* Public */ = {
-			isa = PBXGroup;
-			children = (
-				49D7369D1CEE16FC00AE804F /* Other */,
-				49D736A21CEE16FC00AE804F /* Resources */,
-				49D736B01CEE16FC00AE804F /* ZZResourceConfig.h */,
+				496D47271DB5F8E600A99CD4 /* Other */,
+				496D472A1DB5F8E600A99CD4 /* Resources */,
+				496D47391DB5F8E600A99CD4 /* ZZResourceConfig.h */,
 			);
 			path = Public;
 			sourceTree = "<group>";
 		};
-		49D7369D1CEE16FC00AE804F /* Other */ = {
+		496D47271DB5F8E600A99CD4 /* Other */ = {
 			isa = PBXGroup;
 			children = (
-				49D7369E1CEE16FC00AE804F /* UIImageHandle.h */,
-				49D7369F1CEE16FC00AE804F /* UIImageHandle.m */,
-				49D736C11CEE178A00AE804F /* ZZAlumAnimation.h */,
-				49D736C21CEE178A00AE804F /* ZZAlumAnimation.m */,
+				496D47281DB5F8E600A99CD4 /* ZZAlumAnimation.h */,
+				496D47291DB5F8E600A99CD4 /* ZZAlumAnimation.m */,
 			);
 			path = Other;
 			sourceTree = "<group>";
 		};
-		49D736A21CEE16FC00AE804F /* Resources */ = {
+		496D472A1DB5F8E600A99CD4 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				4937E7A21CF814AA0016AB5F /* back_button_normal.png */,
-				49D736A31CEE16FC00AE804F /* camera_focus_pic.png */,
-				49D736A41CEE16FC00AE804F /* change_camera_pic.png */,
-				49D736A51CEE16FC00AE804F /* flash_close_pic.png */,
-				49D736A61CEE16FC00AE804F /* flash_open_pic.png */,
-				49D736A71CEE16FC00AE804F /* no_data.png */,
-				49D736A81CEE16FC00AE804F /* photo_add.png */,
-				49D736A91CEE16FC00AE804F /* remove_btn_pic.png */,
-				49D736AA1CEE16FC00AE804F /* select_no.png */,
-				49D736AB1CEE16FC00AE804F /* select_yes.png */,
-				49D736AC1CEE16FC00AE804F /* take_photo_pic.png */,
-				49D736AD1CEE16FC00AE804F /* take_photo_pic@2x.png */,
-				49D736AE1CEE16FC00AE804F /* trash_btn_pic.png */,
-				49D736AF1CEE16FC00AE804F /* zz_alumb_rightCell.png */,
+				496D472B1DB5F8E600A99CD4 /* back_button_normal.png */,
+				496D472C1DB5F8E600A99CD4 /* camera_focus_pic.png */,
+				496D472D1DB5F8E600A99CD4 /* change_camera_pic.png */,
+				496D472E1DB5F8E600A99CD4 /* flash_close_pic.png */,
+				496D472F1DB5F8E600A99CD4 /* flash_open_pic.png */,
+				496D47301DB5F8E600A99CD4 /* no_data.png */,
+				496D47311DB5F8E600A99CD4 /* photo_add.png */,
+				496D47321DB5F8E600A99CD4 /* remove_btn_pic.png */,
+				496D47331DB5F8E600A99CD4 /* select_no.png */,
+				496D47341DB5F8E600A99CD4 /* select_yes.png */,
+				496D47351DB5F8E600A99CD4 /* take_photo_pic.png */,
+				496D47361DB5F8E600A99CD4 /* take_photo_pic@2x.png */,
+				496D47371DB5F8E600A99CD4 /* trash_btn_pic.png */,
+				496D47381DB5F8E600A99CD4 /* zz_alumb_rightCell.png */,
 			);
 			path = Resources;
+			sourceTree = "<group>";
+		};
+		496D473A1DB5F8E600A99CD4 /* ZZBrowser */ = {
+			isa = PBXGroup;
+			children = (
+				496D473B1DB5F8E600A99CD4 /* ZZBrowserPickerCell.h */,
+				496D473C1DB5F8E600A99CD4 /* ZZBrowserPickerCell.m */,
+				496D473D1DB5F8E600A99CD4 /* ZZBrowserPickerViewController.h */,
+				496D473E1DB5F8E600A99CD4 /* ZZBrowserPickerViewController.m */,
+				496D473F1DB5F8E600A99CD4 /* ZZPageControl.h */,
+				496D47401DB5F8E600A99CD4 /* ZZPageControl.m */,
+			);
+			path = ZZBrowser;
+			sourceTree = "<group>";
+		};
+		496D47411DB5F8E600A99CD4 /* ZZCamera */ = {
+			isa = PBXGroup;
+			children = (
+				496D47421DB5F8E600A99CD4 /* Controller */,
+				496D47491DB5F8E600A99CD4 /* Model */,
+				496D474C1DB5F8E600A99CD4 /* View */,
+			);
+			path = ZZCamera;
+			sourceTree = "<group>";
+		};
+		496D47421DB5F8E600A99CD4 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				496D47431DB5F8E600A99CD4 /* ZZCameraBrowerViewController.h */,
+				496D47441DB5F8E600A99CD4 /* ZZCameraBrowerViewController.m */,
+				496D47451DB5F8E600A99CD4 /* ZZCameraController.h */,
+				496D47461DB5F8E600A99CD4 /* ZZCameraController.m */,
+				496D47471DB5F8E600A99CD4 /* ZZCameraPickerViewController.h */,
+				496D47481DB5F8E600A99CD4 /* ZZCameraPickerViewController.m */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		496D47491DB5F8E600A99CD4 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				496D474A1DB5F8E600A99CD4 /* ZZCamera.h */,
+				496D474B1DB5F8E600A99CD4 /* ZZCamera.m */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		496D474C1DB5F8E600A99CD4 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				496D474D1DB5F8E600A99CD4 /* ZZCameraFocusView.h */,
+				496D474E1DB5F8E600A99CD4 /* ZZCameraFocusView.m */,
+				496D474F1DB5F8E600A99CD4 /* ZZCameraPickerCell.h */,
+				496D47501DB5F8E600A99CD4 /* ZZCameraPickerCell.m */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		496D47511DB5F8E600A99CD4 /* ZZPhoto */ = {
+			isa = PBXGroup;
+			children = (
+				496D47521DB5F8E600A99CD4 /* Controller */,
+				496D475B1DB5F8E600A99CD4 /* Model */,
+				496D47621DB5F8E600A99CD4 /* View */,
+			);
+			path = ZZPhoto;
+			sourceTree = "<group>";
+		};
+		496D47521DB5F8E600A99CD4 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				496D47531DB5F8E600A99CD4 /* ZZPhotoBrowerViewController.h */,
+				496D47541DB5F8E600A99CD4 /* ZZPhotoBrowerViewController.m */,
+				496D47551DB5F8E600A99CD4 /* ZZPhotoController.h */,
+				496D47561DB5F8E600A99CD4 /* ZZPhotoController.m */,
+				496D47571DB5F8E600A99CD4 /* ZZPhotoListViewController.h */,
+				496D47581DB5F8E600A99CD4 /* ZZPhotoListViewController.m */,
+				496D47591DB5F8E600A99CD4 /* ZZPhotoPickerViewController.h */,
+				496D475A1DB5F8E600A99CD4 /* ZZPhotoPickerViewController.m */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		496D475B1DB5F8E600A99CD4 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				496D475C1DB5F8E600A99CD4 /* ZZPhoto.h */,
+				496D475D1DB5F8E600A99CD4 /* ZZPhoto.m */,
+				496D475E1DB5F8E600A99CD4 /* ZZPhotoDatas.h */,
+				496D475F1DB5F8E600A99CD4 /* ZZPhotoDatas.m */,
+				496D47601DB5F8E600A99CD4 /* ZZPhotoListModel.h */,
+				496D47611DB5F8E600A99CD4 /* ZZPhotoListModel.m */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		496D47621DB5F8E600A99CD4 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				496D47631DB5F8E600A99CD4 /* ZZPhotoAlert.h */,
+				496D47641DB5F8E600A99CD4 /* ZZPhotoAlert.m */,
+				496D47651DB5F8E600A99CD4 /* ZZPhotoHud.h */,
+				496D47661DB5F8E600A99CD4 /* ZZPhotoHud.m */,
+				496D47671DB5F8E600A99CD4 /* ZZPhotoListCell.h */,
+				496D47681DB5F8E600A99CD4 /* ZZPhotoListCell.m */,
+				496D47691DB5F8E600A99CD4 /* ZZPhotoPickerCell.h */,
+				496D476A1DB5F8E600A99CD4 /* ZZPhotoPickerCell.m */,
+				496D476B1DB5F8E600A99CD4 /* ZZPhotoPickerFooterView.h */,
+				496D476C1DB5F8E600A99CD4 /* ZZPhotoPickerFooterView.m */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -624,26 +619,26 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				49D736B91CEE16FC00AE804F /* photo_add.png in Resources */,
-				49D736BC1CEE16FC00AE804F /* select_yes.png in Resources */,
-				49D736C01CEE16FC00AE804F /* zz_alumb_rightCell.png in Resources */,
-				4937E7A31CF814AA0016AB5F /* back_button_normal.png in Resources */,
-				49D736B81CEE16FC00AE804F /* no_data.png in Resources */,
-				49D736BD1CEE16FC00AE804F /* take_photo_pic.png in Resources */,
+				496D47751DB5F8E600A99CD4 /* photo_add.png in Resources */,
 				1C94AD471C3A7DC800B26FAE /* scv1.jpg in Resources */,
 				1C94AD491C3A7DC800B26FAE /* scv3.jpg in Resources */,
-				49D736B61CEE16FC00AE804F /* flash_close_pic.png in Resources */,
-				49D736B41CEE16FC00AE804F /* camera_focus_pic.png in Resources */,
-				49D736BB1CEE16FC00AE804F /* select_no.png in Resources */,
 				1C94AD481C3A7DC800B26FAE /* scv2.jpg in Resources */,
+				496D47781DB5F8E600A99CD4 /* select_yes.png in Resources */,
+				496D47721DB5F8E600A99CD4 /* flash_close_pic.png in Resources */,
+				496D47701DB5F8E600A99CD4 /* camera_focus_pic.png in Resources */,
 				1C94AD4B1C3A7DC800B26FAE /* scv5.jpg in Resources */,
+				496D477B1DB5F8E600A99CD4 /* trash_btn_pic.png in Resources */,
 				1C94AD4A1C3A7DC800B26FAE /* scv4.jpg in Resources */,
-				49D736BA1CEE16FC00AE804F /* remove_btn_pic.png in Resources */,
-				49D736BE1CEE16FC00AE804F /* take_photo_pic@2x.png in Resources */,
-				49D736BF1CEE16FC00AE804F /* trash_btn_pic.png in Resources */,
-				49D736B51CEE16FC00AE804F /* change_camera_pic.png in Resources */,
+				496D47741DB5F8E600A99CD4 /* no_data.png in Resources */,
+				496D47791DB5F8E600A99CD4 /* take_photo_pic.png in Resources */,
+				496D477A1DB5F8E600A99CD4 /* take_photo_pic@2x.png in Resources */,
+				496D47731DB5F8E600A99CD4 /* flash_open_pic.png in Resources */,
+				496D476F1DB5F8E600A99CD4 /* back_button_normal.png in Resources */,
+				496D47711DB5F8E600A99CD4 /* change_camera_pic.png in Resources */,
+				496D47771DB5F8E600A99CD4 /* select_no.png in Resources */,
+				496D47761DB5F8E600A99CD4 /* remove_btn_pic.png in Resources */,
+				496D477C1DB5F8E600A99CD4 /* zz_alumb_rightCell.png in Resources */,
 				1C94AC151C3A7B1F00B26FAE /* LaunchScreen.storyboard in Resources */,
-				49D736B71CEE16FC00AE804F /* flash_open_pic.png in Resources */,
 				1C94AC121C3A7B1F00B26FAE /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -670,48 +665,47 @@
 			buildActionMask = 2147483647;
 			files = (
 				1C94AD401C3A7D9500B26FAE /* UIView+WebCacheOperation.m in Sources */,
-				49D736901CEE148B00AE804F /* ZZPhotoController.m in Sources */,
 				1C94AD3E1C3A7D9500B26FAE /* UIImageView+HighlightedWebCache.m in Sources */,
+				496D47901DB5F8E600A99CD4 /* ZZPhotoPickerCell.m in Sources */,
 				1C94AC0D1C3A7B1F00B26FAE /* ViewController.m in Sources */,
-				49D4954E1CF54CC000E42318 /* ZZCamera.m in Sources */,
 				1C94AD381C3A7D9500B26FAE /* SDWebImageManager.m in Sources */,
-				4937E7A61CF821880016AB5F /* ZZPhotoBrowerViewController.m in Sources */,
-				49061AE11D731651001B8004 /* ZZPhotoAlert.m in Sources */,
-				490AE78F1DAE1893005EEDA7 /* ZZPhotoPickerFooterView.m in Sources */,
-				49D495481CF54CAB00E42318 /* ZZCameraController.m in Sources */,
-				49D736891CEE148B00AE804F /* ZZBrowserPickerCell.m in Sources */,
-				49D7368A1CEE148B00AE804F /* ZZBrowserPickerViewController.m in Sources */,
+				496D478B1DB5F8E600A99CD4 /* ZZPhotoDatas.m in Sources */,
+				496D478E1DB5F8E600A99CD4 /* ZZPhotoHud.m in Sources */,
+				496D477D1DB5F8E600A99CD4 /* ZZBrowserPickerCell.m in Sources */,
+				496D47891DB5F8E600A99CD4 /* ZZPhotoPickerViewController.m in Sources */,
+				496D477E1DB5F8E600A99CD4 /* ZZBrowserPickerViewController.m in Sources */,
 				1C94AD351C3A7D9500B26FAE /* SDWebImageDecoder.m in Sources */,
-				49D736B21CEE16FC00AE804F /* UIImageHandle.m in Sources */,
 				1C94AD391C3A7D9500B26FAE /* SDWebImagePrefetcher.m in Sources */,
-				49D736961CEE148B00AE804F /* ZZPhotoHud.m in Sources */,
-				49D4954B1CF54CAB00E42318 /* ZZCameraPickerCell.m in Sources */,
-				49D736951CEE148B00AE804F /* ZZPhotoListModel.m in Sources */,
-				49D736921CEE148B00AE804F /* ZZPhotoPickerViewController.m in Sources */,
-				49D736971CEE148B00AE804F /* ZZPhotoListCell.m in Sources */,
 				1C94AD3F1C3A7D9500B26FAE /* UIImageView+WebCache.m in Sources */,
+				496D478C1DB5F8E600A99CD4 /* ZZPhotoListModel.m in Sources */,
 				1CFF40301C45FF77007D43AF /* PicsCell.m in Sources */,
+				496D47831DB5F8E600A99CD4 /* ZZCamera.m in Sources */,
 				1C94AC0A1C3A7B1F00B26FAE /* AppDelegate.m in Sources */,
-				49D4953C1CF540EE00E42318 /* ZZPhoto.m in Sources */,
 				1C94AC071C3A7B1E00B26FAE /* main.m in Sources */,
 				1C94AD3B1C3A7D9500B26FAE /* UIImage+GIF.m in Sources */,
-				49D736C31CEE178A00AE804F /* ZZAlumAnimation.m in Sources */,
-				49D4954A1CF54CAB00E42318 /* ZZCameraFocusView.m in Sources */,
+				496D47821DB5F8E600A99CD4 /* ZZCameraPickerViewController.m in Sources */,
 				1C94AD3D1C3A7D9500B26FAE /* UIImage+WebP.m in Sources */,
+				496D47881DB5F8E600A99CD4 /* ZZPhotoListViewController.m in Sources */,
+				496D47871DB5F8E600A99CD4 /* ZZPhotoController.m in Sources */,
 				1C94AD321C3A7D9500B26FAE /* NSData+ImageContentType.m in Sources */,
 				1C94AD341C3A7D9500B26FAE /* SDWebImageCompat.m in Sources */,
+				496D47811DB5F8E600A99CD4 /* ZZCameraController.m in Sources */,
+				496D47841DB5F8E600A99CD4 /* ZZCameraFocusView.m in Sources */,
 				1C94AD331C3A7D9500B26FAE /* SDImageCache.m in Sources */,
 				1C94AD361C3A7D9500B26FAE /* SDWebImageDownloader.m in Sources */,
-				49D736911CEE148B00AE804F /* ZZPhotoListViewController.m in Sources */,
 				1C94AD3C1C3A7D9500B26FAE /* UIImage+MultiFormat.m in Sources */,
+				496D47861DB5F8E600A99CD4 /* ZZPhotoBrowerViewController.m in Sources */,
+				496D478D1DB5F8E600A99CD4 /* ZZPhotoAlert.m in Sources */,
 				1C94AD3A1C3A7D9500B26FAE /* UIButton+WebCache.m in Sources */,
-				49D736981CEE148B00AE804F /* ZZPhotoPickerCell.m in Sources */,
-				49D495491CF54CAB00E42318 /* ZZCameraPickerViewController.m in Sources */,
-				49D7369B1CEE14AE00AE804F /* ZZPageControl.m in Sources */,
+				496D477F1DB5F8E600A99CD4 /* ZZPageControl.m in Sources */,
+				496D476E1DB5F8E600A99CD4 /* ZZAlumAnimation.m in Sources */,
+				496D47851DB5F8E600A99CD4 /* ZZCameraPickerCell.m in Sources */,
+				496D47911DB5F8E600A99CD4 /* ZZPhotoPickerFooterView.m in Sources */,
 				1C94AD311C3A7D9500B26FAE /* MKAnnotationView+WebCache.m in Sources */,
-				4937E7A91CF82C2A0016AB5F /* ZZCameraBrowerViewController.m in Sources */,
-				49D736941CEE148B00AE804F /* ZZPhotoDatas.m in Sources */,
 				1C94AD371C3A7D9500B26FAE /* SDWebImageDownloaderOperation.m in Sources */,
+				496D47801DB5F8E600A99CD4 /* ZZCameraBrowerViewController.m in Sources */,
+				496D478F1DB5F8E600A99CD4 /* ZZPhotoListCell.m in Sources */,
+				496D478A1DB5F8E600A99CD4 /* ZZPhoto.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

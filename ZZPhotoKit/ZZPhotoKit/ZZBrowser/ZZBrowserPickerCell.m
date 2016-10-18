@@ -7,7 +7,6 @@
 //
 
 #import "ZZBrowserPickerCell.h"
-#import "UIImageHandle.h"
 
 @interface ZZBrowserPickerCell()<UIScrollViewDelegate, UIGestureRecognizerDelegate>
 {
@@ -74,7 +73,9 @@
     CGFloat pixelWidth = photoWidth * multiple;
     CGFloat pixelHeight = pixelWidth / aspectRatio;
     
-    [[PHImageManager defaultManager] requestImageForAsset:phAsset targetSize:CGSizeMake(pixelWidth, pixelHeight) contentMode:PHImageContentModeAspectFit options:nil resultHandler:^(UIImage * _Nullable result, NSDictionary * _Nullable info) {
+    PHImageRequestOptions *option = [[PHImageRequestOptions alloc] init];
+    option.resizeMode = PHImageRequestOptionsResizeModeFast;
+    [[PHImageManager defaultManager] requestImageForAsset:phAsset targetSize:CGSizeMake(pixelWidth, pixelHeight) contentMode:PHImageContentModeAspectFit options:option resultHandler:^(UIImage * _Nullable result, NSDictionary * _Nullable info) {
         
         
         BOOL downloadFinined = ![[info objectForKey:PHImageCancelledKey] boolValue] && ![info objectForKey:PHImageErrorKey] && ![[info objectForKey:PHImageResultIsDegradedKey] boolValue];

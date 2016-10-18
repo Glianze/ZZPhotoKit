@@ -15,24 +15,23 @@ typedef void(^codeBlock)();
 
 @interface ZZCameraPickerViewController()<UICollectionViewDelegate,UICollectionViewDataSource,ZZCameraFocusDelegate,ZZCameraBrowerDataSource>
 
+@property (nonatomic, strong) NSMutableArray<ZZCamera *>    *cameraArray;
+@property (nonatomic, strong) UICollectionView              *picsCollection;
+@property (nonatomic, strong) UIView                        *downView;
 
-@property (strong, nonatomic) NSMutableArray<ZZCamera *> *cameraArray;
-@property (strong, nonatomic) UICollectionView *picsCollection;
-// AVFoundation
-@property (strong, nonatomic) AVCaptureSession *session;
-@property (strong, nonatomic) AVCaptureStillImageOutput *captureOutput;
-@property (strong, nonatomic) AVCaptureDevice *device;
+@property (nonatomic, strong) AVCaptureSession              *session;
+@property (nonatomic, strong) AVCaptureStillImageOutput     *captureOutput;
+@property (nonatomic, strong) AVCaptureDevice               *device;
 
-@property (strong, nonatomic) AVCaptureDeviceInput * input;
-@property (strong, nonatomic) AVCaptureMetadataOutput * output;
-@property (strong, nonatomic) AVCaptureVideoPreviewLayer * preview;
-@property (strong, nonatomic) UIView *downView;
+@property (nonatomic, strong) AVCaptureDeviceInput          * input;
+@property (nonatomic, strong) AVCaptureMetadataOutput       * output;
+@property (nonatomic, strong) AVCaptureVideoPreviewLayer    * preview;
 
 @end
 
 @implementation ZZCameraPickerViewController
 
--(instancetype)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
+- (instancetype)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
@@ -40,18 +39,13 @@ typedef void(^codeBlock)();
     }
     return self;
 }
-/*
- *     隐藏状态栏
- */
--(BOOL)prefersStatusBarHidden
+
+- (BOOL)prefersStatusBarHidden
 {
     return YES;
 }
 
-/*
- *     创建顶部View
- */
--(void) setTopViewUI
+- (void)makeTopViewUI
 {
     UIView *topView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, ZZ_VW, 44)];
     if (_themeColor) {
@@ -82,10 +76,7 @@ typedef void(^codeBlock)();
 }
 
 
-/*
- *     创建底部View
- */
--(void) setDownViewUI
+- (void)makeDownViewUI
 {
     CGFloat photoSize = (ZZ_SCREEN_WIDTH - 60) / 5;
     
@@ -118,7 +109,7 @@ typedef void(^codeBlock)();
     
 }
 
--(void)setupCollectionViewUI
+- (void)makeCollectionViewUI
 {
     UICollectionViewFlowLayout *flowLayout = [[UICollectionViewFlowLayout alloc]init];
     
@@ -140,22 +131,20 @@ typedef void(^codeBlock)();
     
 }
 
--(void)cancel{
+- (void)cancel{
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
--(void)done{
-
+- (void)done{
     if (self.cameraArray.count == 0) {
         [self dismissViewControllerAnimated:YES completion:nil];
     }else{
         self.CameraResult(self.cameraArray);
         [self dismissViewControllerAnimated:YES completion:nil];
     }
-    
 }
 
--(void)takePhoto{
+- (void)takePhoto{
     
     if (_cameraArray.count == self.takePhotoOfMax) {
         [self showAlertView:self.takePhotoOfMax];
@@ -171,29 +160,28 @@ typedef void(^codeBlock)();
             [lightScreenView removeFromSuperview];
         }];
     }
-
 }
 
 #pragma 懒加载Array
--(NSMutableArray *)cameraArray{
+- (NSMutableArray *)cameraArray{
     if (!_cameraArray) {
         _cameraArray = [NSMutableArray array];
     }
     return _cameraArray;
 }
 
--(void)viewDidLoad
+- (void)viewDidLoad
 {
     [super viewDidLoad];
     
     [self initCameraMain];
-    [self setTopViewUI];
-    [self setDownViewUI];
-    [self setupCollectionViewUI];
+    [self makeTopViewUI];
+    [self makeDownViewUI];
+    [self makeCollectionViewUI];
     
 }
 
--(void)removePicItemAtIndex:(NSInteger )indexPath
+- (void)removePicItemAtIndex:(NSInteger )indexPath
 {
     NSInteger index = indexPath;
     [_cameraArray removeObjectAtIndex:index];
@@ -202,7 +190,7 @@ typedef void(^codeBlock)();
 
 #pragma UICollectionView --- Datasource
 
--(NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView
+- (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView
 {
     return 1;
 }
@@ -211,7 +199,7 @@ typedef void(^codeBlock)();
     return self.cameraArray.count;
 }
 
--(UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
+- (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
     
     ZZCameraPickerCell *photoCell = [collectionView dequeueReusableCellWithReuseIdentifier:@"PhotoPickerCell" forIndexPath:indexPath];
@@ -229,28 +217,27 @@ typedef void(^codeBlock)();
 }
 
 #pragma UICollectionView --- Deleate
--(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
+- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
     ZZCameraBrowerViewController *browserController = [[ZZCameraBrowerViewController alloc]init];
-    browserController.delegate = self;
-    browserController.indexPath = indexPath;
+    browserController.delegate   = self;
+    browserController.indexPath  = indexPath;
     [browserController setModalTransitionStyle:UIModalTransitionStyleCrossDissolve];
     [browserController showIn:self];
 }
 
 #pragma mark --- ZZBrowserPickerDelegate
--(NSInteger)zzbrowserPickerPhotoNum:(ZZCameraBrowerViewController *)controller
+- (NSInteger)zzbrowserPickerPhotoNum:(ZZCameraBrowerViewController *)controller
 {
     return self.cameraArray.count;;
 }
 
--(NSArray *)zzbrowserPickerPhotoContent:(ZZCameraBrowerViewController *)controller
+- (NSArray *)zzbrowserPickerPhotoContent:(ZZCameraBrowerViewController *)controller
 {
     return self.cameraArray;
 }
 
-
--(void)initCameraMain
+- (void)initCameraMain
 {
     //1.创建会话层
     self.device = [AVCaptureDevice defaultDeviceWithMediaType:AVMediaTypeVideo];
@@ -294,7 +281,7 @@ typedef void(^codeBlock)();
     [self.view addSubview:focuseView];
     
 }
--(void)cameraFocusOptions:(ZZCameraFocusView *)cameraFocu
+- (void)cameraFocusOptions:(ZZCameraFocusView *)cameraFocu
 {
     [self.device lockForConfiguration:nil];
     [self.device setFocusMode:AVCaptureFocusModeAutoFocus];
@@ -309,10 +296,7 @@ typedef void(^codeBlock)();
     }
 }
 
-/*
- *   底层拍照控制
- */
--(void)Captureimage
+- (void)Captureimage
 {
     //get connection
     AVCaptureConnection *videoConnection = nil;
@@ -326,13 +310,10 @@ typedef void(^codeBlock)();
         if (videoConnection) { break; }
     }
     
-    //get UIImage
-    
     __weak typeof (self) weakSelf = self;
     [self.captureOutput captureStillImageAsynchronouslyFromConnection:videoConnection completionHandler:
      ^(CMSampleBufferRef imageSampleBuffer, NSError *error) {
 
-         // Continue as appropriate.
          NSData *imageData = [AVCaptureStillImageOutput jpegStillImageNSDataRepresentation:imageSampleBuffer];
          UIImage *t_image = [UIImage imageWithData:imageData];
          //拍摄时间
@@ -345,8 +326,8 @@ typedef void(^codeBlock)();
          }
          
          //转model
-         ZZCamera *camera = [[ZZCamera alloc]init];
-         camera.image = t_image;
+         ZZCamera *camera  = [[ZZCamera alloc]init];
+         camera.image      = t_image;
          camera.createDate = createDate;
          
          [weakSelf.cameraArray addObject:camera];
@@ -354,10 +335,85 @@ typedef void(^codeBlock)();
      }];
 }
 
-
--(void)imageSavedToPhotosAlbum:(UIImage *)image didFinishSavingWithError:(NSError *)error contextInfo:(void *)contextInfo
+- (void)imageSavedToPhotosAlbum:(UIImage *)image didFinishSavingWithError:(NSError *)error contextInfo:(void *)contextInfo
 {
 
+}
+
+- (void)changeCameraDevice:(id)sender
+{
+    NSArray *inputs = self.session.inputs;
+    for ( AVCaptureDeviceInput *input in inputs ) {
+        AVCaptureDevice *device = input.device;
+        if ( [device hasMediaType:AVMediaTypeVideo] ) {
+            AVCaptureDevicePosition position = device.position;
+            AVCaptureDevice *newCamera = nil;
+            AVCaptureDeviceInput *newInput = nil;
+            
+            if (position == AVCaptureDevicePositionFront)
+                newCamera = [self cameraWithPosition:AVCaptureDevicePositionBack];
+            else
+                newCamera = [self cameraWithPosition:AVCaptureDevicePositionFront];
+            newInput = [AVCaptureDeviceInput deviceInputWithDevice:newCamera error:nil];
+            
+            [self.session beginConfiguration];
+            
+            [self.session removeInput:input];
+            [self.session addInput:newInput];
+            
+            [self.session commitConfiguration];
+            break;
+        }
+    }
+}
+
+- (AVCaptureDevice *)cameraWithPosition:(AVCaptureDevicePosition)position
+{
+    NSArray *devices = [AVCaptureDevice devicesWithMediaType:AVMediaTypeVideo];
+    for ( AVCaptureDevice *device in devices )
+        if ( device.position == position )
+            return device;
+    return nil;
+}
+
+- (void) flashLightModel : (codeBlock) codeBlock{
+    if (!codeBlock) return;
+    [self.session beginConfiguration];
+    [self.device lockForConfiguration:nil];
+    codeBlock();
+    [self.device unlockForConfiguration];
+    [self.session commitConfiguration];
+    [self.session startRunning];
+}
+
+- (void)flashOfCamera:(UIButton *)btn
+{
+    if (btn.tag == 2015) {
+        if (self.device.flashMode == 0) {
+            [self flashLightModel:^{
+                [self.device setFlashMode:AVCaptureFlashModeOn];
+            }];
+            [btn setImage:Flash_Open_Btn_Pic forState:UIControlStateNormal];
+            
+        }else if (self.device.flashMode == 1){
+            [self flashLightModel:^{
+                [self.device setFlashMode:AVCaptureFlashModeOff];
+            }];
+            [btn setImage:Flash_close_Btn_Pic forState:UIControlStateNormal];
+        }
+    }
+}
+
+- (void)showAlertView:(NSInteger)photoNumOfMax
+{
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"提醒" message:[NSString stringWithFormat:Alert_Max_TakePhoto,(long)photoNumOfMax]preferredStyle:UIAlertControllerStyleAlert];
+    
+    UIAlertAction *action1 = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleCancel handler:^(UIAlertAction *action){
+        
+    }];
+    
+    [alert addAction:action1];
+    [self presentViewController:alert animated:YES completion:nil];
 }
 
 - (UIImage *)fixOrientation:(UIImage *)srcImg
@@ -431,83 +487,5 @@ typedef void(^codeBlock)();
     return img;
 }
 
-
-- (void)changeCameraDevice:(id)sender
-{
-    
-    NSArray *inputs = self.session.inputs;
-    for ( AVCaptureDeviceInput *input in inputs ) {
-        AVCaptureDevice *device = input.device;
-        if ( [device hasMediaType:AVMediaTypeVideo] ) {
-            AVCaptureDevicePosition position = device.position;
-            AVCaptureDevice *newCamera = nil;
-            AVCaptureDeviceInput *newInput = nil;
-            
-            if (position == AVCaptureDevicePositionFront)
-                newCamera = [self cameraWithPosition:AVCaptureDevicePositionBack];
-            else
-                newCamera = [self cameraWithPosition:AVCaptureDevicePositionFront];
-            newInput = [AVCaptureDeviceInput deviceInputWithDevice:newCamera error:nil];
-            
-            [self.session beginConfiguration];
-            
-            [self.session removeInput:input];
-            [self.session addInput:newInput];
-            
-            [self.session commitConfiguration];
-            break;
-        }
-    }
-}
-
-- (AVCaptureDevice *)cameraWithPosition:(AVCaptureDevicePosition)position
-{
-    NSArray *devices = [AVCaptureDevice devicesWithMediaType:AVMediaTypeVideo];
-    for ( AVCaptureDevice *device in devices )
-        if ( device.position == position )
-            return device;
-    return nil;
-}
-
-- (void) flashLightModel : (codeBlock) codeBlock{
-    if (!codeBlock) return;
-    [self.session beginConfiguration];
-    [self.device lockForConfiguration:nil];
-    codeBlock();
-    [self.device unlockForConfiguration];
-    [self.session commitConfiguration];
-    [self.session startRunning];
-}
-
--(void)flashOfCamera:(UIButton *)btn
-{
-    
-    if (btn.tag == 2015) {
-        if (self.device.flashMode == 0) {
-            [self flashLightModel:^{
-                [self.device setFlashMode:AVCaptureFlashModeOn];
-            }];
-            [btn setImage:Flash_Open_Btn_Pic forState:UIControlStateNormal];
-            
-        }else if (self.device.flashMode == 1){
-            [self flashLightModel:^{
-                [self.device setFlashMode:AVCaptureFlashModeOff];
-            }];
-            [btn setImage:Flash_close_Btn_Pic forState:UIControlStateNormal];
-        }
-    }
-}
-
--(void)showAlertView:(NSInteger)photoNumOfMax
-{
-    UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"提醒" message:[NSString stringWithFormat:Alert_Max_TakePhoto,(long)photoNumOfMax]preferredStyle:UIAlertControllerStyleAlert];
-    
-    UIAlertAction *action1 = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleCancel handler:^(UIAlertAction *action){
-        
-    }];
-    
-    [alert addAction:action1];
-    [self presentViewController:alert animated:YES completion:nil];
-}
 
 @end

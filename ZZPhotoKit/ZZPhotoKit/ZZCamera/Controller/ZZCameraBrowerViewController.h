@@ -20,10 +20,10 @@
 
 @interface ZZCameraBrowerViewController : UIViewController
 
-@property (assign, nonatomic) id <ZZCameraBrowerDataSource> delegate;
+@property (nonatomic,   weak) id <ZZCameraBrowerDataSource> delegate;
 
 //滚动到指定位置(滚动到那张图片，通过下面属性)
-@property (strong, nonatomic) NSIndexPath *indexPath;
+@property (nonatomic, strong) NSIndexPath *indexPath;
 
 -(void)reloadData;
 

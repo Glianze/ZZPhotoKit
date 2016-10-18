@@ -26,12 +26,12 @@
 
 -(void)showIn:(UIViewController *)controller result:(ZZCameraResult)result
 {
-    self.cameraPickerController.CameraResult = result;
+    self.cameraPickerController.CameraResult    = result;
     //设置连拍最大张数
-    self.cameraPickerController.takePhotoOfMax = self.takePhotoOfMax;
+    self.cameraPickerController.takePhotoOfMax  = self.takePhotoOfMax;
     //设置返回图片类型
-    self.cameraPickerController.isSavelocal = self.isSaveLocal;
-    self.cameraPickerController.themeColor = self.themeColor;
+    self.cameraPickerController.isSavelocal     = self.isSaveLocal;
+    self.cameraPickerController.themeColor      = self.themeColor;
     [controller presentViewController:self.cameraPickerController animated:YES completion:nil];
 }
 
