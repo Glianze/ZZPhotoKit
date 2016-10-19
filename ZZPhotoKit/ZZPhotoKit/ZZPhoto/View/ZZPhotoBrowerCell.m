@@ -132,9 +132,9 @@
             [_scaleView setZoomScale:1.0 animated:YES];
         } else {
             CGPoint touchPoint = [sender locationInView:self.photo_image_view];
-            CGFloat newZoomScale = _scaleView.maximumZoomScale;
-            CGFloat xsize = self.frame.size.width / newZoomScale;
-            CGFloat ysize = self.frame.size.height / newZoomScale;
+            CGFloat maxScale = _scaleView.maximumZoomScale;
+            CGFloat xsize = self.frame.size.width / maxScale;
+            CGFloat ysize = self.frame.size.height / maxScale;
             [_scaleView zoomToRect:CGRectMake(touchPoint.x - xsize/2, touchPoint.y - ysize/2, xsize, ysize) animated:YES];
         }
         

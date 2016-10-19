@@ -45,17 +45,18 @@
         
         _photo_image_view = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, _browser_width, _browser_height)];
         _photo_image_view.contentMode = UIViewContentModeScaleAspectFit;
+        _photo_image_view.userInteractionEnabled = YES;
         [_scaleView addSubview:_photo_image_view];
         
-        UITapGestureRecognizer *singleFingerOne = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(singleFingerHandle:)];
-        [_scaleView addGestureRecognizer:singleFingerOne];
+        UITapGestureRecognizer *singleTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(singleTapHandle:)];
+        [_photo_image_view addGestureRecognizer:singleTap];
         
+        UITapGestureRecognizer *doubleTap= [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(doubleTapHandle:)];
+        doubleTap.delegate = self;
+        doubleTap.numberOfTapsRequired = 2;
+        [_photo_image_view addGestureRecognizer:doubleTap];
         
-        UITapGestureRecognizer *singleFingerTwo = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleSingleFingerEvent:)];
-        singleFingerTwo.delegate = self;
-        singleFingerTwo.numberOfTapsRequired = 2;
-        [self addGestureRecognizer:singleFingerTwo];
-        
+        [singleTap requireGestureRecognizerToFail:doubleTap];
     }
     return self;
 }
@@ -97,25 +98,25 @@
                                scrollView.contentSize.height * 0.5 + offsetY);
 }
 
-- (void)handleSingleFingerEvent:(UITapGestureRecognizer *)sender
-{
-    if (_scaleView.zoomScale > 1.0) {
-        [_scaleView setZoomScale:1.0 animated:YES];
-    } else {
-        CGPoint touchPoint = [sender locationInView:self.photo_image_view];
-        CGFloat newZoomScale = _scaleView.maximumZoomScale;
-        CGFloat xsize = self.frame.size.width / newZoomScale;
-        CGFloat ysize = self.frame.size.height / newZoomScale;
-        [_scaleView zoomToRect:CGRectMake(touchPoint.x - xsize/2, touchPoint.y - ysize/2, xsize, ysize) animated:YES];
-    }
-}
-
--(void)singleFingerHandle:(UITapGestureRecognizer *)sender
+-(void)singleTapHandle:(UITapGestureRecognizer *)sender
 {
     if ([self.delegate respondsToSelector:@selector(clickSingleFingerAtScreen)]) {
         [self.delegate clickSingleFingerAtScreen];
     }
 }
 
+
+- (void)doubleTapHandle:(UITapGestureRecognizer *)sender
+{
+    if (_scaleView.zoomScale > 1.0) {
+        [_scaleView setZoomScale:1.0 animated:YES];
+    } else {
+        CGPoint touchPoint = [sender locationInView:self.photo_image_view];
+        CGFloat maxScale = _scaleView.maximumZoomScale;
+        CGFloat xsize = self.frame.size.width / maxScale;
+        CGFloat ysize = self.frame.size.height / maxScale;
+        [_scaleView zoomToRect:CGRectMake(touchPoint.x - xsize/2, touchPoint.y - ysize/2, xsize, ysize) animated:YES];
+    }
+}
 
 @end
