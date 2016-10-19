@@ -13,7 +13,7 @@
 @protocol ZZCameraFocusDelegate <NSObject>
 
 @optional
--(void) cameraFocusOptions:(ZZCameraFocusView *)cameraFocu;
+-(void) cameraFocusOptionsWithPoint:(CGPoint)point;
 
 @end
 

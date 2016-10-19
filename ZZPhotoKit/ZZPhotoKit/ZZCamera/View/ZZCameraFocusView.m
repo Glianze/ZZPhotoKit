@@ -40,8 +40,8 @@
     [self shakeToShow:_focus];
     
     _timer = [NSTimer scheduledTimerWithTimeInterval:3.0f target:self selector:@selector(hideFocusView) userInfo:nil repeats:YES];
-    if ([self.delegate respondsToSelector:@selector(cameraFocusOptions:)]) {
-        [self.delegate cameraFocusOptions:self];
+    if ([self.delegate respondsToSelector:@selector(cameraFocusOptionsWithPoint:)]) {
+        [self.delegate cameraFocusOptionsWithPoint:point];
     }
 }
 

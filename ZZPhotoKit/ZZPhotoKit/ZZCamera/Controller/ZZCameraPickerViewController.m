@@ -276,18 +276,24 @@ typedef void(^codeBlock)();
     
     [self prefersStatusBarHidden];
     
-    ZZCameraFocusView *focuseView = [[ZZCameraFocusView alloc]initWithFrame:self.view.frame];
+    ZZCameraFocusView *focuseView = [[ZZCameraFocusView alloc]initWithFrame:self.view.bounds];
     focuseView.delegate = self;
     [self.view addSubview:focuseView];
     
 }
-- (void)cameraFocusOptions:(ZZCameraFocusView *)cameraFocu
+
+-(void)cameraFocusOptionsWithPoint:(CGPoint)point
 {
-    [self.device lockForConfiguration:nil];
-    [self.device setFocusMode:AVCaptureFocusModeAutoFocus];
-    [self.device setFocusPointOfInterest:CGPointMake(50,50)];
-    //操作完成后，记得进行unlock。
-    [self.device unlockForConfiguration];
+    NSError *error;
+    if ([self.device lockForConfiguration:&error]) {
+        //对焦模式和对焦点
+        if ([self.device isFocusModeSupported:AVCaptureFocusModeAutoFocus]) {
+            [self.device setFocusPointOfInterest:point];
+            [self.device setFocusMode:AVCaptureFocusModeAutoFocus];
+        }
+        
+        [self.device unlockForConfiguration];
+    }
 }
 //对焦回调
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context {
