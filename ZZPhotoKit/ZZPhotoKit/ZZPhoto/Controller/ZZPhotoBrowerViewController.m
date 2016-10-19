@@ -7,7 +7,7 @@
 //
 
 #import "ZZPhotoBrowerViewController.h"
-#import "ZZBrowserPickerCell.h"
+#import "ZZPhotoBrowerCell.h"
 #import "ZZPageControl.h"
 #import "ZZPhoto.h"
 
@@ -60,7 +60,7 @@
     
     _picBrowse.showsHorizontalScrollIndicator = NO;
     _picBrowse.showsVerticalScrollIndicator = NO;
-    [_picBrowse registerClass:[ZZBrowserPickerCell class] forCellWithReuseIdentifier:NSStringFromClass([ZZBrowserPickerCell class])];
+    [_picBrowse registerClass:[ZZPhotoBrowerCell class] forCellWithReuseIdentifier:NSStringFromClass([ZZPhotoBrowerCell class])];
     _picBrowse.dataSource = self;
     _picBrowse.delegate = self;
     _picBrowse.translatesAutoresizingMaskIntoConstraints = NO;
@@ -82,6 +82,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
+    self.navigationItem.title = @"预览";
     self.navigationItem.leftBarButtonItem = self.backBarButton;
     
     [self makeCollectionViewUI];
@@ -109,17 +110,17 @@
 
 -(UICollectionViewCell *) collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    ZZBrowserPickerCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:NSStringFromClass([ZZBrowserPickerCell class]) forIndexPath:indexPath];
+    ZZPhotoBrowerCell *browerCell = [collectionView dequeueReusableCellWithReuseIdentifier:NSStringFromClass([ZZPhotoBrowerCell class]) forIndexPath:indexPath];
 
     if ([[_photoData objectAtIndex:indexPath.row] isKindOfClass:[ZZPhoto class]]) {
         //加载相册中的数据时实用
         ZZPhoto *photo = [_photoData objectAtIndex:indexPath.row];
-        [cell loadPHAssetItemForPics:photo.asset];
+        [browerCell loadPHAssetItemForPics:photo.asset];
     }
     
-    [cell setNeedsDisplay];
+    [browerCell setNeedsDisplay];
 
-    return cell;
+    return browerCell;
 }
 
 -(void) showIn:(UIViewController *)controller

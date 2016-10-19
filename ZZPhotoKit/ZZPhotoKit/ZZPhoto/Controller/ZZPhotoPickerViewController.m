@@ -118,6 +118,24 @@
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
+#pragma mark ---  红色小圆点
+- (UILabel *)totalRound{
+    if (!_totalRound) {
+        _totalRound = [[UILabel alloc]initWithFrame:CGRectMake(ZZ_VW - 90, 10, 22, 22)];
+        if (self.roundColor == nil) {
+            _totalRound.backgroundColor = [UIColor redColor];
+        }else{
+            _totalRound.backgroundColor = self.roundColor;
+        }
+        _totalRound.layer.masksToBounds = YES;
+        _totalRound.textAlignment = NSTextAlignmentCenter;
+        _totalRound.textColor = [UIColor whiteColor];
+        _totalRound.text = @"0";
+        [_totalRound.layer setCornerRadius:CGRectGetHeight([_totalRound bounds]) / 2];
+    }
+    return _totalRound;
+}
+
 #pragma mark --- 完成然后回调
 - (void)done{
 
@@ -191,24 +209,6 @@
 
     }
     return _datas;
-}
-
-#pragma mark ---  红色小圆点
-- (UILabel *)totalRound{
-    if (!_totalRound) {
-        _totalRound = [[UILabel alloc]initWithFrame:CGRectMake(ZZ_VW - 90, 10, 22, 22)];
-        if (self.roundColor == nil) {
-            _totalRound.backgroundColor = [UIColor redColor];
-        }else{
-            _totalRound.backgroundColor = self.roundColor;
-        }
-        _totalRound.layer.masksToBounds = YES;
-        _totalRound.textAlignment = NSTextAlignmentCenter;
-        _totalRound.textColor = [UIColor whiteColor];
-        _totalRound.text = @"0";
-        [_totalRound.layer setCornerRadius:CGRectGetHeight([_totalRound bounds]) / 2];
-    }
-    return _totalRound;
 }
 
 - (void)viewDidLoad {

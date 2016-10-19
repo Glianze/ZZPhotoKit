@@ -58,9 +58,9 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.edgesForExtendedLayout = UIRectEdgeNone;
-    _array = @[@"相册选择",@"相机",@"图片浏览器"];
+    _array = @[@"相册选择",@"相机"];
     
-    _tableView = [[UITableView alloc]initWithFrame:CGRectMake(0, 0, ZZ_VW, 150)];
+    _tableView = [[UITableView alloc]initWithFrame:CGRectMake(0, 0, ZZ_VW, 100)];
     _tableView.dataSource = self;
     _tableView.delegate = self;
     _tableView.scrollEnabled = NO;
@@ -144,10 +144,6 @@
             [self.picArray addObjectsFromArray:array];
             [_collectionView reloadData];
         }];
-    }else if (indexPath.row == 2){
-        ZZBrowserPickerViewController *browserController = [[ZZBrowserPickerViewController alloc]init];
-        browserController.delegate = self;
-        [browserController showIn:self animation:ShowAnimationOfPush];
     }
 }
 
@@ -207,13 +203,6 @@
     
     return photoCell;
 }
-
-
-
-
-
-
-
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

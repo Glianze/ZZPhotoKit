@@ -7,11 +7,11 @@
 //
 
 #import "ZZCameraBrowerViewController.h"
-#import "ZZBrowserPickerCell.h"
+#import "ZZCameraBrowerCell.h"
 #import "ZZPageControl.h"
 #import "ZZCamera.h"
 
-@interface ZZCameraBrowerViewController ()<UICollectionViewDelegate,UICollectionViewDataSource, ZZBrowserPickerCellDelegate>
+@interface ZZCameraBrowerViewController ()<UICollectionViewDelegate,UICollectionViewDataSource, ZZCameraBrowerCellDelegate>
 
 @property (nonatomic, strong) UICollectionView *picBrowse;
 @property (nonatomic, strong) NSMutableArray   *photoDataArray;
@@ -43,7 +43,7 @@
     
     _picBrowse.showsHorizontalScrollIndicator = NO;
     _picBrowse.showsVerticalScrollIndicator = NO;
-    [_picBrowse registerClass:[ZZBrowserPickerCell class] forCellWithReuseIdentifier:NSStringFromClass([ZZBrowserPickerCell class])];
+    [_picBrowse registerClass:[ZZCameraBrowerCell class] forCellWithReuseIdentifier:NSStringFromClass([ZZCameraBrowerCell class])];
     _picBrowse.dataSource = self;
     _picBrowse.delegate = self;
     _picBrowse.translatesAutoresizingMaskIntoConstraints = NO;
@@ -154,25 +154,24 @@
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    ZZBrowserPickerCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:NSStringFromClass([ZZBrowserPickerCell class]) forIndexPath:indexPath];
+    ZZCameraBrowerCell *browerCell = [collectionView dequeueReusableCellWithReuseIdentifier:NSStringFromClass([ZZCameraBrowerCell class]) forIndexPath:indexPath];
     
-    cell.delegate = self;
+    browerCell.delegate = self;
     
     if ([[_photoDataArray objectAtIndex:indexPath.row] isKindOfClass:[ZZCamera class]]){
         ZZCamera *photo = [_photoDataArray objectAtIndex:indexPath.row];
-        cell.pics.image = photo.image;
+        [browerCell loadPicData:photo.image];
     }
     
-    [cell setNeedsDisplay];
+    [browerCell setNeedsDisplay];
     
-    return cell;
+    return browerCell;
 }
 
--(void)clickZoomView
+-(void)clickSingleFingerAtScreen
 {
     [self dismissViewControllerAnimated:YES completion:nil];
 }
-
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView
 {
@@ -183,8 +182,6 @@
     _pageControl.pageControl.text = [NSString stringWithFormat:@"%d / %ld",indexOnPageControl+1,(long)_numberOfItems];
     self.pageControl.currentPage = indexOnPageControl;
 }
-
-
 
 -(void)showIn:(UIViewController *)controller
 {
