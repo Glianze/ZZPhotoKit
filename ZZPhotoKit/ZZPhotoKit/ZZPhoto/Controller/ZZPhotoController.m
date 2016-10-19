@@ -54,12 +54,11 @@
     }else if(status == PHAuthorizationStatusNotDetermined){
         //相册进行授权
         /* * * 第一次安装应用时直接进行这个判断进行授权 * * */
-        __weak typeof (self) weakSelf = self;
         [PHPhotoLibrary requestAuthorization:^(PHAuthorizationStatus status){
             //授权后直接打开照片库
             if (status == PHAuthorizationStatusAuthorized){
                 dispatch_async(dispatch_get_main_queue(), ^{
-                    [weakSelf showController:controller result:result];
+                    [self showController:controller result:result];
                 });
  
             }
