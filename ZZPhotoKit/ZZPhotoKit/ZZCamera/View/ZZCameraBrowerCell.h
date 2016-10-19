@@ -20,4 +20,6 @@
 
 -(void) loadPicData:(UIImage *) image;
 
+-(void) recoverSubview;
+
 @end

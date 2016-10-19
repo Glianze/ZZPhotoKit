@@ -117,11 +117,22 @@
         ZZPhoto *photo = [_photoData objectAtIndex:indexPath.row];
         [browerCell loadPHAssetItemForPics:photo.asset];
     }
-    
-    [browerCell setNeedsDisplay];
 
     return browerCell;
 }
+
+- (void)collectionView:(UICollectionView *)collectionView willDisplayCell:(UICollectionViewCell *)cell forItemAtIndexPath:(NSIndexPath *)indexPath {
+    if ([cell isKindOfClass:[ZZPhotoBrowerCell class]]) {
+        [(ZZPhotoBrowerCell *)cell recoverSubview];
+    }
+}
+
+- (void)collectionView:(UICollectionView *)collectionView didEndDisplayingCell:(UICollectionViewCell *)cell forItemAtIndexPath:(NSIndexPath *)indexPath {
+    if ([cell isKindOfClass:[ZZPhotoBrowerCell class]]) {
+        [(ZZPhotoBrowerCell *)cell recoverSubview];
+    }
+}
+
 
 -(void) showIn:(UIViewController *)controller
 {

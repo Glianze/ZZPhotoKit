@@ -163,10 +163,21 @@
         [browerCell loadPicData:photo.image];
     }
     
-    [browerCell setNeedsDisplay];
-    
     return browerCell;
 }
+
+- (void)collectionView:(UICollectionView *)collectionView willDisplayCell:(UICollectionViewCell *)cell forItemAtIndexPath:(NSIndexPath *)indexPath {
+    if ([cell isKindOfClass:[ZZCameraBrowerCell class]]) {
+        [(ZZCameraBrowerCell *)cell recoverSubview];
+    }
+}
+
+- (void)collectionView:(UICollectionView *)collectionView didEndDisplayingCell:(UICollectionViewCell *)cell forItemAtIndexPath:(NSIndexPath *)indexPath {
+    if ([cell isKindOfClass:[ZZCameraBrowerCell class]]) {
+        [(ZZCameraBrowerCell *)cell recoverSubview];
+    }
+}
+
 
 -(void)clickSingleFingerAtScreen
 {

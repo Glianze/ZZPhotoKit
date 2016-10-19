@@ -13,4 +13,6 @@
 
 -(void)loadPHAssetItemForPics:(PHAsset *)assetItem;
 
+-(void)recoverSubview;
+
 @end

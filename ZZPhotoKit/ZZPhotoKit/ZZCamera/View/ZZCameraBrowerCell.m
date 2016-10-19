@@ -77,7 +77,7 @@
     }
 }
 
--(void)setNeedsDisplay
+-(void)recoverSubview
 {
     [_scaleView setZoomScale:1.0 animated:NO];
 }

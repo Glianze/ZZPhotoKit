@@ -102,7 +102,7 @@
     _scaleView.contentSize = CGSizeMake(_browser_width, MAX(self.photo_image_view.frame.size.height, _browser_height));
 }
 
--(void)setNeedsDisplay
+-(void)recoverSubview
 {
     [_scaleView setZoomScale:1.0 animated:NO];
 }
