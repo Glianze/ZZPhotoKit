@@ -20,22 +20,22 @@
 
 @interface ZZPhotoPickerViewController ()<UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout>
 
-@property (strong, nonatomic) NSMutableArray              *photoArray;
-@property (strong, nonatomic) NSMutableArray              *selectArray;
+@property (nonatomic, strong) NSMutableArray              *photoArray;
+@property (nonatomic, strong) NSMutableArray              *selectArray;
 
-@property (strong, nonatomic) UICollectionView            *picsCollection;
+@property (nonatomic, strong) UICollectionView            *picsCollection;
 
-@property (strong, nonatomic) UIBarButtonItem             *backBtn;
-@property (strong, nonatomic) UIBarButtonItem             *cancelBtn;
+@property (nonatomic, strong) UIBarButtonItem             *backBtn;
+@property (nonatomic, strong) UIBarButtonItem             *cancelBtn;
 
-@property (strong, nonatomic) UIButton                    *doneBtn;                       //完成按钮
-@property (strong, nonatomic) UIButton                    *previewBtn;                    //预览按钮
+@property (nonatomic, strong) UIButton                    *doneBtn;                       //完成按钮
+@property (nonatomic, strong) UIButton                    *previewBtn;                    //预览按钮
 
-@property (strong, nonatomic) UILabel                     *totalRound;                     //小红点
-@property (strong, nonatomic) UILabel                     *numSelectLabel;
+@property (nonatomic, strong) UILabel                     *totalRound;                     //小红点
+@property (nonatomic, strong) UILabel                     *numSelectLabel;
 
-@property (strong, nonatomic) ZZPhotoDatas                *datas;
-@property (strong, nonatomic) ZZPhotoBrowerViewController *browserController;
+@property (nonatomic, strong) ZZPhotoDatas                *datas;
+@property (nonatomic, strong) ZZPhotoBrowerViewController *browserController;
 
 @end
 

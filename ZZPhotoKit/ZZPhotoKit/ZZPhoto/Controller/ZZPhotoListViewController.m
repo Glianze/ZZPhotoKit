@@ -15,11 +15,11 @@
 
 @interface ZZPhotoListViewController ()<UITableViewDelegate,UITableViewDataSource>
 
-@property(strong,nonatomic) UITableView      *alumbTable;
-@property(strong,nonatomic) PHPhotoLibrary   *assetsLibrary;
-@property(strong,nonatomic) NSMutableArray   *alubms;
-@property(strong,nonatomic) UIBarButtonItem  *closeBtn;
-@property(strong,nonatomic) ZZPhotoDatas     *datas;
+@property (nonatomic, strong) UITableView      *alumbTable;
+@property (nonatomic, strong) PHPhotoLibrary   *assetsLibrary;
+@property (nonatomic, strong) NSMutableArray   *alubms;
+@property (nonatomic, strong) UIBarButtonItem  *closeBtn;
+@property (nonatomic, strong) ZZPhotoDatas     *datas;
 @end
 
 @implementation ZZPhotoListViewController

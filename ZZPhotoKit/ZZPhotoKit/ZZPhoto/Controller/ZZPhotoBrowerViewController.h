@@ -13,7 +13,7 @@
 
 @interface ZZPhotoBrowerViewController : UIViewController
 
-@property (nonatomic, strong) NSArray *photoData;
+@property (nonatomic,   copy) NSArray *photoData;
 
 @property (nonatomic, assign) NSInteger scrollIndex;
 
