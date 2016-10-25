@@ -11,13 +11,13 @@
 #import "ZZPhoto.h"
 @implementation ZZPhotoDatas
 
-- (NSMutableArray *)GetPhotoListDatas
+- (NSArray *)GetPhotoListDatas
 {
-    NSMutableArray *dataArray = [NSMutableArray array];
+    __block NSMutableArray *dataArray = [NSMutableArray array];
     PHFetchOptions *fetchOptions = [[PHFetchOptions alloc]init];
-    PHFetchResult *smartAlbumsFetchResult = [PHAssetCollection fetchAssetCollectionsWithType:PHAssetCollectionTypeSmartAlbum subtype:PHAssetCollectionSubtypeSmartAlbumUserLibrary options:fetchOptions];
+    PHFetchResult *cameraRollAlbums = [PHAssetCollection fetchAssetCollectionsWithType:PHAssetCollectionTypeSmartAlbum subtype:PHAssetCollectionSubtypeSmartAlbumUserLibrary options:fetchOptions];
     //遍历相机胶卷
-    [smartAlbumsFetchResult enumerateObjectsUsingBlock:^(PHAssetCollection * _Nonnull collection, NSUInteger idx, BOOL *stop) {
+    [cameraRollAlbums enumerateObjectsUsingBlock:^(PHAssetCollection * _Nonnull collection, NSUInteger idx, BOOL *stop) {
 
         if (![collection.localizedTitle isEqualToString:@"Videos"]) {
             NSArray<PHAsset *> *assets = [self GetAssetsInAssetCollection:collection];
@@ -30,8 +30,8 @@
         }
     }];
     //遍历自定义相册
-    PHFetchResult *smartAlbumsFetchResult1 = [PHAssetCollection fetchTopLevelUserCollectionsWithOptions:fetchOptions];
-    [smartAlbumsFetchResult1 enumerateObjectsUsingBlock:^(PHAssetCollection * _Nonnull collection, NSUInteger idx, BOOL *stop) {
+    PHFetchResult *customAlbums = [PHAssetCollection fetchTopLevelUserCollectionsWithOptions:fetchOptions];
+    [customAlbums enumerateObjectsUsingBlock:^(PHAssetCollection * _Nonnull collection, NSUInteger idx, BOOL *stop) {
 
         NSArray<PHAsset *> *assets = [self GetAssetsInAssetCollection:collection];
         ZZPhotoListModel *listModel = [[ZZPhotoListModel alloc]init];
@@ -42,7 +42,7 @@
         [dataArray addObject:listModel];
     }];
     
-    return dataArray;
+    return [dataArray copy];
 }
 
 - (NSString *)FormatPhotoAlumTitle:(NSString *)title
@@ -63,7 +63,7 @@
             [arr addObject:obj];
         }
     }];
-    return arr;
+    return [arr copy];
 }
 
 - (PHFetchResult *)GetFetchResult:(PHAssetCollection *)assetCollection
@@ -72,7 +72,7 @@
     return fetchResult;
 }
 
-- (NSMutableArray *)GetPhotoAssets:(PHFetchResult *)fetchResult
+- (NSArray *)GetPhotoAssets:(PHFetchResult *)fetchResult
 {
     NSMutableArray *dataArray = [NSMutableArray array];
     for (PHAsset *asset in fetchResult) {
@@ -84,17 +84,17 @@
         }
     }
     
-    return dataArray;
+    return [dataArray copy];
 }
 
-- (PHFetchResult *)GetCameraRollFetchResul
+- (PHFetchResult *)GetCameraRollFetchResult
 {
     PHFetchOptions *fetchOptions = [[PHFetchOptions alloc]init];
     
     PHFetchResult *smartAlbumsFetchResult = [PHAssetCollection fetchAssetCollectionsWithType:PHAssetCollectionTypeSmartAlbum subtype:PHAssetCollectionSubtypeSmartAlbumUserLibrary options:fetchOptions];
     
-    
     PHFetchResult *fetch = [PHAsset fetchAssetsInAssetCollection:[smartAlbumsFetchResult objectAtIndex:0] options:nil];
+    
     return fetch;
 }
 
@@ -121,10 +121,11 @@
             
             BOOL downloadFinined = ![[info objectForKey:PHImageCancelledKey] boolValue] && ![info objectForKey:PHImageErrorKey] && ![[info objectForKey:PHImageResultIsDegradedKey] boolValue];
             
+            UIImage *image = [self fixOrientation:result];
             //设置BOOL判断，确定返回高清照片
             if (downloadFinined) {
                 NSURL *imageUrl = (NSURL *)[info objectForKey:@"PHImageFileURLKey"];
-                complection(result,imageUrl);
+                complection(image,imageUrl);
             }
         }];
     }
@@ -151,4 +152,82 @@
     
     return isICloudAsset;
 }
+
+- (UIImage *)fixOrientation:(UIImage *)aImage {
+    
+    // No-op if the orientation is already correct
+    if (aImage.imageOrientation == UIImageOrientationUp)
+        return aImage;
+    
+    // We need to calculate the proper transformation to make the image upright.
+    // We do it in 2 steps: Rotate if Left/Right/Down, and then flip if Mirrored.
+    CGAffineTransform transform = CGAffineTransformIdentity;
+    
+    switch (aImage.imageOrientation) {
+        case UIImageOrientationDown:
+        case UIImageOrientationDownMirrored:
+            transform = CGAffineTransformTranslate(transform, aImage.size.width, aImage.size.height);
+            transform = CGAffineTransformRotate(transform, M_PI);
+            break;
+            
+        case UIImageOrientationLeft:
+        case UIImageOrientationLeftMirrored:
+            transform = CGAffineTransformTranslate(transform, aImage.size.width, 0);
+            transform = CGAffineTransformRotate(transform, M_PI_2);
+            break;
+            
+        case UIImageOrientationRight:
+        case UIImageOrientationRightMirrored:
+            transform = CGAffineTransformTranslate(transform, 0, aImage.size.height);
+            transform = CGAffineTransformRotate(transform, -M_PI_2);
+            break;
+        default:
+            break;
+    }
+    
+    switch (aImage.imageOrientation) {
+        case UIImageOrientationUpMirrored:
+        case UIImageOrientationDownMirrored:
+            transform = CGAffineTransformTranslate(transform, aImage.size.width, 0);
+            transform = CGAffineTransformScale(transform, -1, 1);
+            break;
+            
+        case UIImageOrientationLeftMirrored:
+        case UIImageOrientationRightMirrored:
+            transform = CGAffineTransformTranslate(transform, aImage.size.height, 0);
+            transform = CGAffineTransformScale(transform, -1, 1);
+            break;
+        default:
+            break;
+    }
+    
+    // Now we draw the underlying CGImage into a new context, applying the transform
+    // calculated above.
+    CGContextRef ctx = CGBitmapContextCreate(NULL, aImage.size.width, aImage.size.height,
+                                             CGImageGetBitsPerComponent(aImage.CGImage), 0,
+                                             CGImageGetColorSpace(aImage.CGImage),
+                                             CGImageGetBitmapInfo(aImage.CGImage));
+    CGContextConcatCTM(ctx, transform);
+    switch (aImage.imageOrientation) {
+        case UIImageOrientationLeft:
+        case UIImageOrientationLeftMirrored:
+        case UIImageOrientationRight:
+        case UIImageOrientationRightMirrored:
+            // Grr...
+            CGContextDrawImage(ctx, CGRectMake(0,0,aImage.size.height,aImage.size.width), aImage.CGImage);
+            break;
+            
+        default:
+            CGContextDrawImage(ctx, CGRectMake(0,0,aImage.size.width,aImage.size.height), aImage.CGImage);
+            break;
+    }
+    
+    // And now we just create a new UIImage from the drawing context
+    CGImageRef cgimg = CGBitmapContextCreateImage(ctx);
+    UIImage *img = [UIImage imageWithCGImage:cgimg];
+    CGContextRelease(ctx);
+    CGImageRelease(cgimg);
+    return img;
+}
+
 @end

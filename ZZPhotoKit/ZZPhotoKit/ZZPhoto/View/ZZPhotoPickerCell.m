@@ -62,6 +62,7 @@
     if ([photo isKindOfClass:[ZZPhoto class]]) {
 
         [[PHImageManager defaultManager] requestImageForAsset:photo.asset targetSize:CGSizeMake(200, 200) contentMode:PHImageContentModeAspectFit options:nil resultHandler:^(UIImage *result, NSDictionary *info){
+            
             self.photo.image = result;
             
         }];

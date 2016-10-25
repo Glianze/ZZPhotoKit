@@ -9,6 +9,7 @@
 #import "ZZPhotoListCell.h"
 #import "ZZPhotoListModel.h"
 @implementation ZZPhotoListCell
+
 -(instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
@@ -47,9 +48,7 @@
     }
     return self;
 }
-- (void)awakeFromNib {
-    // Initialization code
-}
+
 
 -(void)loadPhotoListData:(ZZPhotoListModel *)listmodel
 {

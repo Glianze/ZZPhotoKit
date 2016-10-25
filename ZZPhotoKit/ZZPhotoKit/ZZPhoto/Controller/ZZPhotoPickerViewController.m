@@ -20,7 +20,7 @@
 
 @interface ZZPhotoPickerViewController ()<UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout>
 
-@property (nonatomic, strong) NSMutableArray              *photoArray;
+@property (nonatomic,   copy) NSArray                     *photoArray;
 @property (nonatomic, strong) NSMutableArray              *selectArray;
 
 @property (nonatomic, strong) UICollectionView            *picsCollection;
@@ -161,7 +161,7 @@
                     return;
                 }
                 if (weakSelf.PhotoResult) {
-                    weakSelf.PhotoResult(photos);
+                    weakSelf.PhotoResult([NSArray arrayWithArray:photos]);
                 }
                 
                 [ZZPhotoHud hideActiveHud];
@@ -183,15 +183,6 @@
         [self.browserController showIn:self];
     }
 
-}
-
-#pragma Declaration Array
-- (NSMutableArray *)photoArray
-{
-    if (!_photoArray) {
-        _photoArray = [NSMutableArray array];
-    }
-    return _photoArray;
 }
 
 - (NSMutableArray *)selectArray
@@ -307,10 +298,9 @@
 {
     if (_isAlubSeclect == YES) {
         self.photoArray = [self.datas GetPhotoAssets:_fetch];
-
     }else{
         self.navigationItem.title = @"相机胶卷";
-        self.photoArray = [self.datas GetPhotoAssets:[self.datas GetCameraRollFetchResul]];
+        self.photoArray = [self.datas GetPhotoAssets:[self.datas GetCameraRollFetchResult]];
     }
 }
 

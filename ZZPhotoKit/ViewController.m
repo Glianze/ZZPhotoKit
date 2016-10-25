@@ -20,7 +20,7 @@
 
 @property(strong,nonatomic) UICollectionView *collectionView;
 @property(strong,nonatomic) UIButton *addBtn;
-@property(strong,nonatomic) NSMutableArray *picArray;
+@property(copy  ,nonatomic) NSArray *picArray;
 
 @end
 
@@ -34,13 +34,6 @@
     return self;
 }
 
--(NSMutableArray *)picArray
-{
-    if (!_picArray) {
-        _picArray = [NSMutableArray array];
-    }
-    return _picArray;
-}
 
 -(UIButton *)addBtn
 {
@@ -122,9 +115,8 @@
         
         [photoController showIn:self result:^(id responseObject){
 
-            NSArray *array = (NSArray *)responseObject;
             
-            [self.picArray addObjectsFromArray:array];
+            self.picArray = (NSArray *)responseObject;
 //            NSLog(@"重载");
             [_collectionView reloadData];
             
@@ -139,9 +131,8 @@
         [cameraController showIn:self result:^(id responseObject){
             
             NSLog(@"%@",responseObject);
-            NSArray *array = (NSArray *)responseObject;
             
-            [self.picArray addObjectsFromArray:array];
+            self.picArray = (NSArray *)responseObject;
             [_collectionView reloadData];
         }];
     }

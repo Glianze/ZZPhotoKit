@@ -17,7 +17,7 @@
 
 @property (nonatomic, strong) UITableView      *alumbTable;
 @property (nonatomic, strong) PHPhotoLibrary   *assetsLibrary;
-@property (nonatomic, strong) NSMutableArray   *alubms;
+@property (nonatomic,   copy) NSArray          *alubms;
 @property (nonatomic, strong) UIBarButtonItem  *closeBtn;
 @property (nonatomic, strong) ZZPhotoDatas     *datas;
 @end
@@ -51,13 +51,6 @@
     return _datas;
 }
 
--(NSMutableArray *)alubms
-{
-    if (!_alubms) {
-        _alubms = [NSMutableArray array];
-    }
-    return _alubms;
-}
 
 -(instancetype)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
