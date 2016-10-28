@@ -10,6 +10,7 @@
 #import "ZZPhotoKit.h"
 #import "PicsCell.h"
 
+#
 
 @interface ViewController ()<UITableViewDelegate,UITableViewDataSource,ZZBrowserPickerDelegate,UICollectionViewDataSource,UICollectionViewDelegate>
 
@@ -50,6 +51,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
     self.edgesForExtendedLayout = UIRectEdgeNone;
     _array = @[@"相册选择",@"相机"];
     

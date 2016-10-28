@@ -439,12 +439,12 @@
 		496D47421DB5F8E600A99CD4 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				496D47431DB5F8E600A99CD4 /* ZZCameraBrowerViewController.h */,
-				496D47441DB5F8E600A99CD4 /* ZZCameraBrowerViewController.m */,
 				496D47451DB5F8E600A99CD4 /* ZZCameraController.h */,
 				496D47461DB5F8E600A99CD4 /* ZZCameraController.m */,
 				496D47471DB5F8E600A99CD4 /* ZZCameraPickerViewController.h */,
 				496D47481DB5F8E600A99CD4 /* ZZCameraPickerViewController.m */,
+				496D47431DB5F8E600A99CD4 /* ZZCameraBrowerViewController.h */,
+				496D47441DB5F8E600A99CD4 /* ZZCameraBrowerViewController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -858,7 +858,7 @@
 				INFOPLIST_FILE = ZZPhotoKit/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.aceyj.ZZPhotoKit;
+				PRODUCT_BUNDLE_IDENTIFIER = com.aceyp.ZZPhotoKit;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -875,7 +875,7 @@
 				INFOPLIST_FILE = ZZPhotoKit/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.aceyj.ZZPhotoKit;
+				PRODUCT_BUNDLE_IDENTIFIER = com.aceyp.ZZPhotoKit;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = "1,2";
