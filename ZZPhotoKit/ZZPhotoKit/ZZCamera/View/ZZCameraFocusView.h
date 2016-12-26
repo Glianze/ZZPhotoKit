@@ -19,6 +19,6 @@
 
 @interface ZZCameraFocusView : UIView
 
-@property(strong,nonatomic) id <ZZCameraFocusDelegate> delegate;
+@property (nonatomic,weak)   id <ZZCameraFocusDelegate> delegate;
 
 @end
