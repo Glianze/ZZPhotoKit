@@ -14,7 +14,7 @@
 
  @return array 集合
  */
-- (NSArray *) GetPhotoListDatas;
+- (void) fetchPhotoListDatasCompletion:(void(^)(NSArray *data))completion;
 
 /**
  获取某个相册的全部照片实体
@@ -32,14 +32,14 @@
 
  @return array 集合<PHAsset>
  */
-- (NSArray *) GetPhotoAssets:(PHFetchResult *)fetchResult;
+- (void)fetchPhotoAssets:(PHFetchResult *)fetchResult completion:(void(^)(NSArray *data))completion;
 
 /**
  获取相机胶卷中的结果集
 
  @return 集合
  */
-- (PHFetchResult *) GetCameraRollFetchResult;
+- (PHFetchResult *) fetchCameraRollFetchResult;
 
 /**
  回调方法使用数组
@@ -47,7 +47,7 @@
  @param asset       照片实体
  @param complection 回调方法
  */
-- (void) GetImageObject:(id)asset complection:(void (^)(UIImage *,NSURL *))complection;
+- (void) fetchImageObject:(id)asset complection:(void (^)(UIImage *,NSURL *))complection;
 
 /**
  检测是否为iCloud资源

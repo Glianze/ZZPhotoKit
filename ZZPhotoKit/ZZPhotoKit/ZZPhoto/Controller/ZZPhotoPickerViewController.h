@@ -8,14 +8,14 @@
 
 #import <UIKit/UIKit.h>
 #import "ZZResourceConfig.h"
-
+#import "ZZPhotoListModel.h"
 
 @interface ZZPhotoPickerViewController : UIViewController
 
 @property (nonatomic,   copy) void (^PhotoResult)(id responseObject);
-@property (nonatomic, assign) BOOL            isAlubSeclect;
-@property (nonatomic, strong) UIColor         *roundColor;
-@property (nonatomic, assign) NSInteger       selectNum;
-@property (nonatomic, strong) PHFetchResult   *fetch;
+@property (nonatomic, assign) BOOL             isAlubSeclect;
+@property (nonatomic, strong) UIColor          *roundColor;
+@property (nonatomic, assign) NSInteger        selectNum;
+@property (nonatomic, strong) ZZPhotoListModel *alumbModel;
 
 @end

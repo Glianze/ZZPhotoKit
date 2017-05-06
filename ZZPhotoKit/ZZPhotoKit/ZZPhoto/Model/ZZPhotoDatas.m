@@ -11,14 +11,13 @@
 #import "ZZPhoto.h"
 @implementation ZZPhotoDatas
 
-- (NSArray *)GetPhotoListDatas
+- (void)fetchPhotoListDatasCompletion:(void (^)(NSArray *))completion
 {
     __block NSMutableArray *dataArray = [NSMutableArray array];
     PHFetchOptions *fetchOptions = [[PHFetchOptions alloc]init];
     PHFetchResult *cameraRollAlbums = [PHAssetCollection fetchAssetCollectionsWithType:PHAssetCollectionTypeSmartAlbum subtype:PHAssetCollectionSubtypeSmartAlbumUserLibrary options:fetchOptions];
     //遍历相机胶卷
     [cameraRollAlbums enumerateObjectsUsingBlock:^(PHAssetCollection * _Nonnull collection, NSUInteger idx, BOOL *stop) {
-
         if (![collection.localizedTitle isEqualToString:@"Videos"]) {
             NSArray<PHAsset *> *assets = [self GetAssetsInAssetCollection:collection];
             ZZPhotoListModel *listModel = [[ZZPhotoListModel alloc]init];
@@ -26,6 +25,7 @@
             listModel.title = [self FormatPhotoAlumTitle:collection.localizedTitle];
             listModel.lastObject = assets.lastObject;
             listModel.assetCollection = collection;
+            listModel.fetchResult = [self GetFetchResult:collection];
             [dataArray addObject:listModel];
         }
     }];
@@ -39,10 +39,13 @@
         listModel.title = collection.localizedTitle;
         listModel.lastObject = assets.lastObject;
         listModel.assetCollection = collection;
+        listModel.fetchResult = [self GetFetchResult:collection];
         [dataArray addObject:listModel];
     }];
     
-    return [dataArray copy];
+    if (completion) {
+        completion(dataArray);
+    }
 }
 
 - (NSString *)FormatPhotoAlumTitle:(NSString *)title
@@ -72,7 +75,7 @@
     return fetchResult;
 }
 
-- (NSArray *)GetPhotoAssets:(PHFetchResult *)fetchResult
+- (void)fetchPhotoAssets:(PHFetchResult *)fetchResult completion:(void (^)(NSArray *))completion
 {
     NSMutableArray *dataArray = [NSMutableArray array];
     for (PHAsset *asset in fetchResult) {
@@ -83,11 +86,12 @@
             [dataArray addObject:photo];
         }
     }
-    
-    return [dataArray copy];
+    if (completion) {
+        completion([dataArray copy]);
+    }
 }
 
-- (PHFetchResult *)GetCameraRollFetchResult
+- (PHFetchResult *)fetchCameraRollFetchResult
 {
     PHFetchOptions *fetchOptions = [[PHFetchOptions alloc]init];
     
@@ -98,7 +102,7 @@
     return fetch;
 }
 
-- (void)GetImageObject:(id)asset complection:(void (^)(UIImage *,NSURL *))complection
+- (void)fetchImageObject:(id)asset complection:(void (^)(UIImage *,NSURL *))complection
 {
     if ([asset isKindOfClass:[PHAsset class]]) {
         PHAsset *phAsset = (PHAsset *)asset;

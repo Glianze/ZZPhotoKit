@@ -147,7 +147,7 @@
         __weak __typeof(self) weakSelf = self;
         for (int i = 0; i < self.selectArray.count; i++) {
             ZZPhoto *photo = [self.selectArray objectAtIndex:i];
-            [self.datas GetImageObject:photo.asset complection:^(UIImage *image,NSURL *imageUrl) {
+            [self.datas fetchImageObject:photo.asset complection:^(UIImage *image,NSURL *imageUrl) {
                 
                 if (image){
                     ZZPhoto *model = [[ZZPhoto alloc]init];
@@ -211,6 +211,8 @@
     [self makeCollectionViewUI];
     //创建底部工具栏
     [self makeTabbarUI];
+    
+    self.browserController = [[ZZPhotoBrowerViewController alloc]init];
 }
 
 - (void)initInterUI
@@ -296,13 +298,16 @@
 - (void)loadPhotoData
 {
     if (_isAlubSeclect == YES) {
-        self.photoArray = [self.datas GetPhotoAssets:_fetch];
+        [self.datas fetchPhotoAssets:self.alumbModel.fetchResult completion:^(NSArray *data) {
+            self.photoArray = data;
+        }];
     }else{
         self.navigationItem.title = @"相机胶卷";
-        self.photoArray = [self.datas GetPhotoAssets:[self.datas GetCameraRollFetchResult]];
+        [self.datas fetchPhotoAssets:[self.datas fetchCameraRollFetchResult] completion:^(NSArray *data) {
+            self.photoArray = data;
+        }];
     }
 }
-
 
 #pragma mark 关键位置，选中的在数组中添加，取消的从数组中减少
 - (void)selectPhotoAtIndex:(NSInteger)index
@@ -393,7 +398,6 @@
 }
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    self.browserController             = [[ZZPhotoBrowerViewController alloc]init];
     self.browserController.photoData   = self.photoArray;
     self.browserController.scrollIndex = indexPath.row;
     [self.browserController showIn:self];

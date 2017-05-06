@@ -20,6 +20,7 @@
 @property (nonatomic,   copy) NSArray          *alubms;
 @property (nonatomic, strong) UIBarButtonItem  *closeBtn;
 @property (nonatomic, strong) ZZPhotoDatas     *datas;
+@property (nonatomic, strong) ZZPhotoPickerViewController *photoPickerViewController;
 @end
 
 @implementation ZZPhotoListViewController
@@ -51,7 +52,6 @@
     return _datas;
 }
 
-
 -(instancetype)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -69,10 +69,14 @@
     self.navigationItem.rightBarButtonItem = self.closeBtn;
     self.edgesForExtendedLayout = UIRectEdgeNone;
     
+    _photoPickerViewController = [ZZPhotoPickerViewController new];
+    
     [self makeAlumListUI];
 
-    self.alubms = [self.datas GetPhotoListDatas];
 
+    [self.datas fetchPhotoListDatasCompletion:^(NSArray *data) {
+        self.alubms = data;
+    }];
 }
 
 -(void)viewWillAppear:(BOOL)animated
@@ -114,7 +118,6 @@
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    
     ZZPhotoListCell *cell =  [tableView dequeueReusableCellWithIdentifier:@"ZZPhotoListCell"];
     if (!cell) {
         cell = [[ZZPhotoListCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:@"ZZPhotoListCell"];
@@ -132,14 +135,13 @@
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    ZZPhotoPickerViewController *photoPickerController = [[ZZPhotoPickerViewController alloc]initWithNibName:nil bundle:nil];
-    photoPickerController.PhotoResult          = self.photoResult;
-    photoPickerController.selectNum            = self.selectNum;
+    _photoPickerViewController.PhotoResult          = self.photoResult;
+    _photoPickerViewController.selectNum            = self.selectNum;
     ZZPhotoListModel *listmodel                = [self.alubms objectAtIndex:indexPath.row];
-    photoPickerController.fetch                = [self.datas GetFetchResult:listmodel.assetCollection];
-    photoPickerController.navigationItem.title = listmodel.title;
-    photoPickerController.isAlubSeclect        = YES;
-    [self.navigationController pushViewController:photoPickerController animated:YES];
+    _photoPickerViewController.alumbModel = listmodel;
+    _photoPickerViewController.navigationItem.title = listmodel.title;
+    _photoPickerViewController.isAlubSeclect        = YES;
+    [self.navigationController pushViewController:_photoPickerViewController animated:YES];
 }
 
 - (void)didReceiveMemoryWarning {
