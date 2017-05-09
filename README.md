@@ -1,5 +1,5 @@
 # ZZPhotoKit
-##说明
+## 说明
 
 * 此开源目前接近于成熟状态，不喜欢的大神们还望轻虐。
 * 注意此框架只支持 IOS 8.0 及以上系统使用。
@@ -10,16 +10,16 @@
 * 图片浏览器支持 SDWebImage 加载图片
 * 欢迎大家使用，欢迎大家Star
 
-###告诉我您的APP，使用到我框架的把APP名字告诉我，谢谢哦。单纯看看使用率。(*^__^*)
-###有什么不明白的地方，或者哪里需要改进的可以联系我
-###联系方式
-###关注微博：袁亮_
+### 告诉我您的APP，使用到我框架的把APP名字告诉我，谢谢哦。单纯看看使用率。(*^__^*)
+### 有什么不明白的地方，或者哪里需要改进的可以联系我
+### 联系方式
+### 关注微博：袁亮_
 
-##项目介绍
+## 项目介绍
 ![image](https://github.com/ACEYL/ZZPhotoKit/raw/master/image/demonstrate.gif)
 ![image](https://github.com/ACEYL/ZZPhotoKit/raw/master/image/zz_camera_intro.jpg)
 
-##更新内容
+## 更新内容
 
 * 10月13日更新内容：网友提出意见，图片浏览器加入放大缩小手势。点击放大缩小下一版本添加。
 * 10月13日更新内容：相册多选中加入图片预览功能。
@@ -32,17 +32,17 @@
 * 在iOS 10 使用时，如不添加如上权限则会导致崩溃闪退。
 ![image](https://github.com/ACEYL/ZZPhotoKit/raw/master/image/privacy_use.png)
 
-##使用方法
+## 使用方法
 
 首先重要提醒一个 文件，ZZResourceConfig.h 这个配置文件。
-###包含内容
+### 包含内容
 
 * 1.包含了所有的按钮图片信息，任意更换即可.
 * 2.包含了图片返回类型的公共枚举.
 * 3.所有用到的头文件。以及一些颜色、控制器宽高、屏幕宽高宏定义.
 
 ### 导入头文件
-###import "ZZPhotoKit.h"
+### import "ZZPhotoKit.h"
 
 * 相册多选的调用
 ```
@@ -92,4 +92,4 @@ browserController.delegate = self;
 -(NSArray *)zzbrowserPickerPhotoContent:(ZZBrowserPickerViewController *)controller
 ```
 
-###详细使用方法还是看demo 吧。
+### 详细使用方法还是看demo 吧。
